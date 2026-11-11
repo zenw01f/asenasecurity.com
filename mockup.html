@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
   <title>Asena Security — Security Consulting</title>
-  <meta name="description" content="Asena Security: SOC 2 readiness, IoT hardening, embedded AI analysis, AI governance reviews for startups, and vCISO services.">
+  <meta name="description" content="Asena Security: product security for IoT and consumer electronics, including device hardening and auditing, embedded AI analysis, SOC 2 readiness, embedded AI analysis, AI governance reviews for startups, and vCISO services.">
   <link rel="icon" href="/assets/asena-shield.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -104,7 +104,7 @@
     .nav-toggle { display: none; background: none; border: 1px solid var(--border); color: var(--text); width: 42px; height: 42px; font-size: 1.2rem; cursor: pointer; }
 
     /* ── hero ────────────────────────────────────── */
-    .hero { padding-top: calc(72px + clamp(56px, 9vw, 110px)); padding-bottom: clamp(48px, 7vw, 88px); overflow: hidden; }
+    .hero { padding-top: calc(72px + clamp(56px, 9vw, 110px)); padding-bottom: clamp(48px, 7vw, 88px); overflow: hidden; border-bottom: 1px solid var(--border); }
     @media (min-width: 641px) { .stat-label { white-space: nowrap; } }
     .hero::before { /* blueprint grid */
       content: ''; position: absolute; inset: 0; pointer-events: none;
@@ -141,16 +141,11 @@
     .hud.h1 { top: 12%; left: -2%; } .hud.h2 { top: 46%; right: -4%; } .hud.h3 { bottom: 10%; left: 6%; }
     .hud .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #3ddc84; margin-right: 6px; box-shadow: 0 0 8px #3ddc84; }
 
-    /* ── framework strip ─────────────────────────── */
-    .strip { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg-deep); padding: 22px 0; }
-    .strip .wrap { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
-    .strip-label { font-family: var(--font-ui); font-weight: 400; font-size: .72rem; color: var(--muted); letter-spacing: .16em; text-transform: uppercase; }
     .tags { display: flex; flex-wrap: wrap; gap: 8px; }
     .tag {
       padding: 4px 11px; border: 1px solid var(--border); font-family: var(--font-ui); font-weight: 400;
       font-size: .66rem; color: var(--muted); letter-spacing: .1em; text-transform: uppercase;
     }
-    .strip .tag { color: var(--text); font-size: .72rem; }
 
     /* ── services grid ───────────────────────────── */
     .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
@@ -199,7 +194,6 @@
     .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
     .tier { border: 1px solid var(--border); background: var(--card); padding: 2.2rem; display: flex; flex-direction: column; transition: border-color .25s, transform .25s; }
     .tier:hover { border-color: var(--blue-dim); transform: translateY(-4px); }
-    .tier-flag { float: right; font-family: var(--font-ui); font-weight: 400; font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
     .tier-name { font-family: var(--font-ui); font-weight: 400; font-size: .75rem; letter-spacing: .16em; text-transform: uppercase; color: var(--blue); }
     .tier h3 { font-size: 1.5rem; margin: .5rem 0 .3rem; }
     .tier .fit { color: var(--muted); margin-bottom: 1.4rem; font-size: .98rem; }
@@ -311,9 +305,9 @@
 <header class="hero" id="top">
   <div class="wrap hero-grid">
     <div>
-      <div class="label"><span class="cap"></span><span class="txt">Security Consulting</span><span class="rule"></span><span class="slashes">/</span></div>
+      <div class="label"><span class="cap"></span><span class="txt">IoT &amp; Product Security</span><span class="rule"></span><span class="slashes">/</span></div>
       <h1>Security that clears the way.<span class="accent">Not one that slows you down.</span></h1>
-      <p class="hero-sub">Senior, practitioner-led security for teams that build. We take you from SOC 2 readiness to hardened devices to AI governance your enterprise buyers will sign off on.</p>
+      <p class="hero-sub">Senior, practitioner-led product security for companies shipping connected devices and consumer electronics. We harden and audit your products, including the AI running on embedded chips and sub-processors, then back it up with SOC 2 and AI governance your enterprise buyers will sign off on.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#contact">Book a Briefing</a>
         <a class="btn btn-secondary" href="#services">Explore Services</a>
@@ -338,21 +332,11 @@
       </svg>
       <img src="/assets/asena-shield.png" alt="">
       <div class="hud h1"><span class="dot"></span>SOC 2 · <b>Type II</b> on track</div>
-      <div class="hud h2">Firmware · <b>Signed</b></div>
+      <div class="hud h2">IoT Device · <b>Hardened</b></div>
       <div class="hud h3">AI RMF · <b>Mapped</b></div>
     </div>
   </div>
 </header>
-
-<!-- FRAMEWORKS -->
-<div class="strip">
-  <div class="wrap">
-    <span class="strip-label">Frameworks we work in</span>
-    <div class="tags">
-      <span class="tag">SOC 2</span><span class="tag">NIST CSF 2.0</span><span class="tag">ISO 27001</span><span class="tag">ISO 42001</span><span class="tag">NIST AI RMF</span><span class="tag">EU AI Act</span><span class="tag">ETSI EN 303 645</span><span class="tag">OWASP LLM Top 10</span>
-    </div>
-  </div>
-</div>
 
 <!-- SERVICES -->
 <section id="services">
@@ -460,7 +444,7 @@
         <a class="btn btn-secondary" href="#contact">Discuss Advisory</a>
       </div>
       <div class="tier">
-        <span class="tier-name">Tier 02</span><span class="tier-flag">Most common</span>
+        <span class="tier-name">Tier 02</span>
         <h3>Fractional</h3>
         <p class="fit">For scaling companies building a real program.</p>
         <ul>
@@ -513,7 +497,7 @@
     </div>
     <div class="creds">
       <div class="cred"><b>Experience</b><span>20+ years across IT operations and information security leadership.</span></div>
-      <div class="cred"><b>Industries</b><span>Financial services, SaaS, connected devices, and AI-native startups.</span></div>
+      <div class="cred"><b>Industries</b><span>Financial services, SaaS, consumer electronics, connected devices, and AI-native startups.</span></div>
       <div class="cred"><b>Delivery</b><span>Senior-led engagements. The person you meet is the person doing the work.</span></div>
       <div class="cred"><b>Mentorship</b><span>We invest in the next generation through the <a href="https://blog.asenasecurity.com" style="color:var(--blue)">Asena blog</a>.</span></div>
     </div>
