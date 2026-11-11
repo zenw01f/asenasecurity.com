@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meet the Team — Asena Security</title>
+  <meta name="description" content="Meet the senior practitioners behind Asena Security.">
+  <link rel="icon" href="/assets/asena-shield.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/legal.css">
+  <style>
+    .team-intro { color: var(--muted); font-size: 1.2rem; max-width: 640px; }
+    .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+    .member { background: var(--card); padding: 2.4rem 2.2rem; position: relative; overflow: hidden; transition: background .3s; }
+    .member::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--blue); transform: scaleX(0); transform-origin: left; transition: transform .4s; }
+    .member:hover { background: #0e141b; }
+    .member:hover::before { transform: scaleX(1); }
+    .avatar { width: 76px; height: 76px; border-radius: 50%; display: grid; place-items: center; margin-bottom: 1.6rem;
+      font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; color: var(--blue); letter-spacing: .04em;
+      background: radial-gradient(circle at 30% 30%, rgba(91,141,239,.18), #0a0e13 70%); border: 1px solid var(--blue-dim); box-shadow: 0 0 24px rgba(91,141,239,.12); }
+    .member h2 { font-family: var(--font-display); font-weight: 700; font-size: 1.45rem; margin-bottom: .35rem; }
+    .member .role { font-family: var(--font-ui); font-weight: 500; font-size: .85rem; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); margin-bottom: 1.2rem; }
+    .member p { color: var(--body); line-height: 1.75; }
+    .team-cta { margin-top: 3.5rem; display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+    .team-cta p { color: var(--muted); font-size: 1.1rem; }
+    .btn { display: inline-flex; align-items: center; font-family: var(--font-ui); font-weight: 700; font-size: 1rem; letter-spacing: .14em; text-transform: uppercase; padding: 13px 30px; border-radius: var(--pill); background: var(--blue); color: var(--bg); transition: transform .2s, box-shadow .2s; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(91,141,239,.38); }
+    @media (max-width: 1080px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) { .team-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap">
+    <a class="nav-logo" href="/"><img src="/assets/asena-logo-horizontal.png" alt="Asena Security"></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/#services">Services</a></li>
+      <li><a href="/#ai-governance">AI for Startups</a></li>
+      <li><a href="/#vciso">vCISO</a></li>
+      <li><a href="/#approach">Approach</a></li>
+      <li><a href="/team.html">Team</a></li>
+      <li><a href="https://blog.asenasecurity.com">Insights</a></li>
+      <li><a class="nav-cta" href="/#contact">Book a Briefing</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
+</nav>
+
+<section class="legal-hero">
+  <div class="wrap">
+    <div class="label"><span class="cap"></span><span class="txt">Meet the Team</span><span class="rule"></span><span class="slashes">/</span></div>
+    <h1 class="legal-title">Senior practitioners. <span style="color:var(--blue)">No hand-offs.</span></h1>
+    <p class="team-intro">The people you meet are the people doing the work: security, engineering, and business experience under one roof.</p>
+  </div>
+</section>
+
+<section class="legal-body">
+  <div class="wrap">
+    <div class="team-grid">
+      <article class="member">
+        <div class="avatar" aria-hidden="true">MD</div>
+        <h2>Manny DeSoto</h2>
+        <div class="role">CEO · Lead Security Consultant &amp; vCISO</div>
+        <p>Manny has spent more than 20 years in IT and information security, much of it inside financial institutions where a misstep means regulatory action, not just downtime. He founded Asena Security to bring that discipline to companies building connected products, and personally leads every client engagement.</p>
+      </article>
+      <article class="member">
+        <div class="avatar" aria-hidden="true">DK</div>
+        <h2>David Kramer</h2>
+        <div class="role">VP of Technology &amp; Finance</div>
+        <p>Dave comes from the financial world and holds a Mechanical Engineering degree from the University of Illinois. He pairs financial acumen with hands-on technical depth, giving clients a rare view of both the business and engineering realities of consumer technology.</p>
+      </article>
+      <article class="member">
+        <div class="avatar" aria-hidden="true">DG</div>
+        <h2>Damir Grahovac</h2>
+        <div class="role">Sr. Product Security Consultant</div>
+        <p>Damir is a red team veteran with 10 years in cybersecurity and a DePaul University graduate with a keen eye for product vulnerabilities. He helps clients find and fix issues early in development, shifting security left so products stay resilient and avoid costly rework between releases.</p>
+      </article>
+    </div>
+    <div class="team-cta">
+      <a class="btn" href="mailto:info@asenasecurity.com">Book a Briefing</a>
+      <p>Talk directly with the team about your product.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <img src="/assets/asena-logo-horizontal.png" alt="Asena Security">
+        <p class="foot-tag">Practitioner-led security consulting for teams that build.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="/#services">SOC 2 Readiness</a></li>
+          <li><a href="/#services">IoT Hardening</a></li>
+          <li><a href="/#services">Embedded AI Analysis</a></li>
+          <li><a href="/#ai-governance">AI Governance for PoC</a></li>
+          <li><a href="/#vciso">vCISO</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/#approach">Approach</a></li>
+          <li><a href="/team.html" aria-current="page">Meet the Team</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="/privacy.html">Privacy Policy</a></li>
+          <li><a href="/terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Asena Security LLC</span>
+      <span class="binary">01000001 01010011 01000101 01001110 01000001</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const t = document.getElementById('navToggle'), l = document.getElementById('navLinks');
+  t.addEventListener('click', () => { const o = l.classList.toggle('open'); t.setAttribute('aria-expanded', o); t.textContent = o ? '✕' : '☰'; });
+</script>
+</body>
+</html>
