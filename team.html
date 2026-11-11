@@ -17,9 +17,10 @@
     .member::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--blue); transform: scaleX(0); transform-origin: left; transition: transform .4s; }
     .member:hover { background: #0e141b; }
     .member:hover::before { transform: scaleX(1); }
-    .avatar { width: 76px; height: 76px; border-radius: 50%; display: grid; place-items: center; margin-bottom: 1.6rem;
-      font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; color: var(--blue); letter-spacing: .04em;
+    .avatar { width: 112px; height: 112px; overflow: hidden; border-radius: 50%; display: grid; place-items: center; margin-bottom: 1.6rem;
+      font-family: var(--font-display); font-weight: 800; font-size: 2rem; color: var(--blue); letter-spacing: .04em;
       background: radial-gradient(circle at 30% 30%, rgba(91,141,239,.18), #0a0e13 70%); border: 1px solid var(--blue-dim); box-shadow: 0 0 24px rgba(91,141,239,.12); }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .member h2 { font-family: var(--font-display); font-weight: 700; font-size: 1.45rem; margin-bottom: .35rem; }
     .member .role { font-family: var(--font-ui); font-weight: 500; font-size: .85rem; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); margin-bottom: 1.2rem; }
     .member p { color: var(--body); line-height: 1.75; }
@@ -61,13 +62,13 @@
   <div class="wrap">
     <div class="team-grid">
       <article class="member">
-        <div class="avatar" aria-hidden="true">MD</div>
+        <div class="avatar"><img src="/assets/team/manny.jpg" alt="Manny DeSoto" width="112" height="112"></div>
         <h2>Manny DeSoto</h2>
         <div class="role">CEO · Lead Security Consultant &amp; vCISO</div>
         <p>Manny has spent more than 20 years in IT and information security, much of it inside financial institutions where a misstep means regulatory action, not just downtime. He founded Asena Security to bring that discipline to companies building connected products, and personally leads every client engagement.</p>
       </article>
       <article class="member">
-        <div class="avatar" aria-hidden="true">DK</div>
+        <div class="avatar"><img src="/assets/team/dave.jpg" alt="David Kramer" width="112" height="112"></div>
         <h2>David Kramer</h2>
         <div class="role">VP of Technology &amp; Finance</div>
         <p>Dave comes from the financial world and holds a Mechanical Engineering degree from the University of Illinois. He pairs financial acumen with hands-on technical depth, giving clients a rare view of both the business and engineering realities of consumer technology.</p>
