@@ -194,10 +194,6 @@
     .term-body .ok { color: #3ddc84; } .term-body .warn { color: var(--amber); } .term-body .hl { color: var(--blue); }
     .term-body .line { white-space: pre; }
     .cursor::after { content: '█'; color: var(--blue); animation: blink 1s step-end infinite; }
-    .timeline { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--border); margin-top: 2rem; }
-    .timeline div { padding: 1rem 1rem 0 0; }
-    .timeline b { font-family: var(--font-ui); font-weight: 400; font-size: .7rem; letter-spacing: .14em; color: var(--blue); text-transform: uppercase; display: block; }
-    .timeline span { font-size: .95rem; color: var(--text); }
 
     /* ── vCISO tiers ─────────────────────────────── */
     .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
@@ -273,7 +269,6 @@
       .services-grid, .tiers, .steps { grid-template-columns: 1fr; }
       .foot-grid { grid-template-columns: 1fr; }
       .cred { grid-template-columns: 1fr; gap: .2rem; }
-      .timeline { grid-template-columns: 1fr; }
       .hud { font-size: .58rem; }
       .hud.h2 { right: 0; }
       .hud.h1 { left: 0; }
@@ -377,14 +372,14 @@
       <article class="service-card">
         <div class="service-top"><svg class="service-icon"><use href="#i-iot"/></svg><span class="service-num">02</span></div>
         <h3>IoT Hardening</h3>
-        <p>Secure connected devices before they ship. We cover firmware review, secure boot and signed OTA updates, network attack-surface reduction, and alignment with ETSI EN 303 645 and NIST IR 8259.</p>
-        <div class="tags"><span class="tag">Firmware</span><span class="tag">Secure Boot</span><span class="tag">Threat Modeling</span></div>
+        <p>Secure connected devices before they ship. We cover firmware review, update and patching practices, network attack-surface reduction, and alignment with ETSI EN 303 645 and NIST IR 8259.</p>
+        <div class="tags"><span class="tag">Firmware</span><span class="tag">Network Exposure</span><span class="tag">Threat Modeling</span></div>
       </article>
       <article class="service-card">
         <div class="service-top"><svg class="service-icon"><use href="#i-ai"/></svg><span class="service-num">03</span></div>
         <h3>Embedded AI Analysis</h3>
-        <p>On-device and edge models bring new attack surface. We assess model integrity, data leakage, adversarial robustness, and the supply chain behind every model in your product.</p>
-        <div class="tags"><span class="tag">Model Supply Chain</span><span class="tag">Adversarial Testing</span><span class="tag">Edge Inference</span></div>
+        <p>On-device and edge models bring new attack surface. We assess model integrity, data leakage, access controls, and the supply chain behind every model in your product.</p>
+        <div class="tags"><span class="tag">Model Supply Chain</span><span class="tag">Data Leakage</span><span class="tag">Edge Inference</span></div>
       </article>
       <article class="service-card">
         <div class="service-top"><svg class="service-icon"><use href="#i-gov"/></svg><span class="service-num">04</span></div>
@@ -397,7 +392,7 @@
         <div class="service-top"><svg class="service-icon"><use href="#i-ciso"/></svg><span class="service-num">05</span></div>
         <h3>vCISO Services</h3>
         <p>Senior security leadership without the full-time hire. You get strategy, board and investor reporting, a working risk program, and a roadmap your team can actually execute.</p>
-        <div class="tags"><span class="tag">Strategy</span><span class="tag">Board Reporting</span><span class="tag">Incident Readiness</span></div>
+        <div class="tags"><span class="tag">Strategy</span><span class="tag">Board Reporting</span><span class="tag">Risk Management</span></div>
         <a class="more" href="#vciso">Compare engagements</a>
       </article>
       <article class="service-card cta-card">
@@ -423,11 +418,6 @@
         <li><svg><use href="#i-check"/></svg><div><strong>A trust package you can hand over</strong><span>Policies, model provenance, and human-oversight controls mapped to NIST AI RMF.</span></div></li>
       </ul>
       <a class="btn btn-primary" href="#contact">Prep for my PoC</a>
-      <div class="timeline">
-        <div><b>Week 1</b><span>Discovery &amp; inventory</span></div>
-        <div><b>Week 2</b><span>Gap review &amp; fixes</span></div>
-        <div><b>Week 3</b><span>Trust package delivered</span></div>
-      </div>
     </div>
     <div class="terminal" aria-label="Example AI governance review output">
       <div class="term-bar"><i></i><i></i><i></i><span>asena@review:~</span></div>
@@ -465,7 +455,7 @@
           <li>Monthly strategy session</li>
           <li>On-call guidance for deals &amp; incidents</li>
           <li>Security questionnaire review</li>
-          <li>Annual risk assessment</li>
+          <li>Vulnerability risk assessment</li>
         </ul>
         <a class="btn btn-secondary" href="#contact">Discuss Advisory</a>
       </div>
@@ -475,7 +465,7 @@
         <p class="fit">For scaling companies building a real program.</p>
         <ul>
           <li>Everything in Advisory</li>
-          <li>Owned security roadmap &amp; policies</li>
+          <li>Security roadmap &amp; policies</li>
           <li>Board &amp; investor reporting</li>
           <li>SOC 2 / framework program lead</li>
           <li>Vendor &amp; third-party risk</li>
@@ -534,7 +524,7 @@
 <section class="cta-band" id="contact">
   <div class="wrap">
     <div class="label"><span class="cap"></span><span class="txt">Next step</span><span class="rule"></span><span class="slashes">///////</span></div>
-    <h2>Have a deal, an audit, or a device <span class="accent">on the line?</span></h2>
+    <h2>Have a deal or an audit <span class="accent">on the line?</span></h2>
     <p class="lede">Tell us what you're up against. We'll tell you, plainly, what it will take.</p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="mailto:info@asenasecurity.com">Book a Briefing</a>
