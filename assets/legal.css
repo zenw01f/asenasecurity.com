@@ -61,7 +61,6 @@ img { display: block; max-width: 100%; }
 .legal-inner a:hover { text-decoration: underline; }
 .legal-inner strong { color: var(--text); font-weight: 600; }
 .legal-sign { margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid var(--border); font-family: var(--font-ui); font-weight: 400; font-size: .9rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
-.todo { background: rgba(240,181,74,.14); color: var(--amber); padding: 0 .3em; border-radius: 3px; }
 
 /* footer */
 footer { border-top: 1px solid var(--border); background: var(--bg-deep); padding: 64px 0 28px; }
