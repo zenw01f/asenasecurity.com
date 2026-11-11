@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Asena Security — Security Consulting</title>
+  <meta name="description" content="Asena Security: SOC 2 readiness, IoT hardening, embedded AI analysis, AI governance reviews for startups, and vCISO services.">
+  <link rel="icon" href="/assets/asena-shield.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #5b8def;
+      --blue-brand: #4772c4;
+      --blue-dim: #3a5fa8;
+      --blue-dark: #12213d;
+      --blue-glow: rgba(91,141,239,0.14);
+      --blue-glow-strong: rgba(91,141,239,0.38);
+      --steel: #8b9097;
+      --bg: #07090c;
+      --bg-deep: #040507;
+      --card: #0a0e13;
+      --card-hover: #0e141b;
+      --border: #16202c;
+      --text: #e6edf5;
+      --muted: #7d8a99;
+      --amber: #f0b54a;
+      --font-display: 'Exo 2', sans-serif;
+      --font-body: 'Rajdhani', sans-serif;
+      --font-mono: 'Share Tech Mono', monospace;
+      --pad: clamp(16px, 5vw, 4rem);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: var(--font-body); font-size: 17px; line-height: 1.6;
+      overflow-x: hidden;
+    }
+    body::before { /* faint scanlines */
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 999;
+      background: repeating-linear-gradient(0deg, transparent 0 2px, rgba(0,0,0,0.035) 2px 4px);
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .hero-grid > *, .spot-grid > *, .prac-grid > * { min-width: 0; }
+    .wrap { max-width: 1240px; margin: 0 auto; padding: 0 var(--pad); }
+
+    /* ── labels & type ───────────────────────────── */
+    .label {
+      font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--blue); display: inline-block; margin-bottom: 1rem;
+    }
+    .label::before { content: '// '; color: var(--blue-dim); }
+    h1, h2, h3 { font-family: var(--font-display); line-height: 1.12; letter-spacing: 0.01em; }
+    h2 { font-size: clamp(1.9rem, 3.6vw, 2.8rem); font-weight: 800; margin-bottom: 1rem; }
+    h2 .accent, h1 .accent { color: var(--blue); text-shadow: 0 0 40px var(--blue-glow-strong); }
+    .lede { color: var(--muted); font-size: 1.15rem; max-width: 640px; }
+    section { position: relative; padding: clamp(72px, 10vw, 120px) 0; }
+    .section-head { margin-bottom: 3rem; }
+
+    /* ── buttons ─────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--font-display); font-weight: 700; font-size: 0.85rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 15px 28px; border: 1px solid transparent; cursor: pointer;
+      transition: transform .2s, box-shadow .2s, border-color .2s, color .2s, background .2s;
+    }
+    .btn-primary { background: var(--blue); color: var(--bg); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 30px var(--blue-glow-strong); }
+    .btn-secondary { border-color: var(--border); color: var(--text); }
+    .btn-secondary:hover { border-color: var(--blue); color: var(--blue); }
+
+    /* ── nav ─────────────────────────────────────── */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 72px;
+      background: rgba(7,9,12,0.9); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    #nav .wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+    .nav-logo img { height: 38px; width: auto; }
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; align-items: center; }
+    .nav-links a {
+      font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--muted); transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-cta {
+      border: 1px solid var(--blue); color: var(--blue) !important; padding: 9px 18px;
+    }
+    .nav-cta:hover { background: var(--blue-glow); }
+    .nav-toggle { display: none; background: none; border: 1px solid var(--border); color: var(--text); width: 42px; height: 42px; font-size: 1.2rem; cursor: pointer; }
+
+    /* ── hero ────────────────────────────────────── */
+    .hero { padding-top: calc(72px + clamp(56px, 9vw, 110px)); overflow: hidden; }
+    .hero::before { /* blueprint grid */
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 56px 56px; opacity: .45;
+      mask-image: radial-gradient(ellipse 70% 60% at 70% 40%, #000 20%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 60% at 70% 40%, #000 20%, transparent 75%);
+    }
+    .hero-grid { position: relative; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 4rem; align-items: center; }
+    .hero-eyebrow { font-family: var(--font-mono); color: var(--blue); letter-spacing: .18em; text-transform: uppercase; font-size: .8rem; margin-bottom: 1.4rem; }
+    .hero-eyebrow::before { content: '> '; }
+    .hero-eyebrow::after { content: '_'; animation: blink 1s step-end infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    .hero h1 { font-size: clamp(2.4rem, 5.4vw, 4.2rem); font-weight: 900; margin-bottom: 1.5rem; }
+    .hero h1 .accent { display: block; }
+    .hero-sub { color: var(--muted); font-size: 1.2rem; max-width: 600px; margin-bottom: 2.4rem; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-stats { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 2.8rem; margin-top: 3.2rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+    .stat-num { font-family: var(--font-display); font-weight: 800; font-size: 2rem; color: var(--text); line-height: 1; }
+    .stat-num span { color: var(--blue); }
+    .stat-label { font-family: var(--font-mono); font-size: .68rem; color: var(--muted); letter-spacing: .15em; text-transform: uppercase; margin-top: .5rem; }
+
+    .hero-visual { position: relative; display: flex; justify-content: center; align-items: center; aspect-ratio: 1; }
+    .hero-visual .ring { position: absolute; inset: 0; animation: spin 60s linear infinite; }
+    .hero-visual .ring.r2 { inset: 12%; animation-duration: 40s; animation-direction: reverse; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .hero-visual .glow { position: absolute; width: 60%; height: 60%; border-radius: 50%; background: radial-gradient(circle, var(--blue-glow-strong), transparent 70%); filter: blur(30px); }
+    .hero-visual img { position: relative; width: 52%; filter: drop-shadow(0 0 28px rgba(91,141,239,.25)); }
+    .hud {
+      position: absolute; font-family: var(--font-mono); font-size: .68rem; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--muted); background: rgba(10,14,19,.85);
+      border: 1px solid var(--border); padding: 7px 11px; white-space: nowrap;
+    }
+    .hud b { color: var(--blue); font-weight: 400; }
+    .hud.h1 { top: 12%; left: -2%; } .hud.h2 { top: 46%; right: -4%; } .hud.h3 { bottom: 10%; left: 6%; }
+    .hud .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #3ddc84; margin-right: 6px; box-shadow: 0 0 8px #3ddc84; }
+
+    /* ── framework strip ─────────────────────────── */
+    .strip { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg-deep); padding: 22px 0; }
+    .strip .wrap { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+    .strip-label { font-family: var(--font-mono); font-size: .72rem; color: var(--muted); letter-spacing: .16em; text-transform: uppercase; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      padding: 4px 11px; border: 1px solid var(--border); font-family: var(--font-mono);
+      font-size: .66rem; color: var(--muted); letter-spacing: .1em; text-transform: uppercase;
+    }
+    .strip .tag { color: var(--text); font-size: .72rem; }
+
+    /* ── services grid ───────────────────────────── */
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+    .service-card {
+      background: var(--card); padding: 2.4rem 2.2rem; position: relative; overflow: hidden;
+      display: flex; flex-direction: column; transition: background .3s;
+    }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--blue);
+      transform: scaleX(0); transform-origin: left; transition: transform .4s;
+    }
+    .service-card:hover { background: var(--card-hover); }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.6rem; }
+    .service-icon { width: 46px; height: 46px; color: var(--blue); transition: filter .3s; }
+    .service-card:hover .service-icon { filter: drop-shadow(0 0 8px var(--blue-glow-strong)); }
+    .service-num { font-family: var(--font-mono); font-size: .8rem; color: var(--blue-dim); letter-spacing: .1em; }
+    .service-card h3 { font-size: 1.35rem; font-weight: 700; margin-bottom: .8rem; }
+    .service-card p { color: var(--muted); margin-bottom: 1.5rem; flex: 1; }
+    .service-card .tags { margin-bottom: 1.6rem; }
+    .more { font-family: var(--font-mono); font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); }
+    .more::after { content: ' →'; transition: margin .2s; }
+    .service-card:hover .more::after { margin-left: 6px; }
+    .service-card.cta-card { background: linear-gradient(160deg, var(--blue-dark), var(--card) 70%); justify-content: center; }
+    .badge-new { font-family: var(--font-mono); font-size: .6rem; letter-spacing: .14em; text-transform: uppercase; color: var(--bg); background: var(--amber); padding: 2px 7px; margin-left: 8px; vertical-align: middle; }
+
+    /* ── spotlight ───────────────────────────────── */
+    .spotlight { background: var(--bg-deep); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .spot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .checklist { list-style: none; margin: 2rem 0 2.4rem; display: grid; gap: 1rem; }
+    .checklist li { display: grid; grid-template-columns: 26px 1fr; gap: 12px; }
+    .checklist svg { width: 20px; height: 20px; color: var(--blue); margin-top: 4px; }
+    .checklist strong { font-family: var(--font-display); font-weight: 700; display: block; color: var(--text); }
+    .checklist span { color: var(--muted); }
+    .terminal { background: #05070a; border: 1px solid var(--border); box-shadow: 0 30px 80px rgba(0,0,0,.5), 0 0 0 1px rgba(91,141,239,.05); }
+    .term-bar { display: flex; align-items: center; gap: 8px; padding: 12px 16px; border-bottom: 1px solid var(--border); }
+    .term-bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--border); }
+    .term-bar span { margin-left: auto; font-family: var(--font-mono); font-size: .7rem; color: var(--muted); letter-spacing: .1em; }
+    .term-body { padding: 22px 22px 26px; font-family: var(--font-mono); font-size: .86rem; line-height: 1.95; color: var(--muted); overflow-x: auto; }
+    .term-body .cmd { color: var(--text); }
+    .term-body .ok { color: #3ddc84; } .term-body .warn { color: var(--amber); } .term-body .hl { color: var(--blue); }
+    .term-body .line { white-space: pre; }
+    .cursor::after { content: '█'; color: var(--blue); animation: blink 1s step-end infinite; }
+    .timeline { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--border); margin-top: 2rem; }
+    .timeline div { padding: 1rem 1rem 0 0; }
+    .timeline b { font-family: var(--font-mono); font-size: .7rem; letter-spacing: .14em; color: var(--blue); text-transform: uppercase; font-weight: 400; display: block; }
+    .timeline span { font-size: .95rem; color: var(--text); }
+
+    /* ── vCISO tiers ─────────────────────────────── */
+    .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .tier { border: 1px solid var(--border); background: var(--card); padding: 2.2rem; display: flex; flex-direction: column; transition: border-color .25s, transform .25s; }
+    .tier:hover { border-color: var(--blue-dim); transform: translateY(-4px); }
+    .tier.featured { border-color: var(--blue); box-shadow: 0 0 40px var(--blue-glow); position: relative; }
+    .tier.featured::after { content: 'Most common'; position: absolute; top: -11px; left: 2.2rem; background: var(--blue); color: var(--bg); font-family: var(--font-mono); font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; padding: 3px 9px; }
+    .tier-name { font-family: var(--font-mono); font-size: .75rem; letter-spacing: .16em; text-transform: uppercase; color: var(--blue); }
+    .tier h3 { font-size: 1.5rem; margin: .5rem 0 .3rem; }
+    .tier .fit { color: var(--muted); margin-bottom: 1.4rem; font-size: .98rem; }
+    .tier ul { list-style: none; display: grid; gap: .6rem; margin-bottom: 2rem; flex: 1; }
+    .tier li { padding-left: 1.4rem; position: relative; }
+    .tier li::before { content: '›'; position: absolute; left: 0; color: var(--blue); font-weight: 700; }
+    .tier .btn { justify-content: center; }
+
+    /* ── approach ────────────────────────────────── */
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; counter-reset: s; }
+    .step { padding: 2rem 1.8rem 0 0; border-top: 1px solid var(--border); position: relative; }
+    .step::before { content: ''; position: absolute; top: -4px; left: 0; width: 7px; height: 7px; background: var(--blue); box-shadow: 0 0 12px var(--blue); }
+    .step-num { font-family: var(--font-mono); color: var(--blue-dim); font-size: .8rem; letter-spacing: .14em; }
+    .step h3 { font-size: 1.25rem; margin: .4rem 0 .6rem; }
+    .step p { color: var(--muted); }
+
+    /* ── practitioner band ───────────────────────── */
+    .practitioner { background: var(--bg-deep); border-top: 1px solid var(--border); }
+    .prac-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 4rem; align-items: start; }
+    .quote { font-family: var(--font-display); font-size: clamp(1.4rem, 2.4vw, 1.9rem); font-weight: 700; line-height: 1.35; border-left: 2px solid var(--blue); padding-left: 1.6rem; }
+    .quote .accent { color: var(--blue); }
+    .creds { display: grid; gap: 0; border: 1px solid var(--border); }
+    .cred { display: grid; grid-template-columns: 180px 1fr; gap: 1rem; padding: 1.1rem 1.4rem; border-bottom: 1px solid var(--border); background: var(--card); }
+    .cred:last-child { border-bottom: none; }
+    .cred b { font-family: var(--font-mono); font-weight: 400; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); padding-top: 3px; }
+    .cred span { color: var(--muted); }
+
+    /* ── CTA band ────────────────────────────────── */
+    .cta-band { text-align: center; overflow: hidden; }
+    .cta-band::before { content: ''; position: absolute; left: 50%; top: 50%; width: 700px; height: 700px; max-width: 120vw; transform: translate(-50%,-50%); background: radial-gradient(circle, var(--blue-glow), transparent 65%); pointer-events: none; }
+    .cta-band .wrap { position: relative; }
+    .cta-band h2 { max-width: 760px; margin: 0 auto 1rem; }
+    .cta-band .lede { margin: 0 auto 2.4rem; }
+    .cta-band .hero-actions { justify-content: center; }
+
+    /* ── footer ──────────────────────────────────── */
+    footer { border-top: 1px solid var(--border); background: var(--bg-deep); padding: 64px 0 28px; }
+    .foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+    .foot-grid img { height: 40px; width: auto; margin-bottom: 1.2rem; }
+    .foot-tag { color: var(--muted); max-width: 300px; font-size: .98rem; }
+    .foot-grid h4 { font-family: var(--font-mono); font-weight: 400; font-size: .74rem; letter-spacing: .16em; text-transform: uppercase; color: var(--text); margin-bottom: 1rem; }
+    .foot-grid ul { list-style: none; display: grid; gap: .55rem; }
+    .foot-grid a { color: var(--muted); transition: color .2s; }
+    .foot-grid a:hover { color: var(--blue); }
+    .foot-bottom { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding-top: 1.6rem; border-top: 1px solid var(--border); font-family: var(--font-mono); font-size: .7rem; color: var(--muted); letter-spacing: .08em; }
+    .binary { color: var(--blue-dark); }
+
+    .mock-note { position: fixed; bottom: 16px; right: 16px; z-index: 200; font-family: var(--font-mono); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; background: var(--amber); color: var(--bg); padding: 6px 12px; }
+
+    /* ── responsive ──────────────────────────────── */
+    @media (max-width: 1080px) {
+      .services-grid, .tiers { grid-template-columns: repeat(2, 1fr); }
+      .steps { grid-template-columns: repeat(2, 1fr); row-gap: 2.5rem; }
+      .foot-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 900px) {
+      .nav-links { display: none; position: absolute; top: 72px; left: 0; right: 0; flex-direction: column; align-items: flex-start; gap: 0; background: var(--bg); border-bottom: 1px solid var(--border); padding: .5rem var(--pad) 1.2rem; }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a { display: block; padding: .9rem 0; }
+      .nav-cta { display: inline-block !important; margin-top: .6rem; }
+      .nav-toggle { display: block; }
+      .hero-grid, .spot-grid, .prac-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-visual { max-width: 420px; width: 100%; margin: 0 auto; order: -1; }
+    }
+    @media (max-width: 640px) {
+      .services-grid, .tiers, .steps { grid-template-columns: 1fr; }
+      .foot-grid { grid-template-columns: 1fr; }
+      .cred { grid-template-columns: 1fr; gap: .2rem; }
+      .timeline { grid-template-columns: 1fr; }
+      .hud { font-size: .58rem; }
+      .hud.h2 { right: 0; }
+      .hud.h1 { left: 0; }
+      .hero-stats { grid-template-columns: repeat(2, auto); gap: 1.6rem 2rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- SVG icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M4 12.5l5 5L20 6.5"/></symbol>
+  <symbol id="i-soc2" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 6h18l8 8v28H12z"/><path d="M30 6v8h8"/><path d="M18 24h14M18 30h14M18 36h8"/><circle cx="35" cy="37" r="6" fill="#07090c"/><path d="M32.5 37l2 2 3.5-4"/></symbol>
+  <symbol id="i-iot" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="14" y="14" width="20" height="20"/><rect x="20" y="20" width="8" height="8"/><path d="M19 14V8M24 14V8M29 14V8M19 40v-6M24 40v-6M29 40v-6M14 19H8M14 24H8M14 29H8M40 19h-6M40 24h-6M40 29h-6"/></symbol>
+  <symbol id="i-ai" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10" cy="14" r="3"/><circle cx="10" cy="34" r="3"/><circle cx="24" cy="10" r="3"/><circle cx="24" cy="24" r="3"/><circle cx="24" cy="38" r="3"/><circle cx="38" cy="24" r="3"/><path d="M13 14l8-3M13 14l8 9M13 34l8-9M13 34l8 3M27 10l8 12M27 24h8M27 38l8-12"/></symbol>
+  <symbol id="i-gov" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M24 6v36M10 42h28"/><path d="M8 14h32"/><path d="M14 14l-6 14h12zM34 14l-6 14h12z"/><path d="M8 28a6 4 0 0012 0M28 28a6 4 0 0012 0"/></symbol>
+  <symbol id="i-ciso" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M24 5l15 6v11c0 10-6.5 17-15 21-8.5-4-15-11-15-21V11z"/><circle cx="24" cy="20" r="5"/><path d="M15 34c2-5 5.5-7 9-7s7 2 9 7"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 10h36v22H20l-8 7v-7H6z"/><path d="M14 19h20M14 25h12"/></symbol>
+</svg>
+
+<nav id="nav">
+  <div class="wrap">
+    <a class="nav-logo" href="#top"><img src="/assets/asena-logo-horizontal.png" alt="Asena Security"></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#ai-governance">AI for Startups</a></li>
+      <li><a href="#vciso">vCISO</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="https://blog.asenasecurity.com">Insights</a></li>
+      <li><a class="nav-cta" href="#contact">Book a Briefing</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-eyebrow">Security Consulting</div>
+      <h1>Security that clears the way.<span class="accent">Not one that slows you down.</span></h1>
+      <p class="hero-sub">Senior, practitioner-led security for teams that build. We take you from SOC 2 readiness to hardened devices to AI governance your enterprise buyers will sign off on.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contact">Book a Briefing</a>
+        <a class="btn btn-secondary" href="#services">Explore Services</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-num">20<span>+</span></div><div class="stat-label">Years in IT &amp; InfoSec</div></div>
+        <div><div class="stat-num">Fin<span>Serv</span></div><div class="stat-label">Regulated-industry roots</div></div>
+        <div><div class="stat-num">1<span>:</span>1</div><div class="stat-label">Senior lead on every job</div></div>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="glow"></div>
+      <svg class="ring" viewBox="0 0 400 400" fill="none">
+        <circle cx="200" cy="200" r="196" stroke="#16202c" stroke-width="1"/>
+        <circle cx="200" cy="200" r="196" stroke="#5b8def" stroke-width="1.5" stroke-dasharray="2 14" opacity=".55"/>
+        <path d="M200 4a196 196 0 0 1 150 70" stroke="#5b8def" stroke-width="2" opacity=".8"/>
+      </svg>
+      <svg class="ring r2" viewBox="0 0 400 400" fill="none">
+        <circle cx="200" cy="200" r="196" stroke="#16202c" stroke-width="1.2"/>
+        <path d="M200 396a196 196 0 0 1-170-98" stroke="#4772c4" stroke-width="2" opacity=".7"/>
+        <circle cx="30" cy="298" r="4" fill="#5b8def"/>
+      </svg>
+      <img src="/assets/asena-shield.png" alt="">
+      <div class="hud h1"><span class="dot"></span>SOC 2 · <b>Type II</b> on track</div>
+      <div class="hud h2">Firmware · <b>Signed</b></div>
+      <div class="hud h3">AI RMF · <b>Mapped</b></div>
+    </div>
+  </div>
+</header>
+
+<!-- FRAMEWORKS -->
+<div class="strip">
+  <div class="wrap">
+    <span class="strip-label">Frameworks we work in</span>
+    <div class="tags">
+      <span class="tag">SOC 2</span><span class="tag">NIST CSF 2.0</span><span class="tag">ISO 27001</span><span class="tag">ISO 42001</span><span class="tag">NIST AI RMF</span><span class="tag">EU AI Act</span><span class="tag">ETSI EN 303 645</span><span class="tag">OWASP LLM Top 10</span>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="label">Services</span>
+      <h2>Five ways we <span class="accent">de-risk</span> your roadmap.</h2>
+      <p class="lede">Focused engagements with clear deliverables. Bring us in for one, or let us run the whole program.</p>
+    </div>
+    <div class="services-grid">
+      <article class="service-card">
+        <div class="service-top"><svg class="service-icon"><use href="#i-soc2"/></svg><span class="service-num">01</span></div>
+        <h3>SOC 2 Readiness &amp; Certification</h3>
+        <p>From the first gap assessment to auditor sign-off. We scope your Trust Services Criteria, build controls that fit your actual stack, and stay with you through Type I and Type II.</p>
+        <div class="tags"><span class="tag">Gap Assessment</span><span class="tag">Type I / II</span><span class="tag">Auditor Liaison</span></div>
+        <a class="more" href="#contact">Start readiness</a>
+      </article>
+      <article class="service-card">
+        <div class="service-top"><svg class="service-icon"><use href="#i-iot"/></svg><span class="service-num">02</span></div>
+        <h3>IoT Hardening</h3>
+        <p>Secure connected devices before they ship. We cover firmware review, secure boot and signed OTA updates, network attack-surface reduction, and alignment with ETSI EN 303 645 and NIST IR 8259.</p>
+        <div class="tags"><span class="tag">Firmware</span><span class="tag">Secure Boot</span><span class="tag">Threat Modeling</span></div>
+        <a class="more" href="#contact">Harden a device</a>
+      </article>
+      <article class="service-card">
+        <div class="service-top"><svg class="service-icon"><use href="#i-ai"/></svg><span class="service-num">03</span></div>
+        <h3>Embedded AI Analysis</h3>
+        <p>On-device and edge models bring new attack surface. We assess model integrity, data leakage, adversarial robustness, and the supply chain behind every model in your product.</p>
+        <div class="tags"><span class="tag">Model Supply Chain</span><span class="tag">Adversarial Testing</span><span class="tag">Edge Inference</span></div>
+        <a class="more" href="#contact">Analyze a model</a>
+      </article>
+      <article class="service-card">
+        <div class="service-top"><svg class="service-icon"><use href="#i-gov"/></svg><span class="service-num">04</span></div>
+        <h3>AI Governance Review for PoC <span class="badge-new">Startups</span></h3>
+        <p>Enterprise buyers ask hard AI questions before they sign. We get your governance, data handling and documentation ready before the proof of concept, so security review doesn't stall the deal.</p>
+        <div class="tags"><span class="tag">Buyer Questionnaires</span><span class="tag">NIST AI RMF</span><span class="tag">ISO 42001</span></div>
+        <a class="more" href="#ai-governance">See how it works</a>
+      </article>
+      <article class="service-card">
+        <div class="service-top"><svg class="service-icon"><use href="#i-ciso"/></svg><span class="service-num">05</span></div>
+        <h3>vCISO Services</h3>
+        <p>Senior security leadership without the full-time hire. You get strategy, board and investor reporting, a working risk program, and a roadmap your team can actually execute.</p>
+        <div class="tags"><span class="tag">Strategy</span><span class="tag">Board Reporting</span><span class="tag">Incident Readiness</span></div>
+        <a class="more" href="#vciso">Compare engagements</a>
+      </article>
+      <article class="service-card cta-card">
+        <div class="service-top"><svg class="service-icon"><use href="#i-chat"/></svg></div>
+        <h3>Not sure where to start?</h3>
+        <p>Take a 30-minute briefing with a senior practitioner. No slide deck and no sales script, just an honest read on where your risk is.</p>
+        <a class="btn btn-primary" href="#contact" style="align-self:flex-start">Book a Briefing</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- AI GOVERNANCE SPOTLIGHT -->
+<section class="spotlight" id="ai-governance">
+  <div class="wrap spot-grid">
+    <div>
+      <span class="label">For startups selling AI</span>
+      <h2>Win the PoC. <span class="accent">Survive the security review.</span></h2>
+      <p class="lede">Your product impressed the business team. Now their security and legal teams want to know how your AI handles their data. We help you answer with evidence, not improvisation.</p>
+      <ul class="checklist">
+        <li><svg><use href="#i-check"/></svg><div><strong>AI system inventory &amp; data-flow map</strong><span>What models you use, where customer data goes, and how long it stays there.</span></div></li>
+        <li><svg><use href="#i-check"/></svg><div><strong>Pre-answered buyer questionnaires</strong><span>Ready answers for the common enterprise AI and security questionnaires, backed by real artifacts.</span></div></li>
+        <li><svg><use href="#i-check"/></svg><div><strong>A trust package you can hand over</strong><span>Policies, model provenance, and human-oversight controls mapped to NIST AI RMF.</span></div></li>
+      </ul>
+      <a class="btn btn-primary" href="#contact">Prep for my PoC</a>
+      <div class="timeline">
+        <div><b>Week 1</b><span>Discovery &amp; inventory</span></div>
+        <div><b>Week 2</b><span>Gap review &amp; fixes</span></div>
+        <div><b>Week 3</b><span>Trust package delivered</span></div>
+      </div>
+    </div>
+    <div class="terminal" aria-label="Example AI governance review output">
+      <div class="term-bar"><i></i><i></i><i></i><span>asena@review:~</span></div>
+      <div class="term-body">
+        <div class="line cmd">$ asena review --scope poc --buyer enterprise</div>
+        <div class="line">  scanning AI governance posture...</div>
+        <div class="line"><span class="ok">[✓]</span> AI system inventory ......... <span class="ok">complete</span></div>
+        <div class="line"><span class="ok">[✓]</span> Data flow &amp; retention map ... <span class="ok">complete</span></div>
+        <div class="line"><span class="ok">[✓]</span> Model provenance ............ <span class="ok">documented</span></div>
+        <div class="line"><span class="warn">[!]</span> Human oversight controls .... <span class="warn">remediating</span></div>
+        <div class="line"><span class="ok">[✓]</span> Acceptable-use policy ....... <span class="ok">complete</span></div>
+        <div class="line"><span class="ok">[✓]</span> Buyer questionnaire ......... <span class="ok">142/148</span></div>
+        <div class="line">&nbsp;</div>
+        <div class="line hl">&gt; trust package ready for security review</div>
+        <div class="line cmd cursor">$ </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- vCISO -->
+<section id="vciso">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="label">vCISO</span>
+      <h2>Security leadership, <span class="accent">sized to your stage.</span></h2>
+      <p class="lede">Every tier is led by the same senior practitioner. What changes is how much of the work we carry.</p>
+    </div>
+    <div class="tiers">
+      <div class="tier">
+        <span class="tier-name">Tier 01</span>
+        <h3>Advisory</h3>
+        <p class="fit">For early teams that need a trusted voice on call.</p>
+        <ul>
+          <li>Monthly strategy session</li>
+          <li>On-call guidance for deals &amp; incidents</li>
+          <li>Security questionnaire review</li>
+          <li>Annual risk assessment</li>
+        </ul>
+        <a class="btn btn-secondary" href="#contact">Discuss Advisory</a>
+      </div>
+      <div class="tier featured">
+        <span class="tier-name">Tier 02</span>
+        <h3>Fractional</h3>
+        <p class="fit">For scaling companies building a real program.</p>
+        <ul>
+          <li>Everything in Advisory</li>
+          <li>Owned security roadmap &amp; policies</li>
+          <li>Board &amp; investor reporting</li>
+          <li>SOC 2 / framework program lead</li>
+          <li>Vendor &amp; third-party risk</li>
+        </ul>
+        <a class="btn btn-primary" href="#contact">Discuss Fractional</a>
+      </div>
+      <div class="tier">
+        <span class="tier-name">Tier 03</span>
+        <h3>Embedded</h3>
+        <p class="fit">For high-stakes periods such as fundraising, M&amp;A, or an incident.</p>
+        <ul>
+          <li>Everything in Fractional</li>
+          <li>Weekly leadership presence</li>
+          <li>Incident response leadership</li>
+          <li>Hiring plan for your first security team</li>
+        </ul>
+        <a class="btn btn-secondary" href="#contact">Discuss Embedded</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section id="approach" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="label">Approach</span>
+      <h2>Assess. Prioritize. Build. <span class="accent">Prove.</span></h2>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="step-num">01</span><h3>Assess</h3><p>We get an honest baseline of your controls, products and exposure. No checkbox theater.</p></div>
+      <div class="step"><span class="step-num">02</span><h3>Prioritize</h3><p>We rank risk by business impact, so the first dollars go where they matter most.</p></div>
+      <div class="step"><span class="step-num">03</span><h3>Build</h3><p>We implement alongside your team, with controls that fit how you actually ship.</p></div>
+      <div class="step"><span class="step-num">04</span><h3>Prove</h3><p>We produce evidence that satisfies auditors, buyers and boards, and keeps doing so.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRACTITIONER -->
+<section class="practitioner">
+  <div class="wrap prac-grid">
+    <div>
+      <span class="label">Practitioner-led</span>
+      <p class="quote">Forged inside financial institutions, where a misstep costs <span class="accent">regulatory action and lost trust</span>, not just downtime.</p>
+    </div>
+    <div class="creds">
+      <div class="cred"><b>Experience</b><span>20+ years across IT operations and information security leadership.</span></div>
+      <div class="cred"><b>Industries</b><span>Financial services, SaaS, connected devices, and AI-native startups.</span></div>
+      <div class="cred"><b>Delivery</b><span>Senior-led engagements. The person you meet is the person doing the work.</span></div>
+      <div class="cred"><b>Mentorship</b><span>We invest in the next generation through the <a href="https://blog.asenasecurity.com" style="color:var(--blue)">Asena blog</a>.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band" id="contact">
+  <div class="wrap">
+    <span class="label">Next step</span>
+    <h2>Have a deal, an audit, or a device <span class="accent">on the line?</span></h2>
+    <p class="lede">Tell us what you're up against. We'll tell you, plainly, what it will take.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="mailto:hello@asenasecurity.com">Book a Briefing</a>
+      <a class="btn btn-secondary" href="https://blog.asenasecurity.com">Read the Blog</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <img src="/assets/asena-logo-horizontal.png" alt="Asena Security">
+        <p class="foot-tag">Practitioner-led security consulting for teams that build.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">SOC 2 Readiness</a></li>
+          <li><a href="#services">IoT Hardening</a></li>
+          <li><a href="#services">Embedded AI Analysis</a></li>
+          <li><a href="#ai-governance">AI Governance for PoC</a></li>
+          <li><a href="#vciso">vCISO</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#approach">Approach</a></li>
+          <li><a href="https://blog.asenasecurity.com">Insights</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Responsible Disclosure</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Asena Security</span>
+      <span class="binary">01000001 01010011 01000101 01001110 01000001</span>
+    </div>
+  </div>
+</footer>
+
+<div class="mock-note">Mockup · Draft copy</div>
+
+<script>
+  const t = document.getElementById('navToggle'), l = document.getElementById('navLinks');
+  t.addEventListener('click', () => { const o = l.classList.toggle('open'); t.setAttribute('aria-expanded', o); t.textContent = o ? '✕' : '☰'; });
+  l.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { l.classList.remove('open'); t.setAttribute('aria-expanded', false); t.textContent = '☰'; }));
+</script>
+</body>
+</html>
