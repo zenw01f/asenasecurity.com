@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;700;800&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<title>The Asena Brief | Asena Security</title>
+<style>
+  :root{
+    --paper:#07090c; --card:#0a0e13; --ink:#e6edf5; --muted:#7d8a99; --rule:#16202c;
+    --term:#040507; --term-ink:#c9d4e0; --up:#38d27f; --down:#ff6b62;
+    --crit:#d8453f; --high:#d9822b; --med:#b89a1d; --info:#5b8def;
+    --x:#5b8def; --x-soft:#0d1626; --chip:#101822;
+    --serif:'Exo 2',system-ui,sans-serif;
+    --sans:'Rajdhani',system-ui,sans-serif;
+    --mono:'Share Tech Mono',ui-monospace,Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  .topbar{background:var(--term);border-bottom:1px solid var(--rule)}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:10px;padding-bottom:10px}
+  .topbar img{height:30px;display:block}
+  .topbar a.back{font-family:var(--mono);font-size:13px;color:var(--muted);text-decoration:none}
+  .topbar a.back:hover{color:var(--ink)}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.5}
+  a{color:inherit}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 20px}
+
+  /* ---------- market tape (terminal) ---------- */
+  .tape{background:var(--term);color:var(--term-ink);font-family:var(--mono);font-size:12.5px;border-bottom:1px solid #000}
+  .tape .wrap{display:flex;gap:22px;overflow-x:auto;white-space:nowrap;padding-top:7px;padding-bottom:7px}
+  .tape b{color:#fff;font-weight:600;margin-right:6px}
+  .up{color:var(--up)} .down{color:var(--down)}
+  .tape .up{color:#38d27f} .tape .down{color:#ff6b62}
+  .tape .stamp{margin-left:auto;color:#7d8794}
+
+
+  /* ---------- masthead (editorial) ---------- */
+  header.mast{border-bottom:3px double var(--ink);padding:26px 0 14px;text-align:center}
+  .kicker{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  h1.title{font-family:var(--serif);font-size:54px;line-height:1;margin:8px 0 6px;font-weight:800;letter-spacing:-.01em}
+  .mastmeta{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--rule);margin-top:14px;padding-top:8px}
+  .mastmeta strong{color:var(--ink)}
+
+  /* ---------- controls ---------- */
+  .controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:14px 0;border-bottom:1px solid var(--rule)}
+  .fbtn{border:1px solid var(--rule);background:var(--card);color:var(--ink);padding:5px 12px;border-radius:999px;font-size:13px;cursor:pointer}
+  .fbtn[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .fbtn .n{font-family:var(--mono);opacity:.65;margin-left:4px}
+  .spacer{flex:1}
+  .density{font-size:12.5px;color:var(--muted)}
+
+  /* ---------- layout ---------- */
+  .grid{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:28px;padding:22px 0 50px}
+  @media (max-width:960px){ .grid{grid-template-columns:1fr} }
+
+  /* lead */
+  .lead{border-bottom:1px solid var(--rule);padding-bottom:22px;margin-bottom:22px}
+  .lead h2{font-family:var(--serif);font-size:34px;line-height:1.15;margin:8px 0 10px}
+  .lead .dek{font-family:var(--serif);font-size:18px;color:var(--muted);margin:0 0 12px}
+  .lead .body{columns:2;column-gap:28px;column-rule:1px solid var(--rule)}
+  @media (max-width:700px){ .lead .body{columns:1} .lead h2{font-size:27px} h1.title{font-size:40px} }
+
+  .sechead{display:flex;align-items:baseline;gap:10px;margin:26px 0 12px;border-top:2px solid var(--ink);padding-top:8px}
+  .sechead h3{font-family:var(--serif);font-size:21px;margin:0}
+  .sechead span{font-size:12.5px;color:var(--muted)}
+  .sechead.x{border-color:var(--x)} .sechead.x h3{color:var(--x)}
+
+  /* cards */
+  .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  @media (max-width:700px){ .cards{grid-template-columns:1fr} }
+  .card{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+  .card.x{background:var(--x-soft);border-color:color-mix(in srgb,var(--x) 35%,var(--rule))}
+  .card h4{font-family:var(--serif);font-size:19px;line-height:1.25;margin:0}
+  .card p{margin:0}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em}
+  .tag{font-weight:600;color:var(--muted)}
+  .sev{color:#fff;padding:1px 7px;border-radius:4px;font-weight:700;letter-spacing:.04em}
+  .sev.crit{background:var(--crit)} .sev.high{background:var(--high)} .sev.med{background:var(--med)} .sev.info{background:var(--info)}
+  .sev.xb{background:var(--x)}
+  .why{font-size:13.5px;border-left:3px solid var(--x);padding-left:10px;color:var(--ink)}
+  .why b{color:var(--x)}
+  .tickers{display:flex;flex-wrap:wrap;gap:6px}
+  .tk{font-family:var(--mono);font-size:12px;background:var(--chip);padding:2px 7px;border-radius:4px}
+  .srcs{margin-top:auto;padding-top:8px;border-top:1px dashed var(--rule);font-size:12.5px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center}
+  .srcs .lbl{font-weight:600;text-transform:uppercase;font-size:10.5px;letter-spacing:.08em}
+  .srcs a{text-decoration:none;border-bottom:1px solid var(--rule)}
+  .srcs a:hover{color:var(--ink);border-color:var(--ink)}
+  .count{font-family:var(--mono);font-size:11px;background:var(--chip);border-radius:4px;padding:1px 6px}
+  details.more summary{cursor:pointer;font-size:13px;color:var(--muted)}
+  details.more ul{margin:6px 0 0;padding-left:18px;font-size:13.5px}
+
+  /* quick hits */
+  .hits{list-style:none;margin:0;padding:0;background:var(--card);border:1px solid var(--rule);border-radius:10px}
+  .hits li{padding:10px 16px;border-bottom:1px solid var(--rule);display:flex;gap:10px;align-items:baseline}
+  .hits li:last-child{border-bottom:0}
+  .hits .k{font-family:var(--mono);font-size:11px;color:var(--muted);min-width:62px;text-transform:uppercase}
+  .hits a{text-decoration:none} .hits a:hover{text-decoration:underline}
+  .hits .s{margin-left:auto;font-size:12px;color:var(--muted);white-space:nowrap}
+
+  /* sidebar (terminal-dense) */
+  aside .panel{background:var(--card);border:1px solid var(--rule);border-radius:10px;margin-bottom:16px;overflow:hidden}
+  aside .panel h5{margin:0;padding:9px 14px;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;background:var(--term);color:var(--term-ink);font-family:var(--mono);display:flex;justify-content:space-between}
+  aside table{width:100%;border-collapse:collapse;font-size:12.5px}
+  aside td,aside th{padding:6px 14px;border-bottom:1px solid var(--rule);text-align:left}
+  aside th{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600}
+  aside td.num{font-family:var(--mono);text-align:right}
+  aside tr:last-child td{border-bottom:0}
+  aside .note{font-size:12px;color:var(--muted);padding:8px 14px}
+  .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+  .ok{background:var(--up)} .warn{background:var(--high)}
+
+  /* density: compact */
+  body.compact .card{padding:11px 13px;gap:5px}
+  body.compact .card h4{font-size:16px}
+  body.compact .card p.sum{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:13.5px}
+  body.compact .why{display:none}
+  body.compact .extra{display:none}
+  body.compact .cards{grid-template-columns:repeat(3,minmax(0,1fr))}
+  @media (max-width:1100px){ body.compact .cards{grid-template-columns:repeat(2,minmax(0,1fr))} }
+  @media (max-width:700px){ body.compact .cards{grid-template-columns:1fr} }
+
+  /* collapse / read state */
+  .cbtn{margin-left:auto;border:1px solid var(--rule);background:transparent;color:var(--muted);font-size:11px;letter-spacing:.04em;text-transform:none;border-radius:6px;padding:2px 8px;cursor:pointer;font-family:var(--sans)}
+  .cbtn:hover{color:var(--ink);border-color:var(--ink)}
+  .story.collapsed{opacity:.6}
+  .story.collapsed > :not(.tags):not(h2):not(h4){display:none!important}
+  .story.collapsed h2,.story.collapsed h4{font-size:15px;font-family:var(--sans);font-weight:600;cursor:pointer}
+  .story.collapsed.card{padding:9px 14px;gap:4px}
+  .story.collapsed.lead{padding-bottom:12px;margin-bottom:12px}
+  .story.collapsed .sev{opacity:.7}
+  body.hide-read .story.collapsed{display:none!important}
+  .readcount{font-family:var(--mono);font-size:12px;color:var(--muted)}
+
+  /* per-article lists */
+  details.arts{width:100%}
+  details.arts summary{cursor:pointer;list-style:none;display:inline-block}
+  details.arts summary::-webkit-details-marker{display:none}
+  details.arts summary .count::after{content:" ▾"}
+  details.arts[open] summary .count::after{content:" ▴"}
+  details.arts ol{margin:8px 0 2px;padding-left:20px;font-size:13px;color:var(--ink)}
+  details.arts li{margin:3px 0}
+  details.arts li a{border-bottom:1px solid var(--rule);text-decoration:none}
+  details.arts li .o{color:var(--muted);font-size:11.5px;margin-left:4px}
+  .srcs a sup{font-family:var(--mono);font-size:9.5px;margin-left:1px}
+
+  /* startup radar */
+  .radar{border-top:3px double var(--ink);margin-top:10px;padding-top:6px}
+  .radar .sechead{border-top:0;margin-top:14px}
+  .rstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:0 0 14px}
+  .rstat{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:10px 14px}
+  .rstat .v{font-family:var(--mono);font-size:22px;font-weight:600}
+  .rstat .l{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+  .rtrend{font-size:13.5px;border-left:3px solid var(--info);padding-left:10px;margin:0 0 14px}
+  .rlist{background:var(--card);border:1px solid var(--rule);border-radius:10px;overflow:hidden}
+  .ritem{display:grid;grid-template-columns:104px minmax(0,1.5fr) 92px minmax(0,1.1fr) auto;gap:6px 14px;align-items:start;padding:12px 16px;border-bottom:1px solid var(--rule)}
+  .ritem:last-child{border-bottom:0}
+  .ritem h5{font-family:var(--serif);font-size:16.5px;margin:0 0 2px}
+  .ritem p{margin:0;font-size:13.5px;color:var(--ink)}
+  .ritem .amt{font-family:var(--mono);font-weight:600;font-size:14px;text-align:right}
+  .ritem .amt small{display:block;font-weight:400;font-size:11px;color:var(--muted);font-family:var(--sans)}
+  .ritem .inv{font-size:12.5px;color:var(--muted)}
+  .ritem .inv b{color:var(--ink);font-weight:600}
+  .ritem .rs{font-size:12px;color:var(--muted);text-align:right;white-space:nowrap}
+  .ritem .rs a{text-decoration:none;border-bottom:1px solid var(--rule);margin-left:6px}
+  .st{display:inline-block;color:#fff;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:4px;text-align:center}
+  .st.seed{background:#4c8f6b} .st.a{background:#3a6ea5} .st.b{background:#5a56b0} .st.c{background:#6b3fa0}
+  .st.ipo{background:#b8731f} .st.pe{background:#8a3a3a}
+  .dt{display:block;font-size:11.5px;color:var(--muted);margin-top:4px}
+  @media (max-width:820px){ .ritem{grid-template-columns:1fr 1fr} .ritem .amt,.ritem .rs{text-align:left} }
+
+  [hidden]{display:none!important}
+  footer{border-top:1px solid var(--rule);padding:18px 0 40px;font-size:12.5px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap"><a href="/"><img src="/assets/asena-logo-horizontal.png" alt="Asena Security"></a><a class="back" href="/">asenasecurity.com</a></div></div>
+
+<!-- MARKET TAPE -->
+<div class="tape"><div class="wrap">
+  <span><b>S&amp;P 500</b>7,561.67 <span class="down">▼0.40%</span></span>
+  <span><b>NASDAQ</b>25,136.27 <span class="down">▼0.91%</span></span>
+  <span><b>DOW</b>52,347.55 <span class="up">▲0.10%</span></span>
+  <span><b>BRENT</b>95.84</span>
+  <span><b>WTI</b>88.56 <span class="down">▼0.20%</span></span>
+  <span><b>GOLD</b>3,883.40 <span class="up">▲0.18%</span></span>
+  <span class="stamp">Fri Nov 13 close · via Eurasia Business News</span>
+</div></div>
+
+<div class="wrap">
+  <!-- MASTHEAD -->
+  <header class="mast">
+    <div class="kicker">Asena Security · Daily Intelligence</div>
+    <h1 class="title">The Asena Brief</h1>
+    <div class="kicker">Cyber &nbsp;·&nbsp; Markets &nbsp;·&nbsp; Where they collide</div>
+    <div class="mastmeta">
+      <span><strong>Sunday, November 15, 2026</strong> · Edition #001</span>
+      <span><strong>24</strong> articles from <strong>7</strong> sources, merged into <strong>16</strong> stories</span>
+      <span>Next edition: Mon, Wed, Fri · 6:00 AM PT</span>
+    </div>
+  </header>
+
+  <!-- CONTROLS -->
+  <div class="controls" role="toolbar" aria-label="Filter stories">
+    <button class="fbtn" data-f="all" aria-pressed="true">All<span class="n">16</span></button>
+    <button class="fbtn" data-f="cyber" aria-pressed="false">Cyber<span class="n">12</span></button>
+    <button class="fbtn" data-f="mkt" aria-pressed="false">Markets<span class="n">4</span></button>
+    <span class="spacer"></span>
+    <span class="readcount" id="readcount">0 read</span>
+    <button class="fbtn" id="hideread" aria-pressed="false">Hide read</button>
+    <button class="fbtn" id="resetread">Reset</button>
+    <span class="density">View:</span>
+    <button class="fbtn" id="dens" aria-pressed="false">Compact</button>
+  </div>
+
+  <div class="grid">
+    <main>
+
+      <!-- LEAD STORY -->
+      <article class="lead story" data-cat="cyber">
+        <div class="tags"><span class="sev xb">Lead story</span><span class="sev high">High</span><span class="tag">Zero-day · Firewall · Wiper</span></div>
+        <h2>Check Point ships emergency fix for a root-access flaw already exploited in the wild, and one intrusion ended with a wiper on an ESXi host</h2>
+        <p class="dek">CVE-2026-123039 was being used against a couple dozen customers as far back as late October, according to Check Point's advisory.</p>
+        <div class="body">
+          <p>Check Point released hotfixes for a local privilege-escalation bug in the Gaia OS component behind its dynamic CLI. A daemon running as root listens on a world-writable local socket and does not check who is talking to it, so any authenticated local user can get commands run as root. BleepingComputer reports that Check Point's advisory (SK1000362) says exploitation began in late October and has hit "a couple of dozen customers." Affected products include Firewall, Security Gateway, Security Management Server, Multi-Domain Security Management and Scalable Platforms.</p>
+          <p>A separate Check Point report, summarized by BleepingComputer and The Hacker News, describes how attackers got in through PHP2Shell vulnerabilities in the Mobile Access portal, used this flaw to reach root, planted web shells and backdoors (TSGA and TSProxy), then moved to a VMware ESXi host and deployed a wiper. For teams that cannot patch right away, the stopgap is to stop the dynamic_server process and keep it from restarting. The coverage read for this edition does not name a threat actor.</p>
+        </div>
+        <p class="why" style="margin-top:12px"><b>Why it matters:</b> Security appliances sit at the edge with broad trust, and a bug that needs only a low-privilege foothold turns any earlier portal flaw into full control. Patch, then look for web shells and unexpected admin accounts, and make sure hypervisors are not reachable from firewall management networks. The wiper step is a reminder to test offline backups of virtualization hosts.</p>
+        <div class="srcs"><span class="lbl">Reported by</span>
+            <a href="https://www.bleepingcomputer.com/news/security/check-point-patches-zero-day-that-lets-hackers-get-root-access/" target="_blank" rel="noopener">BleepingComputer</a>
+            <a href="https://thehackernews.com/2026/11/hackers-exploit-php2shell-flaws-in.html" target="_blank" rel="noopener">The Hacker News</a>
+            <details class="arts"><summary><span class="count">2 sources, 2 articles</span></summary>
+            <ol>
+              <li><a href="https://www.bleepingcomputer.com/news/security/check-point-patches-zero-day-that-lets-hackers-get-root-access/" target="_blank" rel="noopener">Check Point warns of zero-day flaw exploited for root access</a><span class="o">BleepingComputer · Nov 13</span></li>
+              <li><a href="https://thehackernews.com/2026/11/hackers-exploit-php2shell-flaws-in.html" target="_blank" rel="noopener">Hackers exploit PHP2Shell flaws in Check Point gateways to deploy TSGA backdoor and wipe ESXi files</a><span class="o">The Hacker News · Nov 13</span></li>
+            </ol></details></div>
+      </article>
+
+      <!-- CYBER -->
+      <div class="sechead story-sec" data-sec="cyber"><h3>Cybersecurity</h3><span>Threats, vulnerabilities, breaches</span></div>
+      <div class="cards">
+        <article class="card story" data-cat="cyber">
+          <div class="tags"><span class="sev high">High</span><span class="tag">AI-enabled attacks · FBI</span></div>
+          <h4>FBI flash alert: open-source AI pentest framework ARTEX is being used in real intrusions, some reaching privileged access in under three hours</h4>
+          <p class="sum">The FBI says multiple threat actors have used ARTEX, a Go-based tool that drives large language models through reconnaissance, exploitation, privilege escalation and data theft with little human input. BleepingComputer reports activity since at least August and more than 1,600 publicly exposed ARTEX consoles as of early November. Attacks linked to it include a ConnectWise cloud-backup supply-chain breach and intrusions at South Korean banks.</p>
+          <p class="sum extra">The original code was pulled from GitHub, but forks and a paid edition are still circulating, so takedowns are unlikely to slow it. The advisory includes indicators of compromise and asks victims to report to IC3. The Record adds that Amazon and Microsoft published related research the same week.</p>
+          <p class="why"><b>Why it matters:</b> Assume attackers can now move from first access to privileged access in hours, not days. Shorten detection and response targets, tighten egress and credential hygiene, and review how quickly alerts on new admin activity are triaged.</p>
+          <details class="more"><summary>How the sources differ</summary><ul><li>BleepingComputer says the original repository appeared in July and was removed October 8; The Record says the tool was released on GitHub in August.</li></ul></details>
+          <div class="srcs"><span class="lbl">Reported by</span>
+            <a href="https://www.bleepingcomputer.com/news/security/fbi-warns-artex-ai-hacking-tool-is-powering-global-cyberattacks" target="_blank" rel="noopener">BleepingComputer</a>
+            <a href="https://therecord.media/artex-ai-tool-fbi-flash-alert" target="_blank" rel="noopener">The Record</a>
+            <details class="arts"><summary><span class="count">2 sources, 2 articles</span></summary>
+            <ol>
+              <li><a href="https://www.bleepingcomputer.com/news/security/fbi-warns-artex-ai-hacking-tool-is-powering-global-cyberattacks" target="_blank" rel="noopener">FBI warns ARTEX AI hacking tool is powering global cyberattacks</a><span class="o">BleepingComputer · Nov 15</span></li>
+              <li><a href="https://therecord.media/artex-ai-tool-fbi-flash-alert" target="_blank" rel="noopener">FBI flash alert on the Artex AI pentesting tool</a><span class="o">The Record · Nov 13</span></li>
+            </ol></details></div>
+        </article>
+        <article class="card story" data-cat="cyber">
+          <div class="tags"><span class="sev high">High</span><span class="tag">Windows · Public exploit</span></div>
+          <h4>Public SignDrop exploit claims SYSTEM access on Windows through the CLFS driver; Microsoft has not confirmed a flaw or issued a fix</h4>
+          <p class="sum">A researcher publishing as MSNightmare posted proof-of-concept code on GitHub on the same day as Microsoft's November updates. The Hacker News reports that it abuses a log-authentication feature added in October 2025 updates and claims a standard user can reach SYSTEM; it was tested on Windows 11 26H2 and Windows Server 2025 builds.</p>
+          <p class="sum extra">One researcher who checked it said the exploit works but is not reliable enough for operational use. Per The Hacker News there is no CVE, no patch, no KEV listing and no reported attacks yet, though the same researcher's earlier Defender exploits were later patched. Exploit code that is public and untested tends to be adapted quickly.</p>
+          <p class="why"><b>Why it matters:</b> Local privilege escalation is what turns a phished user into a domain problem. Confirm endpoint detection covers privilege-escalation behavior, limit local admin, and watch for Microsoft guidance in the coming days.</p>
+          <div class="srcs"><span class="lbl">Reported by</span>
+            <a href="https://thehackernews.com/2026/11/new-signdrop-zero-day-exploit-turns.html" target="_blank" rel="noopener">The Hacker News</a>
+            <a href="https://securityweek.com/nightmare-eclipse-drops-windows-zero-day-exploit-signdrop" target="_blank" rel="noopener">SecurityWeek</a>
+            <a href="https://www.bleepingcomputer.com/news/security/new-windows-signdrop-zero-day-gives-hackers-system-privileges/" target="_blank" rel="noopener">BleepingComputer</a>
+            <details class="arts"><summary><span class="count">3 sources, 3 articles</span></summary>
+            <ol>
+              <li><a href="https://thehackernews.com/2026/11/new-signdrop-zero-day-exploit-turns.html" target="_blank" rel="noopener">New SignDrop zero-day exploit turns Windows CLFS security feature into SYSTEM access</a><span class="o">The Hacker News · Nov 12</span></li>
+              <li><a href="https://securityweek.com/nightmare-eclipse-drops-windows-zero-day-exploit-signdrop" target="_blank" rel="noopener">Nightmare Eclipse drops Windows zero-day exploit 'SignDrop'</a><span class="o">SecurityWeek · Nov 13</span></li>
+              <li><a href="https://www.bleepingcomputer.com/news/security/new-windows-signdrop-zero-day-gives-hackers-system-privileges/" target="_blank" rel="noopener">New Windows SignDrop zero-day gives hackers SYSTEM privileges</a><span class="o">BleepingComputer · Nov 13</span></li>
+            </ol></details></div>
+        </article>
+        <article class="card story" data-cat="cyber">
+          <div class="tags"><span class="sev high">High</span><span class="tag">Supply chain · Credentials</span></div>
+          <h4>Campaign used 4,837 hijacked GitHub accounts to open pull requests that steal cloud and CI secrets</h4>
+          <p class="sum">BleepingComputer reports a campaign dubbed wfx-loot that probed more than 61,000 repositories from compromised accounts beginning November 10. It opened pull requests titled as dependency-audit notes and delivered a roughly 1,500-line script that harvests GitHub Actions secrets, cloud credentials and AI-service keys. Researchers confirmed theft from at least 1,835 targets.</p>
+          <p class="sum extra">The payload also reached a Packagist package and a Go module through automated publishing. Aikido, which reported the activity, found most of the malicious pull requests still open. Owners are advised to look for a wfx-docs branch and rotate any secrets and cloud roles that ran the payload.</p>
+          <p class="why"><b>Why it matters:</b> Treat CI/CD secrets as production credentials. Scope them narrowly, require review before workflows from outside contributors run, prefer short-lived cloud tokens, and have a rotation runbook ready.</p>
+          <div class="srcs"><span class="lbl">Reported by</span>
+            <a href="https://www.bleepingcomputer.com/news/security/hackers-compromise-4-800-github-accounts-to-steal-cloud-credentials/" target="_blank" rel="noopener">BleepingComputer</a>
+            <span class="count">1 source, 1 article</span></div>
+        </article>
+        <article class="card story" data-cat="cyber">
+          <div class="tags"><span class="sev high">High</span><span class="tag">Breach · AI tooling</span></div>
+          <h4>A leaked vendor key led to a Cursor data breach and a trojanized Claude Code extension in its marketplace</h4>
+          <p class="sum">The Hacker News reports that Cursor said an access key it issued to Fireworks AI was exposed on Fireworks' side. An attacker used it to copy old coding-agent traces from a read-only storage bucket, then used credentials found inside those traces to reach internal SaaS tools. A trojanized build of the Claude Code extension was served through the Cursor marketplace for about 11 hours on October 29, with up to 5,000 users potentially affected.</p>
+          <p class="sum extra">Uber separately said a service provider's credentials were used to access its data, and TechCrunch reported that provider as Fireworks AI, per The Hacker News. The pattern is a third party's leaked key reaching a customer's data, then secrets hiding in logs and traces extending the damage.</p>
+          <p class="why"><b>Why it matters:</b> Agent logs and traces often contain live credentials. Scrub them, scope vendor-issued keys tightly, and add AI vendors and developer-tool marketplaces to third-party risk reviews.</p>
+          <div class="srcs"><span class="lbl">Reported by</span>
+            <a href="https://thehackernews.com/2026/11/stolen-fireworks-ai-key-led-to-cursor.html" target="_blank" rel="noopener">The Hacker News</a>
+            <span class="count">1 source, 1 article</span></div>
+        </article>
+        <article class="card story" data-cat="cyber">
+          <div class="tags"><span class="sev med">Medium</span><span class="tag">Extortion · Logistics</span></div>
+          <h4>Maersk confirms data theft from an inherited IT system as WhiteArmor claims a $5 million ransom demand</h4>
+          <p class="sum">SecurityWeek reports that Maersk said attackers took data from one IT system it gained through a 2022 acquisition, that the incident is isolated, and that its shipping platforms are unaffected. The WhiteArmor group listed Maersk on its leak site on November 7 and claims about 100GB of data.</p>
+          <p class="sum extra">Maersk has not confirmed WhiteArmor's involvement or what data was taken, and the group's claims are unverified. The piece underlines how acquired systems can carry risk long after a deal closes.</p>
+          <p class="why"><b>Why it matters:</b> Inventory and segment systems inherited through acquisitions, and add them to patching, logging and backup coverage early. Extortion claims should be treated as unverified until the victim confirms.</p>
+          <div class="srcs"><span class="lbl">Reported by</span>
+            <a href="https://www.securityweek.com/maersk-confirms-data-theft-amid-5-million-extortion-attempt/" target="_blank" rel="noopener">SecurityWeek</a>
+            <span class="count">1 source, 1 article</span></div>
+        </article>
+        <article class="card story" data-cat="cyber">
+          <div class="tags"><span class="sev info">Outage</span><span class="tag">Resilience · Cloud</span></div>
+          <h4>Multi-hour Microsoft 365 outage hits Outlook, Teams and Copilot across several countries; Microsoft says it sees no malicious activity</h4>
+          <p class="sum">SecurityWeek, carrying an AP report, says the disruption ran from Thursday into Friday and affected Exchange Online, Outlook, Teams and Copilot, with government bodies and businesses in the UK, Australia, Japan and elsewhere reporting problems. Microsoft said it found no sign of an attack and was restoring service in phases.</p>
+          <p class="sum extra">Australia's home affairs minister reportedly compared it to the 2024 CrowdStrike update fault. Separately, the FAA briefly halted departures nationwide on Friday; officials found no sign of hacking and the FBI is reportedly looking at a software update (see Quick Hits).</p>
+          <p class="why"><b>Why it matters:</b> Single-vendor dependence is a risk even without an attacker. Confirm clients have an out-of-band way to communicate during an email or collaboration outage, and that incident plans do not rely on the same tenant.</p>
+          <div class="srcs"><span class="lbl">Reported by</span>
+            <a href="https://www.securityweek.com/microsoft-struggles-to-restore-email-and-other-services-in-a-global-outage/" target="_blank" rel="noopener">SecurityWeek</a>
+            <span class="count">1 source, 1 article</span></div>
+        </article>
+      </div>
+
+      <!-- MARKETS -->
+      <div class="sechead story-sec" data-sec="mkt"><h3>Markets &amp; Business</h3><span>Moves big enough to matter</span></div>
+      <div class="cards">
+        <article class="card story" data-cat="mkt">
+          <div class="tags"><span class="sev high">Market-moving</span><span class="tag">Equities · Tech</span></div>
+          <h4>Tech slides Friday even as all three major indexes finish the week higher; Nvidia down nearly 13% on the week</h4>
+          <p class="sum">Eurasia Business News reports the S&amp;P 500 fell 0.40% to 7,561.67 and the Nasdaq Composite fell 0.91% to 25,136.27, while the Dow edged up about 0.10% to 52,347.55. For the week, the S&amp;P was up about 2.5%. Most sectors rose, so the weakness was concentrated in technology. The outlet says Nvidia fell about 12.75% on the week and that its CEO has resigned, with an interim CEO named. Nvidia reports earnings on Tuesday, per the same piece.</p>
+          <p class="sum extra">On inflation, the article says October wholesale prices rose 0.3% on the month, below the 0.4% forecast, but annual producer inflation reached 6.5%, the highest since late 2022, and it says consumer prices came in 0.1 point above forecast. It puts the 10-year yield near 5.15%. Brent and WTI both posted a second weekly decline. Figures come from a single outlet and were not cross-checked against an exchange; the major wires could not be read for this edition.</p>
+          <div class="tickers"><span class="tk">SPX <span class="down">▼0.40%</span></span><span class="tk">COMP <span class="down">▼0.91%</span></span><span class="tk">DJIA <span class="up">▲0.10%</span></span><span class="tk">NVDA <span class="down">▼12.75% wk</span></span></div>
+          <p class="why"><b>Why it matters:</b> Higher-for-longer rates and AI-trade volatility feed straight into private security vendors' funding and valuation climate. The startup radar below shows rounds still closing at healthy sizes.</p>
+          <div class="srcs"><span class="lbl">Reported by</span>
+            <a href="https://eurasiabusinessnews.com/2026/11/14/stock-market-today-november-13-2026-tech-stocks-fall-as-nvidia-earnings-and-anthropic-ipo-loom/" target="_blank" rel="noopener">Eurasia Business News</a>
+            <span class="count">1 source, 1 article</span></div>
+        </article>
+        <article class="card story" data-cat="mkt">
+          <div class="tags"><span class="sev med">IPO</span><span class="tag">AI · Public markets</span></div>
+          <h4>Anthropic IPO reportedly aims for a trillion-dollar-plus valuation, with trading expected this week</h4>
+          <p class="sum">Eurasia Business News says Anthropic reportedly targets a valuation of about $1.33 trillion or more with trading expected on Thursday, and attributes remarks from the CEO to a Wall Street Journal account. Crunchbase News's headline on November 10 described a record $88.5 billion raise tied to a public-market debut. The outlet stresses these are expectations, not a completed deal, and final pricing could differ.</p>
+          <p class="sum extra">Only headline-level detail was available from Crunchbase News and the WSJ account could not be read, so share count, price range and exchange are not reported here. The listing would be a major test of public appetite for AI infrastructure and could affect sentiment toward security vendors that sell to AI builders.</p>
+          <p class="why"><b>Why it matters:</b> Many clients now depend on a handful of AI platform providers. A listing brings public-company disclosure obligations, including cyber risk and incident reporting, which can help vendor due diligence.</p>
+          <div class="srcs"><span class="lbl">Reported by</span>
+            <a href="https://eurasiabusinessnews.com/2026/11/14/stock-market-today-november-13-2026-tech-stocks-fall-as-nvidia-earnings-and-anthropic-ipo-loom/" target="_blank" rel="noopener">Eurasia Business News</a>
+            <a href="https://news.crunchbase.com/ai/anthropic-record-ipo-ant-public-market-debut-spcx/" target="_blank" rel="noopener">Crunchbase News</a>
+            <details class="arts"><summary><span class="count">2 sources, 2 articles</span></summary>
+            <ol>
+              <li><a href="https://eurasiabusinessnews.com/2026/11/14/stock-market-today-november-13-2026-tech-stocks-fall-as-nvidia-earnings-and-anthropic-ipo-loom/" target="_blank" rel="noopener">Stock market today, November 13, 2026 (Anthropic IPO outlook)</a><span class="o">Eurasia Business News · Nov 14</span></li>
+              <li><a href="https://news.crunchbase.com/ai/anthropic-record-ipo-ant-public-market-debut-spcx/" target="_blank" rel="noopener">Anthropic seeks record $88.5B tied to public market debut</a><span class="o">Crunchbase News · Nov 10</span></li>
+            </ol></details></div>
+        </article>
+        <article class="card story x" data-cat="mkt">
+          <div class="tags"><span class="sev xb">Cyber × Markets</span><span class="tag">M&amp;A · AI security</span></div>
+          <h4>Cyber consolidation: CrowdStrike and Palo Alto are buying or courting AI-agent security startups at about $500M apiece</h4>
+          <p class="sum">This item sits where cyber meets markets, and the reporting predates this edition's window but sets context for the radar below. TechCrunch reported on November 3 that CrowdStrike will pay nearly $500 million for two AI security startups, and on November 5 that Palo Alto Networks is in talks to buy agent-security startup Clutch for $500 million. Only headlines were available, so terms beyond those figures are not reported here.</p>
+          <p class="sum extra">Talks are not a signed deal. Large platform vendors are paying up for agent-security capabilities while venture money flows into the same niche; this week's rounds for Daylight and WhiteMatter are in the radar section.</p>
+          <p class="why"><b>Why it matters:</b> Vendor consolidation can change roadmaps, pricing and support for tools clients already run. Ask key vendors how acquisitions affect their product commitments.</p>
+          <div class="srcs"><span class="lbl">Reported by</span>
+            <a href="https://techcrunch.com/2026/11/03/crowdstrike-to-shell-out-nearly-500m-for-2-ai-security-startups-as-the-market-for-securing-agents-takes-off/" target="_blank" rel="noopener">TechCrunch</a>
+            <details class="arts"><summary><span class="count">1 source, 2 articles</span></summary>
+            <ol>
+              <li><a href="https://techcrunch.com/2026/11/03/crowdstrike-to-shell-out-nearly-500m-for-2-ai-security-startups-as-the-market-for-securing-agents-takes-off/" target="_blank" rel="noopener">CrowdStrike to shell out nearly $500M for 2 AI security startups</a><span class="o">TechCrunch · Nov 3</span></li>
+              <li><a href="https://techcrunch.com/2026/11/05/palo-alto-networks-in-talks-to-buy-ai-agent-security-startup-clutch-for-500m/" target="_blank" rel="noopener">Palo Alto Networks in talks to buy AI agent security startup Clutch for $500M</a><span class="o">TechCrunch · Nov 5</span></li>
+            </ol></details></div>
+        </article>
+      </div>
+
+      <!-- QUICK HITS -->
+      <div class="sechead story-sec" data-sec="hits"><h3>Quick Hits</h3><span>One-liners worth knowing</span></div>
+      <ul class="hits">
+        <li class="story" data-cat="cyber"><span class="k">Cyber</span><a href="https://www.securityweek.com/citrix-patches-10-critical-netscaler-vulnerabilities/" target="_blank" rel="noopener">Citrix patches 28 NetScaler flaws, nine critical, plus a 9.4-rated NetScaler Console bug; no exploitation seen yet</a><span class="s">SecurityWeek</span></li>
+        <li class="story" data-cat="cyber"><span class="k">Cyber</span><a href="https://thehackernews.com/2026/11/operation-endgame-takes-down-gootloader.html" target="_blank" rel="noopener">Operation Endgame takes down Gootloader, CastleRAT and StealC infrastructure and seizes 6.4M stolen logins</a><span class="s">The Hacker News +2</span></li>
+        <li class="story" data-cat="cyber"><span class="k">Cyber</span><a href="https://www.securityweek.com/exploited-outlook-zero-day-among-1094-flaws-patched-by-microsoft/" target="_blank" rel="noopener">Microsoft's November Patch Tuesday fixes 1,094 flaws, including an exploited Outlook spoofing bug that leaks NTLMv2 hashes</a><span class="s">SecurityWeek</span></li>
+        <li class="story" data-cat="cyber"><span class="k">Cyber</span><a href="https://www.securityweek.com/no-signs-of-hacking-in-faa-ground-stop-as-fbi-reportedly-probes-software-update/" target="_blank" rel="noopener">FAA nationwide ground stop: officials see no sign of hacking, FBI reportedly examining a software update</a><span class="s">SecurityWeek</span></li>
+        <li class="story" data-cat="cyber"><span class="k">Cyber</span><a href="https://therecord.media/tsmc-confirms-employee-data-breach-cloud-provider" target="_blank" rel="noopener">TSMC tells the SEC employee data was stolen from a cloud provider, not its own systems</a><span class="s">The Record</span></li>
+        <li class="story" data-cat="mkt"><span class="k">Markets</span><a href="https://eurasiabusinessnews.com/2026/11/14/stock-market-today-november-13-2026-tech-stocks-fall-as-nvidia-earnings-and-anthropic-ipo-loom/" target="_blank" rel="noopener">Brent settles at $95.84 and WTI at $88.56, both lower for a second straight week</a><span class="s">Eurasia Business News</span></li>
+      </ul>
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside>
+      <div class="panel">
+        <h5><span>Source Health</span><span>6 of 25 scanned</span></h5>
+        <table>
+          <tr><td><span class="dot ok"></span>The Record</td><td class="num">OK</td></tr>
+          <tr><td><span class="dot ok"></span>The Hacker News</td><td class="num">OK</td></tr>
+          <tr><td><span class="dot ok"></span>SecurityWeek</td><td class="num">OK</td></tr>
+          <tr><td><span class="dot warn"></span>BleepingComputer</td><td class="num">partial</td></tr>
+          <tr><td><span class="dot warn"></span>Krebs, Dark Reading, Troy Hunt, Schneier, SANS ISC, SecureWorld</td><td class="num">not scanned</td></tr>
+          <tr><td><span class="dot warn"></span>CISA KEV</td><td class="num">search only</td></tr>
+          <tr><td><span class="dot warn"></span>Reuters, AP, CNBC, MarketWatch, Yahoo Finance</td><td class="num">not scanned</td></tr>
+          <tr><td><span class="dot warn"></span>WSJ / Bloomberg</td><td class="num">headline only, not reached</td></tr>
+          <tr><td><span class="dot warn"></span>SEC EDGAR</td><td class="num">not scanned</td></tr>
+          <tr><td><span class="dot ok"></span>TechCrunch, Crunchbase News</td><td class="num">OK</td></tr>
+          <tr><td><span class="dot warn"></span>PE Hub, Axios Pro</td><td class="num">failed</td></tr>
+        </table>
+        <div class="note">Several BleepingComputer article pages returned server errors, so those items use headlines and other outlets' coverage. Market levels come from one outlet because WTOP and MSN blocked automated reads. Paywalled stories are summarized from headlines and abstracts only.</div>
+      </div>
+    </aside>
+  </div>
+
+  <section class="radar" id="radar" aria-label="Cybersecurity startup radar">
+    <div class="sechead"><h3>Startup radar</h3><span>Funding rounds, IPOs and private-equity deals · last 7 days</span></div>
+    <div class="rstats">
+      <div class="rstat"><div class="v">2</div><div class="l">Events tracked</div></div>
+      <div class="rstat"><div class="v">$100M</div><div class="l">Raised in rounds</div></div>
+      <div class="rstat"><div class="v">none found</div><div class="l">IPO and PE deals</div></div>
+      <div class="rstat"><div class="v">2 of 2</div><div class="l">Aimed at AI security</div></div>
+    </div>
+    <p class="rtrend"><b>This week:</b> both confirmed rounds target AI, one for securing AI agents and one for AI-run security operations, and a growth-equity arm of a large bank led the larger one. No cybersecurity IPOs or private-equity buyouts were found in the window, though PE Hub and Axios Pro could not be read, so this list may be incomplete.</p>
+    <div class="controls" role="toolbar" aria-label="Filter startup events" style="border-bottom:0;padding-top:0">
+      <button class="fbtn rf" data-r="all" aria-pressed="true">All<span class="n">2</span></button>
+      <button class="fbtn rf" data-r="seed" aria-pressed="false">Seed<span class="n">0</span></button>
+      <button class="fbtn rf" data-r="a" aria-pressed="false">Series A<span class="n">1</span></button>
+      <button class="fbtn rf" data-r="b" aria-pressed="false">Series B<span class="n">1</span></button>
+      <button class="fbtn rf" data-r="c" aria-pressed="false">Series C+<span class="n">0</span></button>
+      <button class="fbtn rf" data-r="ipo" aria-pressed="false">IPO<span class="n">0</span></button>
+      <button class="fbtn rf" data-r="pe" aria-pressed="false">PE buyout<span class="n">0</span></button>
+    </div>
+    <div class="rlist">
+      <div class="ritem" data-sf="b">
+        <div><span class="st b">Series B</span><span class="dt">Nov 12</span></div>
+        <div><h5>Daylight</h5><p>AI-native security operations platform that hunts, analyzes and contains threats, sold as managed, co-managed or forward-deployed service.</p></div>
+        <div class="amt">$80M<small>Series B · $120M raised to date</small></div>
+        <div class="inv">Lead: <b>Goldman Sachs Alternatives (Growth Equity)</b> · Okta Ventures, Bain Capital, Craft Ventures, Vintage Partners, Maple Capital</div>
+        <div class="rs"><a href="https://www.securityweek.com/daylight-lands-80-million-for-ai-powered-security-operations/" target="_blank" rel="noopener">SecurityWeek</a></div>
+      </div>
+      <div class="ritem" data-sf="a">
+        <div><span class="st a">Series A</span><span class="dt">Nov 10</span></div>
+        <div><h5>WhiteMatter (formerly QuilrAI)</h5><p>AI agent security: assigns a dedicated guardian agent to each AI agent in an enterprise.</p></div>
+        <div class="amt">$20M<small>Series A · $24M raised to date</small></div>
+        <div class="inv">Lead: <b>Blumberg Capital</b> · Crew Capital, Sprout &amp; Oak</div>
+        <div class="rs"><a href="https://www.securityweek.com/whitematter-raises-20-million-in-series-a-funding/" target="_blank" rel="noopener">SecurityWeek</a></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    The Asena Brief · curated for Asena Security · Stories reported by more than one outlet are merged into one entry with every source listed. Edition notes: this is the first edition. The run happened on a Sunday, so coverage runs from Friday morning, with a few earlier items (Nov 3-12) included as context and labeled. Only a subset of the configured sources could be scanned, as shown in Source Health. Market levels come from a single outlet and were not cross-checked. <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a>
+  </footer>
+</div>
+
+<script>
+  const btns = document.querySelectorAll('.fbtn[data-f]');
+  btns.forEach(b => b.addEventListener('click', () => {
+    btns.forEach(x => x.setAttribute('aria-pressed', x === b));
+    const f = b.dataset.f;
+    document.querySelectorAll('.story').forEach(s => s.hidden = !(f === 'all' || s.dataset.cat === f));
+    document.querySelectorAll('.story-sec').forEach(h => {
+      const sec = h.dataset.sec;
+      h.hidden = !(f === 'all' || sec === f || sec === 'hits');
+    });
+  }));
+  const dens = document.getElementById('dens');
+  function setDensity(c){ document.body.classList.toggle('compact', c); dens.setAttribute('aria-pressed', c); }
+  try { setDensity(localStorage.getItem('asenaDensity') === 'compact'); } catch(e) {}
+  dens.addEventListener('click', () => {
+    const c = !document.body.classList.contains('compact'); setDensity(c);
+    try { localStorage.setItem('asenaDensity', c ? 'compact' : 'comfortable'); } catch(e) {}
+  });
+
+  /* ---- collapse / read state, saved per edition ---- */
+  const EDITION = '2026-11-15';
+  const KEY = 'asenaRead:' + EDITION;
+  const hash = t => { let h=0; for (const c of t) h=(h*31 + c.charCodeAt(0))|0; return 'h'+(h>>>0).toString(36); };
+  let read = new Set();
+  try { read = new Set(JSON.parse(localStorage.getItem(KEY) || '[]')); } catch(e) {}
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify([...read])); } catch(e) {} };
+  const stories = [...document.querySelectorAll('article.story')];
+  const rc = document.getElementById('readcount');
+  const updateCount = () => rc.textContent = read.size + ' of ' + stories.length + ' read';
+
+  stories.forEach(card => {
+    const head = card.querySelector('h2,h4');
+    const id = card.dataset.id || hash(head.textContent.trim());
+    const btn = document.createElement('button');
+    btn.className = 'cbtn';
+    const paint = () => {
+      const c = read.has(id);
+      card.classList.toggle('collapsed', c);
+      btn.textContent = c ? 'Expand' : 'Mark read';
+      btn.setAttribute('aria-expanded', !c);
+    };
+    const toggle = () => { read.has(id) ? read.delete(id) : read.add(id); save(); paint(); updateCount(); };
+    btn.addEventListener('click', toggle);
+    head.addEventListener('click', () => { if (card.classList.contains('collapsed')) toggle(); });
+    card.querySelector('.tags').appendChild(btn);
+    card._paint = paint; card._id = id;
+    paint();
+  });
+  updateCount();
+
+  const hr = document.getElementById('hideread');
+  hr.addEventListener('click', () => {
+    const on = !document.body.classList.contains('hide-read');
+    document.body.classList.toggle('hide-read', on); hr.setAttribute('aria-pressed', on);
+  });
+  document.getElementById('resetread').addEventListener('click', () => {
+    read.clear(); save(); stories.forEach(c => c._paint()); updateCount();
+  });
+
+  // Clean up read-state from editions older than 7 days
+  try { Object.keys(localStorage).filter(k => k.startsWith('asenaRead:') && k < 'asenaRead:' + new Date(Date.now()-7*864e5).toISOString().slice(0,10)).forEach(k => localStorage.removeItem(k)); } catch(e) {}
+
+  /* ---- startup radar filter ---- */
+  const rf=document.querySelectorAll('.rf');
+  rf.forEach(b=>b.addEventListener('click',()=>{
+    rf.forEach(x=>x.setAttribute('aria-pressed',x===b));
+    const f=b.dataset.r;
+    document.querySelectorAll('.ritem').forEach(r=>r.hidden=!(f==='all'||r.dataset.sf===f));
+  }));
+</script>
+</body>
+</html>
