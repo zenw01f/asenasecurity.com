@@ -179,15 +179,14 @@
 
 <!-- MARKET TAPE -->
 <div class="tape"><div class="wrap">
-  <span><b>S&amp;P 500</b>7,473 <span class="down">▼1.17%</span></span>
-  <span><b>NASDAQ</b>24,741 <span class="down">▼1.57%</span></span>
-  <span><b>DOW</b>51,988 <span class="down">▼0.69%</span></span>
-  <span><b>VIX</b>20.85 <span class="up">▲8.0%</span></span>
-  <span><b>US10Y</b>5.14%</span>
-  <span><b>WTI</b>86.59 <span class="down">▼2.22%</span></span>
-  <span><b>BRENT</b>93.43 <span class="down">▼2.51%</span></span>
-  <span><b>GOLD</b>3,860 <span class="down">▼0.68%</span></span>
-  <span class="stamp">Mon Nov 16 · intraday ~11:47 ET · via Yahoo Finance</span>
+  <span><b>S&amp;P 500</b>7,319.93 <span class="down">▼0.28%</span></span>
+  <span><b>NASDAQ</b>24,360.18 <span class="up">▲0.13%</span></span>
+  <span><b>DOW</b>50,285.19 <span class="down">▼0.93%</span></span>
+  <span><b>VIX</b>25.59 <span class="up">▲0.51%</span></span>
+  <span><b>US10Y</b>5.06%</span>
+  <span><b>WTI</b>81.36 <span class="down">▼3.89%</span></span>
+  <span><b>GOLD</b>3,750.70 <span class="down">▼2.94%</span></span>
+  <span class="stamp">Tue Nov 17 close · via Yahoo Finance</span>
 </div></div>
 
 <div class="wrap">
@@ -197,9 +196,9 @@
     <h1 class="title">The Asena Brief</h1>
     <div class="kicker">Cyber &nbsp;·&nbsp; Markets &nbsp;·&nbsp; Where they collide</div>
     <div class="mastmeta">
-      <span><strong>Monday, November 16, 2026</strong> · Edition #002</span>
-      <span><strong>21</strong> articles from <strong>8</strong> sources, merged into <strong>14</strong> stories</span>
-      <span>Coverage: Fri Nov 14 – Mon Nov 16 · Next: Wed Nov 18</span>
+      <span><strong>Wednesday, November 18, 2026</strong> · Edition #003</span>
+      <span><strong>22</strong> articles from <strong>5</strong> sources, merged into <strong>14</strong> stories</span>
+      <span>Coverage: Mon Nov 16 – Wed Nov 18 · Next: Fri Nov 21</span>
     </div>
   </header>
 
@@ -221,23 +220,27 @@
 
       <!-- LEAD STORY -->
       <article class="lead story" data-cat="cyber">
-        <div class="tags"><span class="sev xb">Lead story</span><span class="sev high">High</span><span class="tag">Nation-state · Crypto · Deepfakes</span></div>
-        <h2>FBI and DOJ disrupt North Korean FaceStealer campaign behind $400 million in crypto theft; $1.2 billion seized</h2>
-        <p class="dek">BlueNoroff actors used deepfake video calls to socially engineer cryptocurrency executives, with each victim's compromised accounts becoming launchpads for the next wave.</p>
+        <div class="tags"><span class="sev xb">Lead story</span><span class="sev crit">Critical</span><span class="tag">Vulnerability · Java · KEV</span></div>
+        <h2>Java4Shell (CVE-2026-114938): Critical pre-auth RCE in OpenJDK affects Jira, Jenkins, Keycloak, Confluence, and dozens more enterprise apps</h2>
+        <p class="dek">A buffer overflow in Java's AVX-512-optimized Base64 decoder lets unauthenticated attackers execute code on servers running the most common enterprise Java platforms; Oracle shipped emergency patches and CISA is urging immediate action.</p>
         <div class="body">
-          <p>U.S. federal authorities seized the cloud infrastructure behind the North Korean BlueNoroff group's FaceStealer campaign, which over roughly 18 months stole more than $400 million in cryptocurrency from 677 targets across 58 countries. The Department of Justice separately announced seizure and restraint of more than $1.2 billion tied to TraderTraitor actors following the related Binance exchange breach. The FBI's takedown exposed more than 900 secretly recorded webcam videos of tech workers on attacker servers.</p>
-          <p>The attack chain began when operators hijacked a victim's Telegram account, then used it to invite that person's contacts to fake investment video calls. Meeting links — using typosquatted domains such as "uu01webzoom[.]us" — led to sessions where attackers played pre-recorded footage of trusted contacts alongside deepfakes built from YouTube interviews and conference talks. When audio appeared to fail, victims were directed to click links that installed malware harvesting crypto wallets, seed phrases, credentials and social-media access. The compromised contacts then became the starting point for the next wave, creating a self-propagating chain. The FBI noted North Korean actors used what they called "super intelligence" to generate deepfake videos of well-known figures in Web3, making lures harder to dismiss.</p>
+          <p>The vulnerability, dubbed Java4Shell and tracked as CVE-2026-114938, lies in an AVX-512-optimized Base64 decoding routine used by Java 17, 21, 25, and 27 on x86-64 processors that support the AVX-512 VBMI instruction set — Intel Xeon Ice Lake and newer, AMD Zen 4 and newer. A malformed Base64 string with a trailing equals sign causes the decoder to write 62–63 bytes past the end of an output buffer, corrupting heap memory in a way researchers turned into unauthenticated remote code execution. Demonstrated pre-auth targets include Keycloak, Jira, Confluence, Artifactory, Jenkins, and PingFederate; authenticated RCE is additionally possible against Apache Kafka, Solr, Elasticsearch, Gerrit, and Spinnaker. ARM64 is not affected. CVSS scores range from 8.1 (Oracle) to 9.8 (preliminary, Red Hat), with an independent assessment at 9.2.</p>
+          <p>Oracle released fixes November 18 as part of its November 2026 Critical Security Patch Update, covering Java 17.0.21.1, 21.0.13.1, 25.0.5.1, and 27.0.1.1. Amazon Corretto and Azul Zulu have also shipped updated builds; Red Hat errata were pending. CISA published an advisory urging immediate patching of internet-exposed systems and added CVE-2026-114938 to the Known Exploited Vulnerabilities catalog. Cisco Talos expects probing to increase now that the vulnerability is public. No confirmed in-the-wild exploitation had been reported as of publication.</p>
+          <p>Researchers also describe a secondary capability they call "JavaBleed": by tuning the heap corruption to read rather than overwrite adjacent memory, an attacker can extract in-process secrets — session tokens, PII, and cryptographic keys — without fully compromising the host. Organizations running containers, appliances, or vendor software with an embedded JRE should inventory their Java versions immediately; a workaround JVM flag (<code>-XX:-UseBASE64Intrinsics</code>) disables the vulnerable code path without a full upgrade.</p>
         </div>
-        <p class="why" style="margin-top:12px"><b>Why it matters:</b> Social-engineering defenses built around recognizing faces and voices no longer hold when faces and voices can be fabricated. Advise clients in finance, crypto and high-value executive roles to verify meeting requests through a second channel before joining, never click fix-your-audio links mid-call, and treat any out-of-the-blue investment invitation as suspect regardless of who appears to have sent it.</p>
-        <div class="tickers" style="margin-top:8px"><span class="tk">BTC <span class="down">▼2.3%</span></span></div>
+        <p class="why" style="margin-top:12px"><b>Why it matters:</b> Jira, Confluence, and Keycloak are identity and collaboration cornerstones for most enterprise environments, and they are frequently internet-facing. The gap between Oracle's patch and vendor-specific updates (Red Hat, container images, appliances) means many organizations are waiting on third-party timelines they don't control. Apply the -XX:-UseBASE64Intrinsics workaround immediately on any exposed system while waiting for patched builds, and treat this like Log4Shell in terms of breadth of inventory needed.</p>
         <div class="srcs"><span class="lbl">Reported by</span>
-          <a href="https://www.bleepingcomputer.com/news/security/us-disrupts-north-korean-campaign-behind-400-million-crypto-theft/" target="_blank" rel="noopener">BleepingComputer</a>
-          <a href="https://thehackernews.com/2026/11/fbi-says-north-korean-hackers-stole.html" target="_blank" rel="noopener">The Hacker News</a>
-          <details class="arts"><summary><span class="count">2 sources, 2 articles</span></summary>
-          <ol>
-            <li><a href="https://www.bleepingcomputer.com/news/security/us-disrupts-north-korean-campaign-behind-400-million-crypto-theft/" target="_blank" rel="noopener">US disrupts North Korean campaign behind $400 million crypto theft</a><span class="o">BleepingComputer · Nov 14</span></li>
-            <li><a href="https://thehackernews.com/2026/11/fbi-says-north-korean-hackers-stole.html" target="_blank" rel="noopener">FBI says North Korean hackers stole over $400 million in crypto using deepfake video calls</a><span class="o">The Hacker News · Nov 14</span></li>
-          </ol></details>
+          <a href="https://thehackernews.com/2026/11/java4shell-cve-2026-114938-enables-pre.html" target="_blank" rel="noopener">The Hacker News</a>
+          <a href="https://www.securityweek.com/java4shell-vulnerability-puts-many-enterprise-applications-at-risk-of-takeover/" target="_blank" rel="noopener">SecurityWeek</a>
+          <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">CISA KEV</a>
+          <details class="arts"><summary><span class="count">3 sources · 5 articles</span></summary>
+            <ol>
+              <li><a href="https://thehackernews.com/2026/11/java4shell-cve-2026-114938-enables-pre.html" target="_blank" rel="noopener">Java4Shell Flaw (CVE-2026-114938) Enables Pre-Auth RCE in Jira, Jenkins, Keycloak and More</a><span class="o">The Hacker News · Nov 18</span></li>
+              <li><a href="https://thehackernews.com/2026/11/cisa-urges-immediate-patching-of.html" target="_blank" rel="noopener">CISA Urges Immediate Patching of Java4Shell Flaw That Could Allow Remote Code Execution</a><span class="o">The Hacker News · Nov 18</span></li>
+              <li><a href="https://www.securityweek.com/java4shell-vulnerability-puts-many-enterprise-applications-at-risk-of-takeover/" target="_blank" rel="noopener">Java4Shell Vulnerability Puts Many Enterprise Applications at Risk of Takeover</a><span class="o">SecurityWeek · Nov 18</span></li>
+              <li><a href="https://www.securityweek.com/oracle-patches-640-vulnerabilities-with-november-2026-cspu/" target="_blank" rel="noopener">Oracle Patches 950 Vulnerabilities With November 2026 CSPU</a><span class="o">SecurityWeek · Nov 18</span></li>
+              <li><a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">CISA KEV: CVE-2026-114938 added to catalog</a><span class="o">CISA</span></li>
+            </ol></details>
         </div>
       </article>
 
@@ -246,78 +249,76 @@
       <div class="cards">
 
         <article class="card story x" data-cat="cyber">
-          <div class="tags"><span class="sev xb">Cyber × Markets</span><span class="sev high">High</span><span class="tag">Third-party risk · AI vendor</span></div>
-          <h4>Fireworks AI breach now linked to both the Uber driver-data theft and last edition's Cursor supply-chain attack</h4>
-          <p class="sum">SecurityWeek and TechCrunch report that Uber has confirmed Fireworks AI as the third-party provider behind a breach that exposed names, addresses, driver's license numbers, and government IDs for approximately 150,000 drivers. Fireworks notified Uber on October 9; Uber filed state breach notices on November 13. Fireworks AI is the same provider whose stolen access key led to the trojanized Claude Code extension served through Cursor's marketplace for 11 hours on October 29, covered in the previous edition.</p>
-          <p class="sum extra">The overlap means a single compromised AI-infrastructure vendor appears to have contributed to two distinct incidents affecting a large tech company and over 100,000 individuals. Uber said the breach did not reach other Uber systems. Neither Fireworks AI nor Uber has described how the credentials were obtained. Fireworks AI is a platform that hosts and fine-tunes open-source AI models.</p>
-          <p class="why"><b>Why it matters:</b> AI infrastructure vendors now sit in the trust chain for both developer tooling and enterprise data stores. When evaluating vendor risk, ask which AI platforms your suppliers use, what data those platforms can reach, and whether access is scoped to what is strictly needed. Uber's disclosure fits this card rather than the Markets section because the breach is the story, though UBER is a public company.</p>
-          <div class="tickers"><span class="tk">UBER</span></div>
+          <div class="tags"><span class="sev xb">Cyber × Supply Chain</span><span class="sev crit">Critical</span><span class="tag">PyPI · Azure · GitHub</span></div>
+          <h4>Microsoft's agent-framework PyPI package poisoned overnight; malware silently drained Azure and GitHub credentials from 190,000 monthly downloaders</h4>
+          <p class="sum">Attackers published two malicious versions of Microsoft's <code>agent-framework</code> PyPI package — 1.26.1 and 1.26.2, released 33 minutes apart on November 17 — that installed Python startup hooks exfiltrating Azure CLI tokens, Azure DevOps OIDC tokens, managed-identity credentials, Azure instance-metadata, GitHub Actions OIDC tokens, plus npm, pip, Docker, and Hugging Face secrets to an attacker-controlled webhook endpoint. Because the hooks fired at Python startup, any process using the Python interpreter on an affected system ran the stealer automatically, even without explicitly importing the package. PyPI quarantined both versions after multiple security firms raised the alarm.</p>
+          <p class="sum extra">The package receives roughly 190,000 downloads a month and is widely used in CI/CD pipelines and developer environments building AI agents on Azure. Discoverers include Aikido, Chainguard, Endor Labs, OX Security, SafeDep, Socket, StepSecurity, and Wiz. Version 1.26.0 is the last clean release. Organizations should check developer workstations, container images, and pipeline runners for the compromised versions; rotate all Azure and GitHub secrets from clean systems; and audit Azure identity activity logs and GitHub workflow run logs for signs of exfiltration. Rebuilding affected environments is preferable to patching in place.</p>
+          <p class="why"><b>Why it matters:</b> AI-agent development has pushed credential exposure into a new tier of risk — cloud identity tokens are the keys to entire tenants, not just individual accounts. Any client building on Azure with AI frameworks should require pinned dependency versions, verify package integrity at install time, and treat CI/CD runners as credential vaults that need scoped, short-lived tokens.</p>
           <div class="srcs"><span class="lbl">Reported by</span>
-            <a href="https://www.securityweek.com/uber-data-breach-impacts-150000-people/" target="_blank" rel="noopener">SecurityWeek</a>
-            <a href="https://techcrunch.com/2026/11/13/uber-confirms-hackers-stole-thousands-of-drivers-license-information-in-data-breach/" target="_blank" rel="noopener">TechCrunch</a>
-            <details class="arts"><summary><span class="count">2 sources, 2 articles</span></summary>
+            <a href="https://thehackernews.com/2026/11/attackers-compromise-microsofts-agent.html" target="_blank" rel="noopener">The Hacker News</a>
+            <a href="https://www.securityweek.com/microsoft-agent-framework-releases-poisoned-with-credential-stealer/" target="_blank" rel="noopener">SecurityWeek</a>
+            <details class="arts"><summary><span class="count">2 sources · 2 articles</span></summary>
             <ol>
-              <li><a href="https://www.securityweek.com/uber-data-breach-impacts-150000-people/" target="_blank" rel="noopener">Uber data breach impacts 150,000 people</a><span class="o">SecurityWeek · Nov 16</span></li>
-              <li><a href="https://techcrunch.com/2026/11/13/uber-confirms-hackers-stole-thousands-of-drivers-license-information-in-data-breach/" target="_blank" rel="noopener">Uber confirms hackers stole thousands of drivers' license information in data breach</a><span class="o">TechCrunch · Nov 13</span></li>
+              <li><a href="https://thehackernews.com/2026/11/attackers-compromise-microsofts-agent.html" target="_blank" rel="noopener">Attackers Compromise Microsoft's Agent Framework PyPI Package to Steal Cloud Credentials</a><span class="o">The Hacker News · Nov 18</span></li>
+              <li><a href="https://www.securityweek.com/microsoft-agent-framework-releases-poisoned-with-credential-stealer/" target="_blank" rel="noopener">Microsoft Agent Framework Releases Poisoned With Credential Stealer</a><span class="o">SecurityWeek · Nov 18</span></li>
             </ol></details>
           </div>
         </article>
 
         <article class="card story" data-cat="cyber">
-          <div class="tags"><span class="sev high">High</span><span class="tag">APT · AI-powered attacks</span></div>
-          <h4>Chinese APT hacks Barracuda cloud accounts using the Artex AI pentest framework; Google warns fully autonomous attacks are months away</h4>
-          <p class="sum">SecurityWeek reports that attackers compromised roughly 10 of Barracuda's cloud accounts between November 1-2, moving from an exposed access key through Kubernetes service accounts to credential exfiltration and a persistent backdoor — the entire campaign took 44 hours. The attackers used the Artex agentic AI framework, primarily driven by Chinese LLMs (DeepSeek v4.1-flash, GLM-5.3, Grok 4.6), which the FBI first warned about in this run's previous edition.</p>
-          <p class="sum extra">Separately, Google's Threat Intelligence Group published an AI Threat Tracker report on November 16 warning that "unsophisticated attacks requiring little to no human interaction" are likely within three months, and "sophisticated, fully autonomous" agentic attacks within six months. Researchers discovered an exposed staging server running a framework called "exploit_agent" that chains multiple LLMs to find and exploit vulnerabilities automatically. BleepingComputer notes that hundreds of AI-generated proof-of-concept exploits appeared immediately after the PHP2Shell disclosure covered in the previous edition.</p>
-          <p class="why"><b>Why it matters:</b> The Barracuda incident shows this is already operational, not theoretical. Apply the same hardening that stops human attackers — eliminate hardcoded and default credentials, remove secrets from code artifacts, never expose unauthenticated management interfaces — because automated tools look for exactly these gaps at scale.</p>
+          <div class="tags"><span class="sev crit">Critical</span><span class="tag">Skimmer · 178 Sites · Finance</span></div>
+          <h4>Attackers injected a multi-function skimmer into Optimizely's Web Experimentation platform, hitting 178 customer sites including 32 banks and finance companies</h4>
+          <p class="sum">The Record reports that hackers placed malicious JavaScript inside Optimizely's Web Experimentation platform, spreading it to roughly 178 widely visited customer websites identified by Report URI. The injected code acted as a multi-purpose toolkit: it swapped cryptocurrency wallet addresses to redirect funds, skimmed payment-card data, stole browser cookies and screenshots, and delivered two iOS exploit kits (Coruna and DarkSword) to Apple device visitors. Blockchain analysis confirmed at least $7,000 in cryptocurrency theft. At least 32 finance and banking sites were among those affected, alongside technology, news media, airline, and retail platforms. Optimizely said it "identified and contained" the incident after the latest campaign on November 17; the threat actor had been testing on Turkish websites since September.</p>
+          <p class="sum extra">The attack illustrates the blast radius when a third-party A/B-testing or personalization vendor is compromised: a single point of injection reaches hundreds of organizations simultaneously, and each affected site's visitors become potential victims without that site doing anything wrong. The gap between the September test campaign and the November full deployment suggests deliberate reconnaissance. Optimizely has not disclosed how the initial compromise occurred.</p>
+          <p class="why"><b>Why it matters:</b> Any client using a third-party web experimentation or tag-management platform should verify whether Optimizely is in their vendor stack and check their sites for indicators now. More broadly, PCI DSS 4.0.1's script-integrity and change-detection controls exist precisely for this scenario — if clients are treating them as checkbox items, this case makes the business case to operationalize them before year-end.</p>
           <div class="srcs"><span class="lbl">Reported by</span>
-            <a href="https://www.securityweek.com/barracuda-hacked-amid-surge-in-artex-powered-cyberattacks/" target="_blank" rel="noopener">SecurityWeek</a>
-            <a href="https://www.bleepingcomputer.com/news/security/google-warns-that-fully-automated-ai-attacks-are-coming-soon/" target="_blank" rel="noopener">BleepingComputer</a>
-            <details class="arts"><summary><span class="count">2 sources, 2 articles</span></summary>
+            <a href="https://therecord.media/optimizely-malicious-code-customer-sites" target="_blank" rel="noopener">The Record</a>
+            <span class="count">1 source · 1 article</span>
+          </div>
+        </article>
+
+        <article class="card story" data-cat="cyber">
+          <div class="tags"><span class="sev crit">Critical</span><span class="sev high" style="margin-left:0">KEV</span><span class="tag">Deserialization · RCE · MSP</span></div>
+          <h4>Puppet Enterprise deserialization RCE (CVE-2026-115731, CVSS 9.4) added to CISA KEV; crypto miners deployed hours after proof-of-concept release</h4>
+          <p class="sum">SecurityWeek and The Hacker News report that CISA added CVE-2026-115731 — a critical deserialization vulnerability in Perforce Puppet Enterprise and Puppet Core — to its Known Exploited Vulnerabilities catalog on November 17. The flaw allows clients holding CA-signed agent certificates to send malicious report payloads that execute with service-user privileges on the Puppet server, potentially exposing the certificate-signing key and enabling an attacker to issue trusted certificates for any managed host. Exploitation was first flagged November 4; Perforce released patches November 3. CISA's BOD 26-04 gives federal agencies two weeks to patch.</p>
+          <p class="sum extra">An independent proof-of-concept targeting the OpenVox configuration management platform (which shares the codebase) was published after the patch, and threat actors deployed cryptocurrency miners against N-able N-central servers using a chained exploit that includes this Puppet vector within hours. Affected versions span Puppet Enterprise 2026.0.1, 2025.12.1, and 2023.8.13, and Puppet Core 9.1.3 and 8.22.2. Organizations should disable auto-signing and enforce strong certificate validation in addition to patching; a compromised signing key requires rotating all managed-node certificates.</p>
+          <p class="why"><b>Why it matters:</b> Puppet manages configuration at scale — a compromised Puppet server is a compromised fleet. Any client running configuration management on Puppet should treat this as a critical patch requiring same-day action, not the next maintenance window.</p>
+          <div class="srcs"><span class="lbl">Reported by</span>
+            <a href="https://thehackernews.com/2026/11/hackers-exploiting-critical-puppet-rce.html" target="_blank" rel="noopener">The Hacker News</a>
+            <a href="https://www.securityweek.com/critical-perforce-puppet-rce-exploited-in-attacks/" target="_blank" rel="noopener">SecurityWeek</a>
+            <details class="arts"><summary><span class="count">2 sources · 2 articles</span></summary>
             <ol>
-              <li><a href="https://www.securityweek.com/barracuda-hacked-amid-surge-in-artex-powered-cyberattacks/" target="_blank" rel="noopener">Barracuda hacked amid surge in Artex-powered cyberattacks</a><span class="o">SecurityWeek · Nov 16</span></li>
-              <li><a href="https://www.bleepingcomputer.com/news/security/google-warns-that-fully-automated-ai-attacks-are-coming-soon/" target="_blank" rel="noopener">Google warns that fully-automated AI attacks are coming soon</a><span class="o">BleepingComputer · Nov 16</span></li>
+              <li><a href="https://thehackernews.com/2026/11/hackers-exploiting-critical-puppet-rce.html" target="_blank" rel="noopener">Hackers Exploiting Critical Puppet RCE Flaw Affecting Enterprise Management Servers</a><span class="o">The Hacker News · Nov 18</span></li>
+              <li><a href="https://www.securityweek.com/critical-perforce-puppet-rce-exploited-in-attacks/" target="_blank" rel="noopener">Critical Perforce Puppet RCE Exploited in Attacks</a><span class="o">SecurityWeek · Nov 18</span></li>
             </ol></details>
           </div>
         </article>
 
         <article class="card story" data-cat="cyber">
-          <div class="tags"><span class="sev high">High</span><span class="tag">Supply chain · Hardware</span></div>
-          <h4>Trezor confirms circuit-board implants in Safe 5 wallets sold by Indonesian reseller CryptoBilis; implants stole recovery phrases via cellular</h4>
-          <p class="sum">BleepingComputer and The Hacker News report that Trezor confirmed malicious circuit boards were inserted between the main board and display of Trezor Safe 5 devices purchased from CryptoBilis, a Southeast Asian reseller, between August 20 and September 23, 2026. The implants monitored screen activity during wallet setup or restoration to capture recovery phrases, encrypted the data, and transmitted it over mobile networks. If cellular connectivity was unavailable, the device retained the data and repeatedly retried transmission.</p>
-          <p class="sum extra">Three devices were confirmed compromised; Trezor found no evidence of tampering in devices from other regional resellers. Firmware 2.13.1 (released November 11) renders these particular implants inactive, but cannot recover phrases already captured. Trezor advises any CryptoBilis customer who has not already migrated to generate a fresh recovery phrase on a new wallet immediately and transfer funds before doing so.</p>
-          <p class="why"><b>Why it matters:</b> Hardware supply-chain attacks are hard to detect and devastating when they target recovery material. Advise clients holding significant crypto to buy hardware wallets directly from the manufacturer or an authorized retailer, verify firmware at unboxing, and treat any wallet that passed through a third party as potentially compromised.</p>
+          <div class="tags"><span class="sev high">High</span><span class="tag">Nation-state · FSB · Cloud</span></div>
+          <h4>Russian COLD RELIC group used an entire cloud drive stolen from one U.S. organization to socially engineer its way into a second</h4>
+          <p class="sum">Google's Threat Intelligence Group (Mandiant) published analysis showing that COLD RELIC — an FSB-linked group also tracked as ColdRiver — harvested admin credentials in an intrusion into a first U.S. organization in late 2025, downloaded the target's complete cloud drive, employee directory, emails, and personnel records, then used that authentic-looking material to impersonate employees over encrypted messaging and trick a second organization's staff into handing over Microsoft login credentials and authentication tokens. Google did not name either victim but described them as organizations in government-adjacent sectors. The group has operated since at least 2015 and was observed in new phishing campaigns as recently as November 2026.</p>
+          <p class="sum extra">The technique is a refinement of spear-phishing: by starting with a complete organizational dataset, attackers can construct lures that reference real internal names, projects, and relationships — far harder to dismiss than generic messages. The final step exploited a legitimate trusted-contact relationship to send malicious credential-harvesting links, then pivoted to cloud storage. The attack illustrates why a cloud breach is not just a data-loss event but also a dossier that enables the next campaign.</p>
+          <p class="why"><b>Why it matters:</b> This chain — cloud breach → data harvesting → identity impersonation → second breach — shows why breach scope can't be assessed solely by what an attacker accessed. What they downloaded becomes the blueprint for follow-on targeting. Recommend clients with high-value cloud drives apply strict least-privilege access to bulk export, and treat out-of-the-blue messages from "colleagues" on encrypted channels with the same skepticism as cold email.</p>
           <div class="srcs"><span class="lbl">Reported by</span>
-            <a href="https://www.bleepingcomputer.com/news/cryptocurrency/trezor-confirms-crypto-stealing-implants-in-three-wallets-releases-fix/" target="_blank" rel="noopener">BleepingComputer</a>
-            <a href="https://thehackernews.com/2026/11/trezor-confirms-hidden-hardware.html" target="_blank" rel="noopener">The Hacker News</a>
-            <details class="arts"><summary><span class="count">2 sources, 2 articles</span></summary>
+            <a href="https://therecord.media/russia-cyber-espionage-google" target="_blank" rel="noopener">The Record</a>
+            <a href="https://thehackernews.com/2026/11/russian-cold-relic-hackers-use-stolen.html" target="_blank" rel="noopener">The Hacker News</a>
+            <details class="arts"><summary><span class="count">2 sources · 2 articles</span></summary>
             <ol>
-              <li><a href="https://www.bleepingcomputer.com/news/cryptocurrency/trezor-confirms-crypto-stealing-implants-in-three-wallets-releases-fix/" target="_blank" rel="noopener">Trezor confirms crypto-stealing implants in three wallets, releases fix</a><span class="o">BleepingComputer · Nov 14</span></li>
-              <li><a href="https://thehackernews.com/2026/11/trezor-confirms-hidden-hardware.html" target="_blank" rel="noopener">Trezor confirms hidden implants in CryptoBilis-sold wallets that can steal recovery phrases</a><span class="o">The Hacker News · Nov 14</span></li>
+              <li><a href="https://therecord.media/russia-cyber-espionage-google" target="_blank" rel="noopener">Russian cyber-espionage group used stolen cloud data to breach second U.S. organization, Google says</a><span class="o">The Record · Nov 18</span></li>
+              <li><a href="https://thehackernews.com/2026/11/russian-cold-relic-hackers-use-stolen.html" target="_blank" rel="noopener">Russian COLD RELIC Hackers Use Stolen Google Workspace Data to Breach Second U.S. Organization</a><span class="o">The Hacker News · Nov 18</span></li>
             </ol></details>
           </div>
         </article>
 
         <article class="card story" data-cat="cyber">
-          <div class="tags"><span class="sev high">High</span><span class="tag">Web skimmer · PCI</span></div>
-          <h4>Fandango discloses a four-day payment card skimmer on its checkout page; breach ran October 8–11</h4>
-          <p class="sum">BleepingComputer reports that Fandango notified customers of a web-skimmer attack that exposed payment card numbers, CVV codes, expiry dates, billing ZIP codes, and email addresses for anyone who purchased tickets through the site between October 8 and 11, 2026. The company discovered the malicious code on October 30. Names, government IDs, and Social Security Numbers were not in scope. Fandango is offering two years of complimentary credit monitoring, with an enrollment deadline of February 13, 2027.</p>
-          <p class="sum extra">No threat actor has claimed responsibility and Fandango has not disclosed how the skimmer code was injected. The 19-day gap between the exposure window ending and discovery is typical for Magecart-style attacks, which often go undetected until a card issuer notices patterns. Card data from a 72-hour window can still drive substantial fraud if CVV codes are intact.</p>
-          <p class="why"><b>Why it matters:</b> Skimmer attacks on e-commerce checkout pages remain one of the most reliable card-theft methods because they intercept data before it is encrypted. PCI DSS 4.0.1 requires script integrity monitoring and behavioral controls for payment-page JavaScript — if any client operates a checkout, verify those controls are in place before year-end.</p>
+          <div class="tags"><span class="sev crit">Critical</span><span class="tag">MSP · N-central · 0-day chain</span></div>
+          <h4>N-able patches 17 N-central zero-days and kills legacy APIs after 4EverAble2Shell exploit chain lands crypto miners on MSP management servers</h4>
+          <p class="sum">SecurityWeek reports that N-able released N-central 2026.4 Hotfix 3 patching 17 zero-days (CVE-2026-129271 through CVE-2026-129287) covering privilege escalation, missing authentication, command execution, RCE, XXE injection, SSRF, audit log tampering, and user enumeration. The most dangerous is the 4EverAble2Shell chain, which combines a legacy API flaw with CVE-2026-90436 (an Apache Axis RCE) to run commands with root privileges — threat actors deployed cryptocurrency miners using proof-of-concept code within hours of its November 12 disclosure. N-able permanently removed the legacy APIs in this update, eliminating the 4EverAble2Shell vector entirely. All on-premises deployments and their agents and probes must be upgraded for complete coverage.</p>
+          <p class="why"><b>Why it matters:</b> N-central is the management plane for MSPs overseeing hundreds or thousands of endpoints. A compromised N-central server gives attackers authenticated access to every managed client. This is a same-day patch with no waiting for a maintenance window — treat it like a zero-day on a firewall.</p>
           <div class="srcs"><span class="lbl">Reported by</span>
-            <a href="https://www.bleepingcomputer.com/news/security/fandango-says-hackers-stole-payment-card-details-from-checkout-pages/" target="_blank" rel="noopener">BleepingComputer</a>
-            <span class="count">1 source, 1 article</span>
-          </div>
-        </article>
-
-        <article class="card story" data-cat="cyber">
-          <div class="tags"><span class="sev med">Medium</span><span class="tag">Confidential computing · AMD</span></div>
-          <h4>Mior and Skyfall attacks break AMD SEV-SNP VM isolation; full platform patches not until December–April</h4>
-          <p class="sum">The Hacker News reports two new academic attacks against AMD's SEV-SNP confidential computing on EPYC server processors. Mior (CVE-2026-0462, CVSS 5.9) exploits the Platform Security Processor startup sequence to leave the Reverse Map Table uninitialized, allowing a malicious hypervisor to read and write a confidential VM's memory and forge attestation reports. Skyfall (CVE-2026-40671, CVSS 4.9) uses instruction-timing side channels to recover disk-encryption keys through cached VM state left over from failed starts.</p>
-          <p class="sum extra">Both affect EPYC 7003, 8004, 8005, 9004, and 9005 families. AMD released SEV firmware and microcode updates in August; platform firmware fixes are due in December (Skyfall) and by January 2027 (Mior), with embedded-chip patches extending to April 2027. Both attacks require the attacker to control the hypervisor and BIOS, which describes a compromised cloud host rather than a typical enterprise threat. Cloud providers including AWS, Azure, and Google Cloud received private notification in August.</p>
-          <p class="why"><b>Why it matters:</b> Confidential computing is increasingly used to protect sensitive workloads in shared cloud environments. If clients rely on AMD SEV-SNP as a security boundary, verify their cloud provider has applied the August firmware and microcode, and check timelines for the platform-level patches. The threat model requires a compromised hypervisor — assess whether that scenario is in scope for sensitive workloads.</p>
-          <div class="srcs"><span class="lbl">Reported by</span>
-            <a href="https://thehackernews.com/2026/11/new-mior-and-skyfall-attacks-let-rogue.html" target="_blank" rel="noopener">The Hacker News</a>
-            <span class="count">1 source, 1 article</span>
+            <a href="https://www.securityweek.com/n-able-kills-legacy-apis-patches-17-n-central-zero-days/" target="_blank" rel="noopener">SecurityWeek</a>
+            <span class="count">1 source · 1 article</span>
           </div>
         </article>
 
@@ -328,32 +329,27 @@
       <div class="cards">
 
         <article class="card story" data-cat="mkt">
-          <div class="tags"><span class="sev high">Market-moving</span><span class="tag">Equities · Risk-off</span></div>
-          <h4>Monday selloff deepens Friday's losses; tech leads down, VIX climbs above 20 as yields hold at 5.14%</h4>
-          <p class="sum">Yahoo Finance's intraday data as of approximately 11:47 AM ET Monday shows the S&amp;P 500 down 1.17% at 7,473, the Nasdaq Composite down 1.57% at 24,741, and the Dow down 0.69% at 51,988. VIX has spiked 8% to 20.85, crossing the threshold often associated with elevated market stress. The 10-year Treasury yield is at 5.14%, holding near its recent highs. Oil is off sharply: WTI at $86.59 (−2.22%) and Brent at $93.43 (−2.51%). Gold at $3,860 (−0.68%).</p>
-          <p class="sum extra">These are intraday figures and the final close will differ. The move extends the tech slide that began Friday, with software and AI-infrastructure names among the hardest hit. The VIX reading above 20 indicates options markets are pricing meaningful near-term uncertainty, which typically widens bid-ask spreads and increases the cost of hedging. No single macro catalyst was identified in the data sourced for this edition; the decline follows elevated producer and consumer price readings reported in the previous edition.</p>
-          <div class="tickers"><span class="tk">SPX <span class="down">▼1.17%</span></span><span class="tk">COMP <span class="down">▼1.57%</span></span><span class="tk">DJIA <span class="down">▼0.69%</span></span><span class="tk">VIX <span class="up">▲8.0%</span></span></div>
-          <p class="why"><b>Why it matters:</b> A sustained VIX above 20 and rising yields put pressure on private security-vendor valuations and the pace of new funding rounds. The startup radar this edition found no new closes in the coverage window, which may partly reflect the market environment.</p>
+          <div class="tags"><span class="sev high">Market data</span><span class="tag">Equities · Commodities · Risk</span></div>
+          <h4>Equities mixed on Wednesday; VIX holds near 25 as oil and gold sell off sharply</h4>
+          <p class="sum">Yahoo Finance's Tuesday close data shows the S&amp;P 500 at 7,319.93 (−0.28%), Nasdaq eking out a gain at 24,360.18 (+0.13%), and the Dow off 0.93% at 50,285.19. The VIX settled at 25.59 — a level historically associated with stress — up 0.51% from Monday's already-elevated close. The 10-year Treasury yield eased slightly to 5.06%. The bigger moves were in commodities: WTI crude fell 3.89% to $81.36 and gold dropped 2.94% to $3,750.70, suggesting broad risk reduction rather than a sector-specific catalyst.</p>
+          <p class="sum extra">With the VIX near 25 for a third consecutive session and yields holding above 5%, private security-vendor valuations remain under pressure. The divergence between Nasdaq (slight gain) and Dow (heavy loss) suggests investors are selectively rotating rather than broadly de-risking; enterprise software and AI infrastructure names were mixed on the day.</p>
+          <div class="tickers"><span class="tk">SPX <span class="down">▼0.28%</span></span><span class="tk">COMP <span class="up">▲0.13%</span></span><span class="tk">DJIA <span class="down">▼0.93%</span></span><span class="tk">VIX 25.59</span><span class="tk">WTI <span class="down">▼3.89%</span></span></div>
+          <p class="why"><b>Why it matters:</b> Sustained VIX above 20 and a 5%+ 10-year yield remain headwinds for late-stage cybersecurity funding rounds and M&amp;A multiples. Despite that, the startup radar this edition found two new closes totaling $130M — Corma's Series A in particular was done at a unicorn valuation, suggesting top-tier AI security names can still command premium terms.</p>
           <div class="srcs"><span class="lbl">Reported by</span>
             <a href="https://finance.yahoo.com/markets/" target="_blank" rel="noopener">Yahoo Finance</a>
-            <span class="count">1 source, 1 article</span>
+            <span class="count">1 source · 1 article</span>
           </div>
         </article>
 
         <article class="card story" data-cat="mkt">
-          <div class="tags"><span class="sev info">Post-incident</span><span class="tag">Cloud reliability · Microsoft</span></div>
-          <h4>Microsoft traces the November 12–13 365 outage to a July bug that lay dormant for four months before cascading through 80% of gateway servers</h4>
-          <p class="sum">BleepingComputer and TechCrunch report that Microsoft's post-incident review found a networking gateway defect introduced in a July update that "overwhelmed servers under certain traffic conditions." The bug went undetected because test-lab hardware had fewer CPU cores than production servers; the problem worsens with more cores and newer hardware. It activated November 12 when Teams automatically rerouted traffic to Exchange Online, increasing load on a system already running at 86% capacity due to an unrelated partial outage — causing more than 80% of gateway servers to become unresponsive within under two hours. Attempts to redirect traffic to other regions cascaded the failure. Services took nearly 24 hours to fully restore.</p>
-          <p class="sum extra">Microsoft subsequently added a phishing-awareness note: attackers quickly launched campaigns using fake Microsoft 365 service-status notices that referenced the real outage to harvest credentials. The company has committed to increased capacity, enhanced monitoring, and new safeguards against cascading redirects.</p>
-          <p class="why"><b>Why it matters:</b> This outage illustrates two risks at once — a hidden defect that testing missed because lab hardware differed from production, and attackers exploiting the disruption for phishing. Clients who lack out-of-band communication plans for email outages are doubly exposed: unable to reach each other and facing credential-phishing emails that look entirely plausible.</p>
+          <div class="tags"><span class="sev med">Breach</span><span class="tag">Business · Market research</span></div>
+          <h4>Ipsos, the world's third-largest market research firm, is investigating a breach of an internal system; client and project data may be at risk</h4>
+          <p class="sum">SecurityWeek reports that Ipsos went public with a breach of an unspecified internal information system on November 16, five days after filing a complaint with authorities. The company said it could not yet determine whether information relating to clients, projects, or business partners was affected, but committed to notifying any parties whose data was confirmed in scope. Ipsos stated the incident had no impact on operations or service delivery. No threat actor has claimed responsibility.</p>
+          <p class="sum extra">Ipsos conducts surveys and market research for major corporations, governments, and political campaigns worldwide. The sensitivity of its data — which can include confidential product plans, employee sentiment surveys, and proprietary consumer data for clients — makes it a target of distinct value to both financially and espionage-motivated actors. The scope of the breach remains under investigation.</p>
+          <p class="why"><b>Why it matters:</b> Market research firms sit outside most vendor security programs because they are perceived as low-technical-risk suppliers. This case is a reminder that any firm handling confidential client data — survey instruments, internal questionnaires, strategic studies — deserves the same scrutiny as a software vendor with network access.</p>
           <div class="srcs"><span class="lbl">Reported by</span>
-            <a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-says-months-old-bug-caused-global-microsoft-365-outage/" target="_blank" rel="noopener">BleepingComputer</a>
-            <a href="https://techcrunch.com/2026/11/13/microsoft-latest-email-outage-turned-into-a-full-blown-global-cloud-crisis/" target="_blank" rel="noopener">TechCrunch</a>
-            <details class="arts"><summary><span class="count">2 sources, 2 articles</span></summary>
-            <ol>
-              <li><a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-says-months-old-bug-caused-global-microsoft-365-outage/" target="_blank" rel="noopener">Microsoft says months-old bug caused global Microsoft 365 outage</a><span class="o">BleepingComputer · Nov 16</span></li>
-              <li><a href="https://techcrunch.com/2026/11/13/microsoft-latest-email-outage-turned-into-a-full-blown-global-cloud-crisis/" target="_blank" rel="noopener">Microsoft's latest email outage turned into a full-blown global cloud crisis</a><span class="o">TechCrunch · Nov 13</span></li>
-            </ol></details>
+            <a href="https://www.securityweek.com/market-research-giant-ipsos-investigating-breach-of-internal-system/" target="_blank" rel="noopener">SecurityWeek</a>
+            <span class="count">1 source · 1 article</span>
           </div>
         </article>
 
@@ -362,40 +358,37 @@
       <!-- QUICK HITS -->
       <div class="sechead story-sec" data-sec="hits"><h3>Quick Hits</h3><span>One-liners worth knowing</span></div>
       <ul class="hits">
-        <li class="story" data-cat="cyber"><span class="k">Cyber</span><a href="https://thehackernews.com/2026/11/postgresql-patches-52-flaws-including.html" target="_blank" rel="noopener">PostgreSQL patches 52 flaws including a 22-year-old type-confusion bug (CVE-2026-6460, CVSS 8.8) enabling authenticated RCE; no exploitation reported yet</a><span class="s">The Hacker News</span></li>
-        <li class="story" data-cat="cyber"><span class="k">Cyber</span><a href="https://www.securityweek.com/recent-unrealircd-vulnerability-exploited-in-attacks/" target="_blank" rel="noopener">CISA adds UnrealIRCd CVE-2026-114713 (command injection, CVSS 8.6) to KEV; active exploitation confirmed on networked IRC servers</a><span class="s">SecurityWeek</span></li>
-        <li class="story" data-cat="cyber"><span class="k">Cyber</span><a href="https://www.bleepingcomputer.com/news/security/german-military-drone-operations-disrupted-by-cyberattack/" target="_blank" rel="noopener">German Bundeswehr grounds Quantum Systems drones after supply-chain attack via malicious update on QBase ground-control software; MAD and BSI investigating</a><span class="s">BleepingComputer</span></li>
-        <li class="story" data-cat="cyber"><span class="k">Cyber</span><a href="https://therecord.media/russia-europe-sanctions-doppelganger" target="_blank" rel="noopener">EU sanctions 31 entities including NoName057(16) hacktivists and 24 staff of the Kremlin-linked Social Design Agency behind the Doppelgänger disinformation network</a><span class="s">The Record</span></li>
-        <li class="story" data-cat="cyber"><span class="k">Cyber</span><a href="https://www.bleepingcomputer.com/news/security/australian-retail-giant-coles-investigates-cybersecurity-incident/" target="_blank" rel="noopener">Coles Group (Australia) investigating a cybersecurity incident that disrupted some Liquorland click-and-collect services; no data breach confirmed</a><span class="s">BleepingComputer</span></li>
-        <li class="story" data-cat="cyber"><span class="k">Cyber</span><a href="https://isc.sans.edu/diary/rss/33522" target="_blank" rel="noopener">SANS ISC: active scans targeting chained LiteLLM/Starlette flaws (CVE-2026-42271, CVE-2026-48710) ongoing since July; also new Macfinger ClickFix campaign dropping macOS infostealer</a><span class="s">SANS ISC</span></li>
+        <li class="story" data-cat="cyber"><span class="k">Cyber</span><a href="https://www.securityweek.com/classified-communications-network-at-the-national-security-agency-goes-down-defense-official-says/" target="_blank" rel="noopener">NSANet, the agency's classified internal network, went offline November 17; NSA attributed it to routine maintenance and said mission-critical capabilities remained operational — officials found no evidence of a cyberattack, attributing concurrent sector-wide disruptions to synchronized patching</a><span class="s">SecurityWeek</span></li>
+        <li class="story" data-cat="cyber"><span class="k">Cyber</span><a href="https://thehackernews.com/2026/11/eggstreme-hackers-rebuild-malware-with.html" target="_blank" rel="noopener">EggStreme malware has been substantially rebuilt with new evasion features and is appearing in attacks targeting government organizations; attribution remains under analysis</a><span class="s">The Hacker News</span></li>
+        <li class="story" data-cat="cyber"><span class="k">Cyber</span><a href="https://thehackernews.com/2026/11/trigram-campaign-impersonates-about-50.html" target="_blank" rel="noopener">Trigram campaign impersonates roughly 50 AI and blockchain brands via typosquatted domains to deliver infostealer payloads to developers; targets appear chosen by GitHub activity</a><span class="s">The Hacker News</span></li>
+        <li class="story" data-cat="cyber"><span class="k">Cyber</span><a href="https://www.securityweek.com/access-dental-management-data-breach-impacts-over-340000/" target="_blank" rel="noopener">Access Dental Management breach impacts more than 340,000 individuals; notice filed with the HHS Office for Civil Rights</a><span class="s">SecurityWeek</span></li>
+        <li class="story" data-cat="cyber"><span class="k">Cyber</span><a href="https://therecord.media/british-hacker-gets-six-year-sentence-scattered-spider" target="_blank" rel="noopener">A British member of the Scattered Spider crew received a six-year prison sentence for his role in the $11.6M cryptocurrency theft scheme; first custodial sentence handed to a Scattered Spider affiliate</a><span class="s">The Record</span></li>
+        <li class="story" data-cat="cyber"><span class="k">Cyber</span><a href="https://www.securityweek.com/chrome-158-patches-204-vulnerabilities/" target="_blank" rel="noopener">Chrome 158 patches 204 vulnerabilities — six rated critical (use-after-free in WebView, GarbageCollection, and WebAudio; out-of-bounds write in GPU and ANGLE; buffer overflow in Media) — none reported exploited in the wild; update to 158.0.8127.36/37</a><span class="s">SecurityWeek</span></li>
       </ul>
     </main>
 
     <!-- SIDEBAR -->
     <aside>
       <div class="panel">
-        <h5><span>Source Health</span><span>8 of 19 scanned</span></h5>
+        <h5><span>Source Health</span><span>scanned 11</span></h5>
         <table>
-          <tr><td><span class="dot ok"></span>BleepingComputer</td><td class="num">OK</td></tr>
           <tr><td><span class="dot ok"></span>The Hacker News</td><td class="num">OK</td></tr>
-          <tr><td><span class="dot ok"></span>SecurityWeek</td><td class="num">partial</td></tr>
-          <tr><td><span class="dot ok"></span>The Record</td><td class="num">partial</td></tr>
-          <tr><td><span class="dot ok"></span>TechCrunch</td><td class="num">OK</td></tr>
-          <tr><td><span class="dot ok"></span>SANS ISC (RSS)</td><td class="num">OK</td></tr>
+          <tr><td><span class="dot ok"></span>SecurityWeek</td><td class="num">OK</td></tr>
+          <tr><td><span class="dot ok"></span>The Record</td><td class="num">OK</td></tr>
+          <tr><td><span class="dot ok"></span>SANS ISC (RSS)</td><td class="num">OK · 2 entries</td></tr>
+          <tr><td><span class="dot ok"></span>SecureWorld (RSS)</td><td class="num">OK · 3 entries</td></tr>
           <tr><td><span class="dot ok"></span>CISA advisories</td><td class="num">OK</td></tr>
-          <tr><td><span class="dot ok"></span>Yahoo Finance</td><td class="num">intraday only</td></tr>
+          <tr><td><span class="dot ok"></span>Yahoo Finance</td><td class="num">prior close</td></tr>
+          <tr><td><span class="dot warn"></span>BleepingComputer</td><td class="num">403 blocked</td></tr>
           <tr><td><span class="dot warn"></span>Dark Reading</td><td class="num">403 blocked</td></tr>
-          <tr><td><span class="dot warn"></span>Krebs on Security</td><td class="num">no new posts in window</td></tr>
-          <tr><td><span class="dot warn"></span>Troy Hunt, Schneier</td><td class="num">no new posts in window</td></tr>
-          <tr><td><span class="dot warn"></span>SecureWorld (RSS)</td><td class="num">OK – 1 item in window</td></tr>
-          <tr><td><span class="dot warn"></span>Reuters, AP, CNBC, MarketWatch</td><td class="num">not scanned</td></tr>
-          <tr><td><span class="dot warn"></span>WSJ / Bloomberg</td><td class="num">not scanned (paywall)</td></tr>
+          <tr><td><span class="dot warn"></span>Krebs / Troy Hunt / Schneier</td><td class="num">not scanned</td></tr>
+          <tr><td><span class="dot warn"></span>Reuters / AP / CNBC / MarketWatch</td><td class="num">not scanned</td></tr>
+          <tr><td><span class="dot warn"></span>WSJ / Bloomberg</td><td class="num">paywall · not scanned</td></tr>
           <tr><td><span class="dot warn"></span>SEC EDGAR</td><td class="num">not scanned</td></tr>
-          <tr><td><span class="dot warn"></span>Crunchbase News</td><td class="num">404 / timeout</td></tr>
-          <tr><td><span class="dot warn"></span>SecurityWeek funding category</td><td class="num">403 blocked</td></tr>
-          <tr><td><span class="dot warn"></span>PE Hub, Renaissance Capital</td><td class="num">not scanned</td></tr>
+          <tr><td><span class="dot warn"></span>Crunchbase / TechCrunch funding</td><td class="num">not scanned</td></tr>
+          <tr><td><span class="dot warn"></span>PE Hub / Renaissance Capital</td><td class="num">not scanned</td></tr>
         </table>
-        <div class="note">SecurityWeek's category pages returned 403; main news page was accessible. The Record homepage showed headlines only. Market tape shows Monday intraday data fetched from Yahoo Finance; no Friday closing prices were rechecked for this edition. Startup radar sources were largely inaccessible this run.</div>
+        <div class="note">BleepingComputer and Dark Reading continue to return 403. Market tape reflects Tuesday Nov 17 close from Yahoo Finance; Wednesday intraday data not yet available at 6 AM PT. SANS ISC Nov 16 LiteLLM and Macfinger entries were covered in Edition #002 and are not repeated.</div>
       </div>
     </aside>
   </div>
@@ -403,30 +396,41 @@
   <section class="radar" id="radar" aria-label="Cybersecurity startup radar">
     <div class="sechead"><h3>Startup radar</h3><span>Funding rounds, IPOs and private-equity deals · last 7 days</span></div>
     <div class="rstats">
-      <div class="rstat"><div class="v">0</div><div class="l">New events this window</div></div>
-      <div class="rstat"><div class="v">$0</div><div class="l">Raised in rounds</div></div>
-      <div class="rstat"><div class="v">none found</div><div class="l">IPO and PE deals</div></div>
-      <div class="rstat"><div class="v">n/a</div><div class="l">AI-focused share</div></div>
+      <div class="rstat"><div class="v">2</div><div class="l">Events tracked</div></div>
+      <div class="rstat"><div class="v">$130M</div><div class="l">Raised in rounds</div></div>
+      <div class="rstat"><div class="v">none</div><div class="l">IPO and PE deals</div></div>
+      <div class="rstat"><div class="v">2 of 2</div><div class="l">AI-focused</div></div>
     </div>
-    <p class="rtrend"><b>This edition:</b> No new cybersecurity funding rounds were found for the November 14–16 window. Crunchbase News returned a 404, SecurityWeek's funding category returned 403, and TechCrunch's tag page showed no security closes in this period. The Monday market selloff and elevated VIX may be contributing to quieter deal flow. Last edition's rounds — Daylight ($80M Series B, Nov 12) and WhiteMatter ($20M Series A, Nov 10) — remain the most recent confirmed closes. This section will be updated when sources are reachable on the next run.</p>
+    <p class="rtrend"><b>This edition:</b> Two closes confirmed, both on November 17 and both aimed at AI security. Corma's $125M Series A at a $1B valuation — from NEA, Sequoia, Khosla, and Coatue — is the standout: it shows top-tier crossover investors still willing to pay unicorn prices for AI-native defensive cybersecurity despite the elevated VIX and 5%+ 10-year yield. Pretxt's $5M seed is early-stage AI-agent supervision, a category that is attracting more attention as agentic AI enters production environments. No IPOs or PE buyouts were confirmed in the coverage window; Crunchbase News and TechCrunch funding pages were not scanned this run.</p>
     <div class="controls" role="toolbar" aria-label="Filter startup events" style="border-bottom:0;padding-top:0">
-      <button class="fbtn rf" data-r="all" aria-pressed="true">All<span class="n">0</span></button>
-      <button class="fbtn rf" data-r="seed" aria-pressed="false">Seed<span class="n">0</span></button>
-      <button class="fbtn rf" data-r="a" aria-pressed="false">Series A<span class="n">0</span></button>
+      <button class="fbtn rf" data-r="all" aria-pressed="true">All<span class="n">2</span></button>
+      <button class="fbtn rf" data-r="seed" aria-pressed="false">Seed<span class="n">1</span></button>
+      <button class="fbtn rf" data-r="a" aria-pressed="false">Series A<span class="n">1</span></button>
       <button class="fbtn rf" data-r="b" aria-pressed="false">Series B<span class="n">0</span></button>
       <button class="fbtn rf" data-r="c" aria-pressed="false">Series C+<span class="n">0</span></button>
       <button class="fbtn rf" data-r="ipo" aria-pressed="false">IPO<span class="n">0</span></button>
       <button class="fbtn rf" data-r="pe" aria-pressed="false">PE buyout<span class="n">0</span></button>
     </div>
     <div class="rlist">
-      <div class="ritem" style="grid-template-columns:1fr;padding:18px 16px">
-        <p style="color:var(--muted);font-size:13.5px;margin:0">No confirmed funding rounds, IPOs, or PE buyouts were found in the Nov 14–16 window. Startup funding sources (Crunchbase, SecurityWeek funding category) were unavailable this run. Check the next edition for a full radar update.</p>
+      <div class="ritem" data-sf="a">
+        <div><span class="st a">Series A</span><span class="dt">Nov 17</span></div>
+        <div><h5>Corma</h5><p>Trains frontier foundation models for defensive cybersecurity; AI agents that audit security data and correlate signals across environments. Founded 2025, offices in Tel Aviv and San Francisco.</p></div>
+        <div class="amt">$125M<small>$1B valuation · $185M total raised</small></div>
+        <div class="inv">Lead: <b>NEA</b> · Sequoia Capital · Khosla Ventures · Coatue</div>
+        <div class="rs"><a href="https://www.securityweek.com/corma-receives-125-million-to-train-foundation-models-for-defensive-cybersecurity/" target="_blank" rel="noopener">SecurityWeek</a></div>
+      </div>
+      <div class="ritem" data-sf="seed">
+        <div><span class="st seed">Seed</span><span class="dt">Nov 17</span></div>
+        <div><h5>Pretxt</h5><p>AI supervision platform that monitors autonomous AI agents at runtime and steers them back on course when behavior deviates from policy, without shutting them down. Offices in Aspen, CO and Dublin, Ireland.</p></div>
+        <div class="amt">$5M<small>seed</small></div>
+        <div class="inv">Lead: <b>Deciens Capital</b> · Howdy Partners · Service Provider Capital</div>
+        <div class="rs"><a href="https://www.securityweek.com/pretxt-emerges-stealth-with-5m-seed-and-an-ai-supervision-tool/" target="_blank" rel="noopener">SecurityWeek</a></div>
       </div>
     </div>
   </section>
 
   <footer>
-    The Asena Brief · curated for Asena Security · Edition #002, Monday November 16, 2026 · Coverage window: Friday Nov 14 morning through Monday Nov 16 morning. Stories reported by more than one outlet are merged into one entry with every source listed. Market data is Monday intraday from Yahoo Finance; no Friday closing prices were re-fetched. Startup radar sources were largely unreachable this run (Crunchbase 404, SecurityWeek funding category 403); no new rounds were confirmed. The SecureWorld RSS item on AI-agent network reachability was noted but held for a future edition as it was analysis rather than news. <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a>
+    The Asena Brief · curated for Asena Security · Edition #003, Wednesday November 18, 2026 · Coverage window: Monday Nov 16 morning through Wednesday Nov 18 morning. Stories reported by more than one outlet are merged into one entry with every source listed. Market tape reflects Tuesday Nov 17 close from Yahoo Finance; Wednesday market data not available at publication time (6 AM PT). BleepingComputer and Dark Reading returned 403 this run; stories broken exclusively there may be missed. Startup radar sources Crunchbase News and TechCrunch funding pages were not scanned; additional rounds may exist. <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a>
   </footer>
 </div>
 
@@ -450,7 +454,7 @@
   });
 
   /* ---- collapse / read state, saved per edition ---- */
-  const EDITION = '2026-11-16';
+  const EDITION = '2026-11-18';
   const KEY = 'asenaRead:' + EDITION;
   const hash = t => { let h=0; for (const c of t) h=(h*31 + c.charCodeAt(0))|0; return 'h'+(h>>>0).toString(36); };
   let read = new Set();
