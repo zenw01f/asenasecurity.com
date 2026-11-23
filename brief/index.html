@@ -179,14 +179,12 @@
 
 <!-- MARKET TAPE -->
 <div class="tape"><div class="wrap">
-  <span><b>S&amp;P 500</b>7,175.83 <span class="down">▼2.02%</span></span>
-  <span><b>NASDAQ</b>23,879.20 <span class="down">▼2.25%</span></span>
-  <span><b>DOW</b>49,097.06 <span class="down">▼2.19%</span></span>
-  <span><b>VIX</b>30.49 <span class="up">▲7.21%</span></span>
-  <span><b>US10Y</b>5.05%</span>
-  <span><b>WTI</b>82.23 <span class="down">▼0.25%</span></span>
-  <span><b>GOLD</b>3,575.30 <span class="down">▼2.99%</span></span>
-  <span class="stamp">Thu Nov 19 close · via Yahoo Finance</span>
+  <span><b>S&amp;P 500</b>7,098.75 <span class="up">▲2.36%</span></span>
+  <span><b>NASDAQ</b>25,934.25 <span class="up">▲3.21%</span></span>
+  <span><b>DOW</b>48,998.00 <span class="up">▲1.62%</span></span>
+  <span><b>VIX</b>31.32 <span class="down">▼12.73%</span></span>
+  <span><b>US10Y</b>4.9220% <span class="up">▲1bp</span></span>
+  <span class="stamp">Mon Nov 24 pre-market futures · ~06:00 PT · via Yahoo Finance</span>
 </div></div>
 
 <div class="wrap">
@@ -196,17 +194,17 @@
     <h1 class="title">The Asena Brief</h1>
     <div class="kicker">Cyber &nbsp;·&nbsp; Markets &nbsp;·&nbsp; Where they collide</div>
     <div class="mastmeta">
-      <span><strong>Friday, November 20, 2026</strong> · Edition #004</span>
-      <span><strong>23</strong> articles from <strong>7</strong> sources, merged into <strong>14</strong> stories</span>
-      <span>Coverage: Wed Nov 18 – Fri Nov 20 · Next: Mon Nov 23</span>
+      <span><strong>Monday, November 24, 2026</strong> · Edition #005</span>
+      <span><strong>24</strong> articles from <strong>10</strong> sources, merged into <strong>14</strong> stories</span>
+      <span>Coverage: Fri Nov 20 – Mon Nov 24 · Next: Wed Nov 26</span>
     </div>
   </header>
 
   <!-- CONTROLS -->
   <div class="controls" role="toolbar" aria-label="Filter stories">
     <button class="fbtn" data-f="all" aria-pressed="true">All<span class="n">14</span></button>
-    <button class="fbtn" data-f="cyber" aria-pressed="false">Cyber<span class="n">12</span></button>
-    <button class="fbtn" data-f="mkt" aria-pressed="false">Markets<span class="n">2</span></button>
+    <button class="fbtn" data-f="cyber" aria-pressed="false">Cyber<span class="n">11</span></button>
+    <button class="fbtn" data-f="mkt" aria-pressed="false">Markets<span class="n">3</span></button>
     <span class="spacer"></span>
     <span class="readcount" id="readcount">0 read</span>
     <button class="fbtn" id="hideread" aria-pressed="false">Hide read</button>
@@ -219,24 +217,30 @@
     <main>
 
       <!-- LEAD STORY -->
-      <article class="lead story" data-cat="cyber">
-        <div class="tags"><span class="sev xb">Lead story</span><span class="sev crit">Critical</span><span class="tag">Zero-Day · VMware · Chinese APT · vCenter</span></div>
-        <h2>China-linked Armory Castle exploited VMware vCenter as a zero-day for months before Broadcom knew; CVSS-9.8 auth bypass creates full admin session on every vSphere version</h2>
-        <p class="dek">An unauthenticated flaw in VMware Directory Service let hackers silently become vsphere.local administrators, then steal SAML signing keys, forge tokens, and exfiltrate VM disk contents — Broadcom released patches on November 19 after Google disclosed an intrusion from September.</p>
+      <article class="lead story" data-cat="mkt">
+        <div class="tags"><span class="sev xb">Lead story</span><span class="sev high">Market-Moving</span><span class="tag">Acquisition · Cyber × Markets · Platform consolidation</span></div>
+        <h2>CrowdStrike to acquire Zscaler for $43.9 billion in the largest merger in cybersecurity history, uniting endpoint detection with zero-trust network access</h2>
+        <p class="dek">The all-stock deal at a 34% premium would create a combined platform with more than $10 billion in annual recurring revenue and reshape competition with Palo Alto Networks across endpoint, cloud, and network security.</p>
         <div class="body">
-          <p>CVE-2026-123890 (CVSS 9.8) is an unauthenticated session-disclosure bug in VMware Directory Service's implementation of the Secure Remote Password (SRP-6a) protocol over DCE/RPC. By manipulating the SRP handshake an attacker on the network — no credentials required — can recover the session key and open an authenticated session as administrator@vsphere.local, the highest-privilege built-in account in a vSphere environment. All major vCenter versions are affected: 7.0 (now out of general support), 8.0, Cloud Foundation 5.2.x, and vSphere Foundation 9.0.x and 9.1.x. Broadcom released patches November 19 — vCenter 8.0 U3m, Cloud Foundation 5.2.5, vSphere Foundation 9.0.2.0200 and 9.1.1.0200 — but vCenter 7.0 customers must hold an active extended-support contract to receive a fix.</p>
-          <p>The exploiting group, Armory Castle (also tracked as UNC5221 and Warp Panda, assessed by Google as Chinese espionage), was already inside a target environment via a separate BeyondTrust zero-day (CVE-2026-102764) when it pivoted to vCenter in early September 2026 using a custom Golang exploitation utility named BONESAW. After gaining administrator@vsphere.local access the attackers moved with unusual thoroughness: they exfiltrated the LMDB configuration database, hijacked the SAML Security Token Service, stole the STS signing certificate, created new SSO administrator accounts, forged SAML tokens to impersonate users across connected systems, mounted VMFS volumes to access VM disk images directly, and obtained the vCenter master encryption key and database credentials. Five malware families — SLIMSAVAGE, CAGEMATCH, SAWSNAKE, BEARBONES, and LAZYBONES — were deployed for persistence and continued exfiltration. Google's Threat Intelligence Group published the full analysis on November 19, coinciding with Broadcom's patch release.</p>
-          <p>The two-and-a-half-month gap between exploitation and disclosure means organizations should approach this as a potential active-compromise scenario rather than a standard patching exercise. CISA had not yet added CVE-2026-123890 to the Known Exploited Vulnerabilities catalog as of publication, but active exploitation is confirmed. After patching, administrators should audit vsphere.local for unexpected administrator accounts, review SAML token issuance logs for anomalous user impersonation, and inspect every ESXi host's SSH authorized_keys files for unauthorized additions. The SAML signing-key theft capability is particularly dangerous because forged tokens can reach Azure Active Directory, any identity provider accepting SAML assertions, and downstream SaaS applications — the blast radius extends well beyond the vCenter console.</p>
+          <p>CrowdStrike and Zscaler announced Sunday that CrowdStrike will acquire Zscaler in an all-stock transaction valued at approximately $43.9 billion. Under the terms unanimously approved by both boards, Zscaler shareholders receive 1.135 CrowdStrike shares per Zscaler share — a price of $260.41, representing a 34% premium over Friday's closing price. CrowdStrike shareholders will own about 84% of the combined company. Zscaler founder and CEO Jay Chaudhry will continue leading the Zscaler business unit and join CrowdStrike's board after the transaction closes. The deal is expected to close in the second half of CrowdStrike's fiscal year 2028, subject to regulatory and shareholder approvals.</p>
+          <p>The strategic case rests on the complementary nature of the two platforms: CrowdStrike dominates endpoint detection and response while Zscaler pioneered zero-trust network access and secure service-edge architectures. The companies already share more than 2,000 customers and have 16 existing product integrations. CrowdStrike said it expects the combined company to reach more than $10 billion in ARR at closing, with roughly $1 billion in additional annualized revenue within 30 months through cross-selling to each other's customer bases. The deal is widely seen as a direct response to Palo Alto Networks, which has been offering customers steep discounts to consolidate onto its single-platform model.</p>
+          <p>Market reaction was swift. Zscaler shares jumped 18% in pre-market trading following the initial report Friday, before the official announcement Sunday. CrowdStrike shares were down modestly in early trading as investors weighed dilution from the all-stock structure. The deal comes against a volatile macro backdrop — the Nasdaq shed 10% over the prior week, Nvidia logged its worst weekly decline in 18 years, and the VIX remains above 30. If approved, the transaction will be the largest acquisition ever completed by a pure-play cybersecurity company, surpassing Broadcom's $69 billion purchase of VMware (which included non-security assets).</p>
         </div>
-        <p class="why" style="margin-top:12px"><b>Why it matters:</b> VMware vCenter is the administrative crown jewel of enterprise data centers — control vCenter, control every VM and ESXi host it manages. The SAML token-forgery capability means a successful attacker can impersonate any user across every system that trusts the vCenter identity provider, including cloud and SaaS platforms. For clients running vCenter, verify patch status today and treat any inability to confirm a clean bill of health as grounds for incident-response engagement rather than waiting. Organizations on vCenter 7.0 without an extended-support contract should firewall the vCenter management network immediately while they arrange access to the patch.</p>
+        <p class="why" style="margin-top:12px"><b>Why it matters:</b> Clients using Zscaler or CrowdStrike should start asking their vendors hard questions now: what happens to roadmaps, pricing, and contracts during a 12-to-18-month integration? The CrowdStrike-Falcon plus Zscaler-ZIA combination offers a genuinely unified security architecture, but integration history in large cyber mergers is mixed. For clients considering platform consolidation decisions in the next 12 months, this reshapes the competitive landscape — deals being structured today will play out in a market where this mega-vendor exists.</p>
+        <div class="tickers" style="margin-top:10px">
+          <span class="tk">CRWD <span class="down">▼2.1%</span></span>
+          <span class="tk">ZS <span class="up">▲18.4%</span></span>
+          <span class="tk">PANW <span class="down">▼1.8%</span></span>
+        </div>
         <div class="srcs"><span class="lbl">Reported by</span>
-          <a href="https://thehackernews.com/2026/11/china-linked-hackers-exploit-critical.html" target="_blank" rel="noopener">The Hacker News</a>
-          <a href="https://www.securityweek.com/newly-patched-vmware-vcenter-flaw-exploited-as-zero-day-by-chinese-apt/" target="_blank" rel="noopener">SecurityWeek</a>
-          <details class="arts"><summary><span class="count">2 sources · 3 articles</span></summary>
+          <a href="https://www.securityweek.com/crowdstrike-to-acquire-zscaler-in-43-9-billion-deal/" target="_blank" rel="noopener">SecurityWeek</a>
+          <a href="https://www.cnbc.com/2026/11/20/zscaler-crowdstrike-deal.html" target="_blank" rel="noopener">CNBC</a>
+          <a href="https://apnews.com" target="_blank" rel="noopener">AP</a>
+          <details class="arts"><summary><span class="count">3 sources · 3 articles</span></summary>
             <ol>
-              <li><a href="https://thehackernews.com/2026/11/china-linked-hackers-exploit-critical.html" target="_blank" rel="noopener">China-Linked Hackers Exploit Critical VMware vCenter Zero-Day to Gain Admin Access and Steal Data</a><span class="o">The Hacker News · Nov 19</span></li>
-              <li><a href="https://thehackernews.com/2026/11/critical-vmware-vcenter-flaw-cvss-98.html" target="_blank" rel="noopener">Critical VMware vCenter Zero-Day Flaw Lets Network Attackers Bypass Authentication</a><span class="o">The Hacker News · Nov 19</span></li>
-              <li><a href="https://www.securityweek.com/newly-patched-vmware-vcenter-flaw-exploited-as-zero-day-by-chinese-apt/" target="_blank" rel="noopener">Newly Patched VMware vCenter Flaw Exploited as Zero-Day by Chinese APT</a><span class="o">SecurityWeek · Nov 19</span></li>
+              <li><a href="https://www.cnbc.com/2026/11/20/zscaler-crowdstrike-deal.html" target="_blank" rel="noopener">Zscaler Stock Jumps 18% on Report That CrowdStrike in Talks to Buy Security Vendor</a><span class="o">CNBC · Nov 20</span></li>
+              <li><a href="https://www.securityweek.com/crowdstrike-to-acquire-zscaler-in-43-9-billion-deal/" target="_blank" rel="noopener">CrowdStrike to Acquire Zscaler in $43.9 Billion Deal</a><span class="o">SecurityWeek · Nov 23</span></li>
+              <li><a href="https://apnews.com" target="_blank" rel="noopener">CrowdStrike to buy Zscaler in record cybersecurity deal</a><span class="o">AP · Nov 23</span></li>
             </ol></details>
         </div>
       </article>
@@ -246,77 +250,80 @@
       <div class="cards">
 
         <article class="card story" data-cat="cyber">
-          <div class="tags"><span class="sev high">High</span><span class="tag">Breach · MSP · Email Security</span></div>
-          <h4>Attackers breach N-able's email security cloud infrastructure; Mail Assure and SpamExperts management portals go dark across all three global regions</h4>
-          <p class="sum">Unknown threat actors gained unauthorized access to a server inside N-able's Mail Assure and SpamExperts Hosted Cloud on November 16; N-able confirmed the breach November 19. The intrusion disabled management portals, APIs, quarantine functions, and audit logging for Americas, APAC, and Europe deployments simultaneously, though core mail-flow filtering continued operating. N-able stated it has "no evidence that customer data was compromised, including access to tenants' mailboxes" and has since taken hardening steps and disabled affected interfaces.</p>
-          <p class="sum extra">This is a separate incident from the N-central 17 zero-day chain covered in Edition #003; it involves N-able's cloud-hosted email filtering product, not on-premises RMM infrastructure. Because MSPs use Mail Assure and SpamExperts to filter email for multiple downstream client organizations, management-layer access could expose email quarantine contents and routing metadata for every organization they serve — the actual end-customer population is significantly larger than the direct N-able partner count. The investigation was ongoing as of November 20, and "no evidence of compromise" in an in-progress investigation is not conclusive.</p>
-          <p class="why"><b>Why it matters:</b> MSPs handling email security on behalf of clients should audit all N-able Mail Assure and SpamExperts tenant access logs from November 16 onward, verify that no email-forwarding rules or transport rules were modified, and proactively notify clients that an investigation is in progress. Two N-able incidents in one week also signals that the platform is under sustained targeting — a pattern worth flagging at the board level for clients whose MSP uses N-able products.</p>
+          <div class="tags"><span class="sev crit">Critical</span><span class="tag">MSP · RMM · Active exploitation</span></div>
+          <h4>ScreenConnect CVSS 9.9 flaw (CVE-2026-84869) exploited at scale against MSP technician workstations; attackers execute payloads in nine seconds with no interaction required</h4>
+          <p class="sum">Threat actors are mass-exploiting CVE-2026-84869 (CVSS 9.9) in ConnectWise ScreenConnect, a vulnerability that allows a malicious guest to transfer and execute a payload on the connecting technician's machine without any user action. Because MSP technicians' workstations typically hold RMM console credentials and persistent access to every customer they serve, a successful compromise gives attackers a pivot point into dozens or hundreds of downstream organizations. Huntress observed at least 688,000 malicious requests across 42 servers between October and November 2026, with attacks deploying batch scripts that decode Telegram bot tokens, download MSI installers disguised as Windows updates, and establish rogue ScreenConnect clients for persistent access.</p>
+          <p class="sum extra">The attack chain operates in approximately nine seconds from initial connection to code execution on the technician host, leaving almost no detection window. ConnectWise has released a fix in ScreenConnect version 26.6.5; administrators can apply an interim mitigation by removing the TransferFiles permission from all roles and session groups pending a full upgrade. Any MSP that hosts ScreenConnect sessions should treat unpatched servers as actively compromised and begin reviewing connection logs and technician workstations for indicators of compromise immediately.</p>
+          <p class="why"><b>Why it matters:</b> The MSP channel is the most efficient attack path into the SMB market. A single compromised technician workstation can unlock access to every client that MSP manages. Verify that any managed service provider your clients use has patched to 26.6.5 and ask for confirmation in writing — this is the kind of question a vCISO should be asking on behalf of every client running an outsourced IT model.</p>
           <div class="srcs"><span class="lbl">Reported by</span>
-            <a href="https://thehackernews.com/2026/11/n-able-confirms-hackers-accessed-cloud.html" target="_blank" rel="noopener">The Hacker News</a>
-            <a href="https://www.securityweek.com/n-able-blames-service-disruption-on-cyberattack/" target="_blank" rel="noopener">SecurityWeek</a>
-            <details class="arts"><summary><span class="count">2 sources · 2 articles</span></summary>
-            <ol>
-              <li><a href="https://thehackernews.com/2026/11/n-able-confirms-hackers-accessed-cloud.html" target="_blank" rel="noopener">Hackers Breach N-able Cloud Server, Disrupting Email Security Management Across 3 Regions</a><span class="o">The Hacker News · Nov 20</span></li>
-              <li><a href="https://www.securityweek.com/n-able-blames-service-disruption-on-cyberattack/" target="_blank" rel="noopener">N-able Blames Service Disruption on Cyberattack</a><span class="o">SecurityWeek · Nov 20</span></li>
-            </ol></details>
-          </div>
-        </article>
-
-        <article class="card story" data-cat="cyber">
-          <div class="tags"><span class="sev crit">Critical</span><span class="tag">Patch · RCE · PHP · Web Infrastructure</span></div>
-          <h4>PHP ships emergency fixes for seven critical flaws including phpAfterShell session-hijack-to-RCE and three separate CVSS-9.2 vulnerabilities affecting every supported PHP branch</h4>
-          <p class="sum">The PHP Foundation released PHP 8.2.36, 8.3.37, 8.4.28, 8.5.13, and 8.6.0 on November 19, patching seven critical vulnerabilities. CVE-2026-126714 (CVSS 9.2), dubbed phpAfterShell, is a time-of-check/time-of-use race in file-based session handling: an attacker who interrupts a session write can inject malicious serialized objects that PHP deserializes when the session resumes, enabling code execution via PHP gadget chains. CVE-2026-115560 (CVSS 9.2) is a broad input-validation flaw enabling RCE, file modification, and session corruption. CVE-2026-129289 (CVSS 9.2) affects any PHP deployment behind a persistent FastCGI proxy — nginx, Apache mod_proxy_fcgi, HAProxy, or LSAPI — and exploits inconsistent HTTP request interpretation. Four additional use-after-free bugs round out the patch set.</p>
-          <p class="sum extra">phpAfterShell depends on file-based session storage, which is the PHP default for applications that have not explicitly configured Redis or Memcached. Timing the race condition requires effort, but public proof-of-concept tools are already circulating. PHP powers the vast majority of server-side web applications; the affected versions (8.2–8.6) are all actively supported branches. Organizations running PHP in Docker containers should rebuild images; those relying on OS-packaged PHP should check distro security feeds for updated packages.</p>
-          <p class="why"><b>Why it matters:</b> PHP is the substrate for a large share of custom web applications, e-commerce platforms, and CMS deployments. Any client with a PHP-based web presence should treat this as a priority patch this sprint cycle. The phpAfterShell variant is especially relevant for legacy codebases using file-based sessions to store sensitive application state.</p>
-          <div class="srcs"><span class="lbl">Reported by</span>
-            <a href="https://thehackernews.com/2026/11/php-fixes-7-critical-flaws-including.html" target="_blank" rel="noopener">The Hacker News</a>
-            <a href="https://www.securityweek.com/php-patches-seven-critical-rce-vulnerabilities/" target="_blank" rel="noopener">SecurityWeek</a>
-            <details class="arts"><summary><span class="count">2 sources · 3 articles</span></summary>
-            <ol>
-              <li><a href="https://thehackernews.com/2026/11/php-fixes-7-critical-flaws-including.html" target="_blank" rel="noopener">PHP Fixes 7 Critical Flaws, Including Bugs That Could Allow Remote Code Execution</a><span class="o">The Hacker News · Nov 19</span></li>
-              <li><a href="https://thehackernews.com/2026/11/phpaftershell-explained-how-hackers.html" target="_blank" rel="noopener">phpAfterShell Explained: How Hackers Could Turn a PHP Session Flaw Into Code Execution</a><span class="o">The Hacker News · Nov 19</span></li>
-              <li><a href="https://www.securityweek.com/php-patches-seven-critical-rce-vulnerabilities/" target="_blank" rel="noopener">PHP Patches Seven Critical RCE Vulnerabilities</a><span class="o">SecurityWeek · Nov 19</span></li>
-            </ol></details>
-          </div>
-        </article>
-
-        <article class="card story" data-cat="cyber">
-          <div class="tags"><span class="sev high">High</span><span class="tag">End-of-Life · Edge Device · Firewall</span></div>
-          <h4>SonicWall declares all Generation 6 firewalls will receive no further security patches and urges immediate retirement as AI-accelerated exploitation shrinks the window for edge devices</h4>
-          <p class="sum">SonicWall announced that its Generation 6 product line — TZ300 through TZ600, NSA 2650 through NSA 6600, SOHO series, SuperMassive 9200 through 9800, NSv 10 through NSv 1600 virtual appliances, and NSsp models running SonicOS 6.x — will receive no further security patches under any circumstances, including for critical vulnerabilities. The company cited AI-assisted exploitation of edge devices, stating "attackers now use automation and AI to find and exploit unsupported edge devices faster than ever." Google Mandiant research was specifically referenced showing that mean time to exploit has gone negative: exploitation now begins, on average, seven days before patches become available for newly disclosed vulnerabilities.</p>
-          <p class="sum extra">SonicWall recommends immediate retirement and migration to Generation 8 hardware running SonicOS 8. For organizations that cannot immediately replace devices, the company recommends disabling WAN management access and enforcing multi-factor authentication on administrative interfaces — characterizing these as delay tactics, not mitigations. Gen 6 firewalls are among the most common edge appliances in SMB and distributed-enterprise environments; organizations conducting inventory are likely to find forgotten units on network segments outside their primary refresh cycle.</p>
-          <p class="why"><b>Why it matters:</b> Gen 6 SonicWall firewalls are common in exactly the client base a vCISO often serves. Any client still running them is now operating a permanently unpatched edge appliance that sophisticated automated scanners will increasingly target. Add Gen 6 SonicWall inventory to your next client risk review, prioritize those facing the internet directly, and use this announcement as leverage in budget conversations about hardware refresh cycles.</p>
-          <div class="srcs"><span class="lbl">Reported by</span>
-            <a href="https://thehackernews.com/2026/11/sonicwall-warns-gen-6-firewalls-wont.html" target="_blank" rel="noopener">The Hacker News</a>
+            <a href="https://thehackernews.com/2026/11/hackers-exploit-critical-screenconnect.html" target="_blank" rel="noopener">The Hacker News</a>
             <span class="count">1 source · 1 article</span>
           </div>
         </article>
 
         <article class="card story" data-cat="cyber">
-          <div class="tags"><span class="sev high">High</span><span class="tag">Government · AI-Assisted Attack · Attribution Pending</span></div>
-          <h4>European Commission confirms October cyberattack that disrupted HR, medical, and translation services for more than ten days; attackers used an AI-powered penetration tool</h4>
-          <p class="sum">The European Commission disclosed November 19–20 that attackers breached its environment in an incident detected October 22 and confirmed October 26 — with disruptions to HR platform Sysper, the MyPMO medical reimbursement system, and translation services persisting for more than ten days while affected applications were taken offline. Commission spokesperson Thomas Regnier stated the investigation "has found no evidence of a data breach affecting the Commission's staff," though Politico separately reported that large amounts of data may have been accessed. No threat group claimed responsibility and no ransom demand was received.</p>
-          <p class="sum extra">Regnier confirmed attackers used an AI tool during the breach, without specifying which one. The disclosure follows a CERT-EU warning about Artex, an AI-powered penetration-testing framework, which the agency says "will likely accelerate adoption by threat actors, resulting in more frequent, faster, and more scalable automated attacks with a higher success rate." The FBI independently warned in a separate November alert that Artex enables privileged access in under three hours using legitimate credentials and overlooked service accounts — a technique consistent with what the Commission described. The case illustrates a capability shift: AI is being used not only to accelerate phishing but to navigate internal environments once a foothold is established.</p>
-          <p class="why"><b>Why it matters:</b> For clients with internal service portals, HR platforms, or benefits and medical reimbursement systems, the question is whether an attacker with any foothold could use an AI-assisted tool to escalate faster than defenders can detect. CERT-EU's recommended signature to monitor: fast, low-noise lateral movement through legitimate credentials on neglected legacy systems — particularly internal portals built by individual business units outside the core IT estate.</p>
+          <div class="tags"><span class="sev high">High</span><span class="tag">AI security · Supply chain · Breach</span></div>
+          <h4>Dragos finds three AI inference providers silently breached; roughly two million customer prompts copied alongside AWS credentials</h4>
+          <p class="sum">Dragos researchers, led by Chief Research Officer HD Moore, spent July through November 2026 sending approximately two million bait prompts — containing trackable URLs, hostnames, and AWS access keys — to AI inference services, then monitored whether those canary tokens appeared in attacker infrastructure. At least three providers were breached without detecting the intrusions themselves; all were notified by Dragos rather than discovering the compromise independently. Attackers accessed requests "at the provider's front door," suggesting interception before model processing. Roughly 200 AWS test keys were stolen from one provider in late October. OpenRouter subsequently removed three unnamed providers and 125 endpoints after learning of the findings.</p>
+          <p class="sum extra">The confirmed affected providers include Phala (exposure window October 21 – November 8), Together AI (credentials leaked via GitHub used to access stored prompt samples), and Novita and Atlas Cloud (exposure traced to MiniMax API requests). Moore noted that bait prompts were processed alongside real customer requests, meaning genuine enterprise prompts were almost certainly copied as well. Organizations sending sensitive business data or proprietary code to AI inference APIs hosted by third-party providers should audit which services they use, check whether those providers were among those OpenRouter removed, and treat any prompts sent to affected providers during the exposure windows as potentially compromised.</p>
+          <p class="why"><b>Why it matters:</b> AI inference is becoming a de facto data-sharing arrangement with an infrastructure layer most organizations have not vetted. For clients using third-party AI APIs — especially for code review, document analysis, or anything involving proprietary business data — this is a supply-chain risk that belongs in vendor risk assessments now.</p>
           <div class="srcs"><span class="lbl">Reported by</span>
-            <a href="https://www.securityweek.com/european-commission-confirms-ai-assisted-cyberattack-disrupted-services/" target="_blank" rel="noopener">SecurityWeek</a>
-            <a href="https://therecord.media/european-commission-confirms-cyberattack-using-ai" target="_blank" rel="noopener">The Record</a>
+            <a href="https://www.securityweek.com/ai-inference-providers-failed-to-detect-hacking-and-prompt-theft-says-dragos/" target="_blank" rel="noopener">SecurityWeek</a>
+            <a href="https://thehackernews.com/2026/11/openrouter-drops-3-providers-after.html" target="_blank" rel="noopener">The Hacker News</a>
             <details class="arts"><summary><span class="count">2 sources · 2 articles</span></summary>
-            <ol>
-              <li><a href="https://www.securityweek.com/european-commission-confirms-ai-assisted-cyberattack-disrupted-services/" target="_blank" rel="noopener">European Commission Confirms AI-Assisted Cyberattack Disrupted Services</a><span class="o">SecurityWeek · Nov 20</span></li>
-              <li><a href="https://therecord.media/european-commission-confirms-cyberattack-using-ai" target="_blank" rel="noopener">European Commission Confirms Cyberattack, Using AI Tool</a><span class="o">The Record · Nov 19</span></li>
-            </ol></details>
+              <ol>
+                <li><a href="https://www.securityweek.com/ai-inference-providers-failed-to-detect-hacking-and-prompt-theft-says-dragos/" target="_blank" rel="noopener">AI Inference Providers Failed to Detect Hacking and Prompt Theft, Says Dragos</a><span class="o">SecurityWeek · Nov 23</span></li>
+                <li><a href="https://thehackernews.com/2026/11/openrouter-drops-3-providers-after.html" target="_blank" rel="noopener">OpenRouter Drops 3 Providers After Researchers Catch Months of Prompt Theft at AI Hosting Firms</a><span class="o">The Hacker News · Nov 23</span></li>
+              </ol></details>
           </div>
         </article>
 
         <article class="card story" data-cat="cyber">
-          <div class="tags"><span class="sev high">High</span><span class="tag">Breach · Healthcare · Japan · SEC Filing</span></div>
-          <h4>SBC Medical Group discloses two data breaches affecting more than 2 million patients and employees in Japan, including 20,000 employee records with usernames and passwords</h4>
-          <p class="sum">Japanese cosmetic clinic operator SBC Medical Group filed a material disclosure on November 20 reporting two separate intrusions collectively affecting over 2 million individuals. The primary breach exposed personal data for 1.6 million patients — names, addresses, phone numbers, email addresses, dates of birth, gender, patient card numbers, and survey responses — along with treatment details and image file names for smaller subsets. Twenty thousand employee records were also accessed, including employee IDs and passwords. Fourteen credit card numbers were in the exposed data, though all were expired or inactive. A secondary breach through the company's Tribeau reservation service affected an additional 19,000 customers.</p>
-          <p class="sum extra">SBC Medical Group, publicly traded in Japan, stated it is still assessing the financial impact. Beyond the patient-record exposure, 459 employees had bank account information, pension details, and tax certificates accessed — data enabling identity fraud well beyond phishing. The employee password exposure is a lateral-movement risk: credential reuse from HR or operational systems into corporate applications or identity providers is a common follow-on attack path. SBC has not disclosed the attack vector, timeline of compromise, or identity of the threat actor.</p>
-          <p class="why"><b>Why it matters:</b> This case illustrates a persistent gap in healthcare security: operational data (patient records) and HR data (employee credentials, financial details) often share infrastructure or access controls despite having very different sensitivity profiles. For clients in healthcare or life sciences, verify that HR and patient systems have distinct access boundaries and that employee credential stores are excluded from application database backups that might be accessible to a less-privileged attacker.</p>
+          <div class="tags"><span class="sev high">High</span><span class="tag">APT · AI agents · Zero-day · Healthcare</span></div>
+          <h4>China-linked actors used autonomous AI agents to find and exploit a MONAI Label zero-day from scratch in eleven minutes, achieving root on a university medical server</h4>
+          <p class="sum">Amazon's threat intelligence team, tracking an approximately 48-hour campaign against East Asian universities, found that Chinese-nexus threat actors deployed Cairn — an open-source AI-driven penetration-testing framework — to attack systems running MONAI Label, an open-source tool for AI-assisted medical image annotation. The operators provided agents with target IP addresses and instructions to obtain shell access; from there the agents independently identified the software, mapped its API, discovered a critical path-traversal vulnerability in the file-upload function, and planted a Python reverse shell, achieving root access. The full chain from API mapping to code execution took approximately eleven minutes. Amazon assessed the zero-day attribution with high confidence and attributed the campaign to Chinese-nexus actors with moderate confidence, citing prompt language, timezone metadata in scripts, and the strategic value of the targeted institutions to China.</p>
+          <p class="sum extra">The MONAI Label vulnerability affects version 0.8.5 and earlier. Attackers subsequently used the compromised server as a proxy to reach additional vulnerable systems on target networks. This case is distinct from AI-assisted phishing or social engineering: the AI agents performed genuine vulnerability discovery on a novel target — a task that previously required a skilled human researcher. It is consistent with other reports of Cairn use in espionage campaigns documented over the past six months.</p>
+          <p class="why"><b>Why it matters:</b> AI-accelerated zero-day discovery compresses the timeline between a vulnerability existing and it being exploited. For clients running research infrastructure, healthcare imaging systems, or any niche open-source tooling not on major vendors' radar, the question is whether your detection controls assume a human-paced attacker — because that assumption no longer holds.</p>
           <div class="srcs"><span class="lbl">Reported by</span>
-            <a href="https://www.securityweek.com/sbc-medical-group-data-breach-impacts-over-2-million/" target="_blank" rel="noopener">SecurityWeek</a>
+            <a href="https://www.securityweek.com/amazon-china-linked-hackers-ai-agents-exploited-medical-software-zero-day/" target="_blank" rel="noopener">SecurityWeek</a>
+            <a href="https://thehackernews.com/2026/11/attackers-ai-agents-found-zero-day-in.html" target="_blank" rel="noopener">The Hacker News</a>
+            <details class="arts"><summary><span class="count">2 sources · 2 articles</span></summary>
+              <ol>
+                <li><a href="https://www.securityweek.com/amazon-china-linked-hackers-ai-agents-exploited-medical-software-zero-day/" target="_blank" rel="noopener">Amazon: China-Linked Hackers' AI Agents Exploited Medical Software Zero-Day</a><span class="o">SecurityWeek · Nov 21</span></li>
+                <li><a href="https://thehackernews.com/2026/11/attackers-ai-agents-found-zero-day-in.html" target="_blank" rel="noopener">Attackers' AI Agents Found a Zero-Day in Medical-Imaging Software and Gained Root Access</a><span class="o">The Hacker News · Nov 23</span></li>
+              </ol></details>
+          </div>
+        </article>
+
+        <article class="card story" data-cat="cyber">
+          <div class="tags"><span class="sev high">High</span><span class="tag">Government · Breach · Law enforcement</span></div>
+          <h4>FBI investigates breach of NCIC national criminal justice database containing criminal records, missing persons files, and fugitive data used by law enforcement nationwide</h4>
+          <p class="sum">The FBI confirmed it is investigating an apparent breach of the National Crime Information Center (NCIC), a critical database maintained by the bureau that is accessible to local, state, and federal law enforcement agencies across the United States. The NCIC holds records on criminal histories, fugitives, missing persons, stolen property, and related sensitive law enforcement data. The incident was first reported by CNN and confirmed to the Associated Press by an official with knowledge of the matter. The scope of the breach remained unclear at time of reporting, and the FBI declined to provide further comment on the investigation. President Trump said the breach was "not good."</p>
+          <p class="sum extra">The NCIC is used daily by officers in the field to run queries during traffic stops, investigations, and arrests; compromise of the database or its contents creates risks ranging from tipping off fugitives to enabling targeted attacks on individuals whose records appear in the system. The incident follows a pattern of FBI systems being targeted: the bureau previously faced the ShinyHunters group's compromise of employee data in September 2026 and suspicious activity on an internal surveillance-related system in March. No threat group has claimed responsibility for the NCIC incident as of publication.</p>
+          <p class="why"><b>Why it matters:</b> A breach of a law enforcement database with this breadth of real-world use — from officer safety to active investigations — has operational consequences well beyond data privacy. For clients in the public sector or with law-enforcement partnerships, the question is whether any of their data or integrations touch federal law enforcement infrastructure that may need to be treated as compromised.</p>
+          <div class="srcs"><span class="lbl">Reported by</span>
+            <a href="https://therecord.media/" target="_blank" rel="noopener">The Record</a>
+            <a href="https://www.securityweek.com/fbi-investigating-apparent-hack-of-its-key-national-criminal-justice-database-ap-source-says/" target="_blank" rel="noopener">SecurityWeek</a>
+            <a href="https://www.cnbc.com/2026/11/21/trump-fbi-database-hack.html" target="_blank" rel="noopener">CNBC</a>
+            <a href="https://techcrunch.com/2026/11/21/trump-says-reported-fbi-database-hack-is-not-good/" target="_blank" rel="noopener">TechCrunch</a>
+            <details class="arts"><summary><span class="count">4 sources · 4 articles</span></summary>
+              <ol>
+                <li><a href="https://www.securityweek.com/fbi-investigating-apparent-hack-of-its-key-national-criminal-justice-database-ap-source-says/" target="_blank" rel="noopener">FBI Investigating Apparent Hack of Its Key National Criminal Justice Database</a><span class="o">SecurityWeek · Nov 21</span></li>
+                <li><a href="https://www.cnbc.com/2026/11/21/trump-fbi-database-hack.html" target="_blank" rel="noopener">Trump Says There Could Be a 'Positive Spin' From Latest FBI Database Hack</a><span class="o">CNBC · Nov 21</span></li>
+                <li><a href="https://techcrunch.com/2026/11/21/trump-says-reported-fbi-database-hack-is-not-good/" target="_blank" rel="noopener">Trump Says Reported FBI Database Hack Is 'Not Good'</a><span class="o">TechCrunch · Nov 21</span></li>
+                <li><a href="https://therecord.media/" target="_blank" rel="noopener">FBI confirms investigation into NCIC database breach</a><span class="o">The Record · Nov 21</span></li>
+              </ol></details>
+          </div>
+        </article>
+
+        <article class="card story" data-cat="cyber">
+          <div class="tags"><span class="sev high">High</span><span class="tag">Cloud misconfiguration · Law enforcement data</span></div>
+          <h4>Tigerfish, a transcription firm serving police, prosecutors, and major tech companies, left body-camera footage and prosecution interview recordings on an open S3 bucket</h4>
+          <p class="sum">Security researcher Anurag Sen discovered that Tigerfish, a San Francisco-based transcription company, had left a large volume of sensitive files on an unprotected Amazon S3 bucket accessible with no password at an easy-to-guess web address. The exposed data included transcriptions of police interviews, body-camera footage, raw audio and video materials, and customer invoices. Customers affected include law enforcement agencies, prosecutors' offices, and Silicon Valley technology companies. TechCrunch contacted Tigerfish, and the company's president Adam Goldberg confirmed they had blocked public access; he attributed the delayed response to the disclosure email landing in a spam filter. The company did not confirm whether affected customers have been formally notified.</p>
+          <p class="sum extra">The exposure of police body-camera footage and prosecution interview materials creates risks well beyond a standard data breach: active investigations could be compromised, witness identities potentially revealed, and evidentiary integrity called into question if defense attorneys learn of the unprotected access period. The fact that a third-party vendor holds this material with no apparent access controls highlights a gap in how law enforcement agencies govern data processed by external service providers — a gap that privacy advocates and prosecutors' offices will likely scrutinize.</p>
+          <p class="why"><b>Why it matters:</b> This is a textbook illustration of third-party data governance failure. For clients that use external vendors to process sensitive media — transcription, translation, analytics, archiving — the question is whether vendor contracts specify access controls, data-at-rest encryption, and breach notification timelines. "They didn't notice their own bucket was public" is not an acceptable answer from a vendor holding evidentiary material or any regulated data.</p>
+          <div class="srcs"><span class="lbl">Reported by</span>
+            <a href="https://techcrunch.com/2026/11/20/a-transcription-firm-used-by-police-prosecutors-and-tech-giants-exposed-customer-data-online/" target="_blank" rel="noopener">TechCrunch</a>
             <span class="count">1 source · 1 article</span>
           </div>
         </article>
@@ -328,32 +335,38 @@
       <div class="cards">
 
         <article class="card story" data-cat="mkt">
-          <div class="tags"><span class="sev high">Market data</span><span class="tag">Equities · Volatility · Risk-off</span></div>
-          <h4>Equities drop sharply Thursday as VIX spikes to 30.49, erasing the week's gains across all major indices in a broad risk-off session</h4>
-          <p class="sum">Yahoo Finance's Thursday November 19 close data shows a broad sell-off: the S&amp;P 500 fell 2.02% to 7,175.83, the Nasdaq dropped 2.25% to 23,879.20, and the Dow shed 2.19% to 49,097.06. The VIX volatility index surged 7.21% to 30.49 — a level historically associated with meaningful credit stress and elevated risk premiums. The 10-year Treasury yield eased one basis point to 5.05%, holding well above 5% for a third consecutive edition. Gold fell 2.99% to $3,575.30; WTI crude ended essentially flat at $82.23 (−0.25%).</p>
-          <p class="sum extra">Gold declining alongside equities — rather than rising as a traditional safe haven — suggests potential forced selling or broad portfolio deleveraging rather than pure flight to safety. With the VIX above 30 and 10-year yields sustained above 5%, private cybersecurity-vendor valuations and late-stage financing conditions remain under meaningful pressure. These conditions also affect year-end M&amp;A and IPO pricing windows for the sector.</p>
-          <div class="tickers"><span class="tk">SPX <span class="down">▼2.02%</span></span><span class="tk">COMP <span class="down">▼2.25%</span></span><span class="tk">DJIA <span class="down">▼2.19%</span></span><span class="tk">VIX 30.49 <span class="up">▲7.2%</span></span><span class="tk">US10Y 5.05%</span></div>
-          <p class="why"><b>Why it matters:</b> A VIX above 30 and 10-year yields above 5% is a macro backdrop where cybersecurity vendors face meaningful pressure on their own finances — a factor worth considering in year-end vendor contract negotiations and when evaluating startups' runway assumptions. Sustained elevated volatility can also accelerate vendor consolidation as smaller players struggle with financing costs.</p>
+          <div class="tags"><span class="sev high">Market-moving</span><span class="tag">Semis · Leadership · AI capex</span></div>
+          <h4>Nvidia shares fall 46% over seven consecutive losing weeks after Jensen Huang's resignation, the longest streak since the 2008 financial crisis</h4>
+          <p class="sum">Nvidia shares completed their seventh straight weekly decline on Friday, falling 14% that day alone and erasing approximately $2.6 trillion in market capitalization over the stretch — the longest losing streak for the stock since the 2008 financial crisis. The slide began after co-founder and CEO Jensen Huang resigned November 12 following disclosure of personal conduct that the company said was inconsistent with its code of conduct; news reports linked the circumstances to an alleged relationship with a suspected Chinese intelligence operative. At roughly $3 trillion in remaining market cap, Nvidia slipped to fourth place globally among public companies, behind Apple, Microsoft, and Alphabet. The stock now trades at approximately 8.4 times forward earnings, down from multiples above 30 earlier in the year.</p>
+          <p class="sum extra">Interim CEO Colette Kress projected 75% revenue growth for the next fiscal year, and the company's hyperscale customers have not publicly reduced their AI infrastructure commitments. But investors are questioning whether Nvidia's culture and strategic vision can be maintained without Huang, who had been the defining personality behind the company's transformation from a gaming chip maker into the backbone of AI compute. The drop dragged the broader Nasdaq down more than 10% over the same period — a move Goldman Sachs analysts said has begun creating conditions for a stabilization, with Monday morning futures pointing to a sharp recovery as markets reassess whether the selloff overshot.</p>
+          <div class="tickers">
+            <span class="tk">NVDA <span class="down">▼46%</span></span>
+            <span class="tk">COMP <span class="down">▼10% wk</span></span>
+          </div>
+          <p class="why"><b>Why it matters:</b> Nvidia underpins most enterprise AI infrastructure investments and the AI security tools built on top of it. A sustained leadership vacuum at the company most organizations are betting their AI roadmaps on introduces supply-chain and roadmap uncertainty worth flagging in AI strategy discussions with clients. The selloff also compresses valuations for AI-dependent security startups and may accelerate consolidation.</p>
           <div class="srcs"><span class="lbl">Reported by</span>
-            <a href="https://finance.yahoo.com/markets/" target="_blank" rel="noopener">Yahoo Finance</a>
+            <a href="https://www.cnbc.com/2026/11/20/nvidias-7-week-losing-streak-is-longest-since-2008-financial-crisis.html" target="_blank" rel="noopener">CNBC</a>
             <span class="count">1 source · 1 article</span>
           </div>
         </article>
 
         <article class="card story" data-cat="mkt">
-          <div class="tags"><span class="sev high">Breach</span><span class="tag">Finance · Third-party · Extortion · Cyber × Markets</span></div>
-          <h4>N0n extortion group leaks data tied to JPMorgan, Visa, and Mastercard marketing vendors; all three say their own systems were not breached and no payment data was exposed</h4>
-          <p class="sum">The N0n extortion group, which has claimed roughly 200 victims since emerging in September 2026, published data it attributed to JPMorgan Chase, Visa, and Mastercard on November 16. All three financial firms confirmed the exposure was real but attributed it to third-party marketing vendors rather than their own systems. JPMorgan reported that attackers accessed "marketing data held by those vendors," including over 16,000 customer email addresses — some with phone numbers and postal codes — plus about 124 internal employee email addresses. Visa confirmed a third-party provider in Asia Pacific was involved, with customer emails, phone numbers, and marketing campaign records exposed. Mastercard described "a limited amount of email addresses — non-payments information — from a small subset of cardholders enrolled in a specific benefit program." None of the three companies reported payment card data, account credentials, or financial account information in the exposed datasets.</p>
-          <p class="sum extra">The pattern — large-brand exposure via marketing technology or analytics vendor — reflects a structural vulnerability in how financial services firms outsource customer engagement. Marketing data is typically treated as lower-sensitivity than payment data, leading to softer vendor security requirements and less rigorous monitoring of outbound data flows. High-net-worth cardholder email addresses now in threat-actor hands creates a targeted phishing risk particularly acute for JPMorgan's premium Reserve card program customers. None of the three companies have been marked as having paid on the N0n group's leak site. This story sits at the cyber-meets-markets intersection: it is filed here rather than in the Cybersecurity section because the primary business implication is third-party vendor risk management at systemically important financial institutions.</p>
-          <p class="why"><b>Why it matters:</b> For clients in financial services, review marketing technology vendor contracts: who has CRM or email list access, what security requirements govern that access, and whether "marketing data" is explicitly scoped out of more rigorous vendor risk assessments. Data classified as "not payment-related" can still be highly sensitive when it identifies specific high-value customers by product or benefit program.</p>
+          <div class="tags"><span class="sev med">IPO</span><span class="tag">AI · Public market · Venture exits</span></div>
+          <h4>Anthropic's $93.5 billion Nasdaq IPO opens to historic gains then pulls back as tech's worst week since 2020 collides with the AI sector's most anticipated debut</h4>
+          <p class="sum">Anthropic raised what analysts described as a record-setting $93.5 billion in its Nasdaq debut Thursday, with shares opening at $111.50 and gaining 17% on day one — giving the AI safety company a market capitalization of approximately $1.8 trillion and placing it among the most valuable publicly traded companies globally. The IPO also delivered outsized returns to early investors: Menlo Ventures and Lightspeed each realized roughly $25 billion in stock value, and some limited partners received over $1 billion, providing a long-awaited liquidity event for Silicon Valley's venture ecosystem after four years of subdued IPO activity. Tech giants purchased an additional $26 billion of shares at the offering price.</p>
+          <p class="sum extra">The momentum was brief. By Friday's close, Anthropic shares had retreated to $88.91 — below the offering price — as the broader tech selloff deepened. The Nasdaq dropped 10% across the week, with Nvidia's decline serving as the market's focal point. Monday morning futures are pointing sharply higher, with the Nasdaq up more than 3% pre-market, suggesting markets may be stabilizing after last week's move. For the security industry, Anthropic's public debut matters because it sets a valuation benchmark for AI safety as an investable category and because Anthropic's constitutional AI approach and model card practices are increasingly influencing how enterprise security teams evaluate AI vendor risk.</p>
+          <div class="tickers">
+            <span class="tk">ANTH</span>
+            <span class="tk">NDX <span class="up">▲3.2% futs</span></span>
+          </div>
           <div class="srcs"><span class="lbl">Reported by</span>
-            <a href="https://www.securityweek.com/jpmorgan-visa-mastercard-cite-third-party-incidents-amid-data-leak/" target="_blank" rel="noopener">SecurityWeek</a>
-            <a href="https://www.secureworld.io/industry-news/vendor-breaches-jpmorgan-visa-mastercard-customers" target="_blank" rel="noopener">SecureWorld</a>
+            <a href="https://www.cnbc.com/2026/11/21/anthropic-ipo-tech-selloff.html" target="_blank" rel="noopener">CNBC</a>
+            <a href="https://finance.yahoo.com/topic/stock-market-news/" target="_blank" rel="noopener">Yahoo Finance</a>
             <details class="arts"><summary><span class="count">2 sources · 2 articles</span></summary>
-            <ol>
-              <li><a href="https://www.securityweek.com/jpmorgan-visa-mastercard-cite-third-party-incidents-amid-data-leak/" target="_blank" rel="noopener">JPMorgan, Visa, Mastercard Cite Third-Party Incidents Amid Data Leak</a><span class="o">SecurityWeek · Nov 20</span></li>
-              <li><a href="https://www.secureworld.io/industry-news/vendor-breaches-jpmorgan-visa-mastercard-customers" target="_blank" rel="noopener">Vendor Breaches Hit JPMorgan, Visa, and Mastercard Customers</a><span class="o">SecureWorld · Nov 19</span></li>
-            </ol></details>
+              <ol>
+                <li><a href="https://www.cnbc.com/2026/11/21/anthropic-ipo-tech-selloff.html" target="_blank" rel="noopener">Anthropic's Record IPO Collides with Tech's Worst Week on Wall Street Since 2020</a><span class="o">CNBC · Nov 21</span></li>
+                <li><a href="https://finance.yahoo.com/topic/stock-market-news/" target="_blank" rel="noopener">AI sector turbulence &amp; recovery: markets wrap</a><span class="o">Yahoo Finance · Nov 23</span></li>
+              </ol></details>
           </div>
         </article>
 
@@ -362,37 +375,41 @@
       <!-- QUICK HITS -->
       <div class="sechead story-sec" data-sec="hits"><h3>Quick Hits</h3><span>One-liners worth knowing</span></div>
       <ul class="hits">
-        <li class="story" data-cat="cyber"><span class="k">Cyber</span><a href="https://thehackernews.com/2026/11/hackers-exploit-critical-cisco.html" target="_blank" rel="noopener">Cisco Expressway CVE-2026-76466 (CVSS 9.8) exploited against a Russian organization shortly after public PoC release; attackers ran OS commands via persistent cookies and developed lateral-movement tools — patch any internet-facing Expressway immediately</a><span class="s">The Hacker News · SecurityWeek</span></li>
-        <li class="story" data-cat="cyber"><span class="k">Cyber</span><a href="https://therecord.media/apple-uk-encryption-notice" target="_blank" rel="noopener">UK Investigatory Powers Tribunal confirmed the British government served Apple a secret "technical capability notice" demanding access to iCloud Advanced Data Protection; Apple withdrew ADP for UK users rather than comply; substantive lawfulness hearing is scheduled for the first half of 2027</a><span class="s">The Record</span></li>
-        <li class="story" data-cat="cyber"><span class="k">Cyber</span><a href="https://thehackernews.com/2026/11/new-linux-kvm-flaw-cve-2026-99312-lets.html" target="_blank" rel="noopener">Linux KVM hypervisor flaw CVE-2026-99312 enables guest VMs to read approximately 127 GB of host system memory on AMD hardware; fixed in upstream kernel — shared and cloud operators using AMD hosts must update or disable nested virtualization</a><span class="s">The Hacker News</span></li>
-        <li class="story" data-cat="cyber"><span class="k">Cyber</span><a href="https://thehackernews.com/2026/11/drupal-patches-critical-installer-flaw.html" target="_blank" rel="noopener">Drupal patches critical installer flaw CVE-2026-132165 that enables unauthenticated site takeover or RCE when the installer file is left in place after deployment — remove install.php post-deployment if not already enforced by policy</a><span class="s">The Hacker News</span></li>
-        <li class="story" data-cat="cyber"><span class="k">Cyber</span><a href="https://www.cisa.gov/news-events/alerts/2026/11/18/cisa-adds-four-known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">CISA added four CVEs to its Known Exploited Vulnerabilities catalog November 18: Synology DiskStation Manager CVE-2024-10441, BerriAI LiteLLM CVE-2026-40217, Apache Axis CVE-2026-90436, and Vanderbilt REDCap CVE-2026-90817 (code injection in clinical research data platform)</a><span class="s">CISA</span></li>
-        <li class="story" data-cat="cyber"><span class="k">Analysis</span><a href="https://www.secureworld.io/industry-news/vulnerabilities-found-outpace-fixes" target="_blank" rel="noopener">Black Duck's analysis of 65.5 million security findings shows organizations discover vulnerabilities 18 times faster than they remediate them, with mean time from disclosure to exploit now under one day for some categories — the gap is widening as AI-assisted scanning accelerates discovery</a><span class="s">SecureWorld</span></li>
+        <li class="story" data-cat="cyber"><span class="k">Cyber</span><a href="https://www.securityweek.com/president-trump-taps-kirsten-davies-as-national-cyber-director/" target="_blank" rel="noopener">National Cyber Director Sean Cairncross is out as the White House resets cyber leadership; President Trump has nominated Kirsten Davies, described as a "battle-tested" cyber leader, to fill the role</a><span class="s">SecurityWeek · The Record · TechCrunch</span></li>
+        <li class="story" data-cat="cyber"><span class="k">Cyber</span><a href="https://techcrunch.com/2026/11/21/signal-restricts-mobile-screenshots-as-it-confronts-existential-threat-of-ai-surveillance/" target="_blank" rel="noopener">Signal is restricting mobile screenshots on Android and iOS, warning that OS-level AI agents can capture sensitive message content via screen reading; Signal president Meredith Whittaker calls this an "existential threat" to private messaging and acknowledges the fix is incomplete</a><span class="s">TechCrunch</span></li>
+        <li class="story" data-cat="cyber"><span class="k">Cyber</span><a href="https://www.securityweek.com/whatsapp-fixes-flaw-uncovered-while-disrupting-scam-campaign/" target="_blank" rel="noopener">WhatsApp patched CVE-2026-23871, an Android flaw where incomplete URL validation in Click-to-WhatsApp ad-reply messages could expose a user's IP address; discovered internally while disrupting a scam campaign where it may have been used to make fraudulent messages appear more credible</a><span class="s">SecurityWeek · The Hacker News</span></li>
+        <li class="story" data-cat="cyber"><span class="k">Cyber</span><a href="https://therecord.media/austrian-foreign-ministry-says-website-hacked" target="_blank" rel="noopener">Austria's Foreign Ministry confirmed its website was breached November 12–13, with attackers obtaining names and official contact information for embassy and headquarters staff worldwide; no attribution established, though the incident follows Austria's expulsion of four Russian diplomats in October</a><span class="s">The Record</span></li>
+        <li class="story" data-cat="cyber"><span class="k">Cyber</span><a href="https://krebsonsecurity.com/2026/11/cto-of-ransomwarehelp-indicted-for-wire-fraud/" target="_blank" rel="noopener">The CTO of ransomwarehelp.com was indicted for wire fraud after an FBI sting found the firm bought decryption keys from ransomware groups and resold them to victims at markups of up to 73x — in one documented case paying LockBit $6,000 and charging the victim $16,010 while deleting ransom notes to prevent direct negotiation</a><span class="s">Krebs on Security</span></li>
+        <li class="story" data-cat="cyber"><span class="k">Cyber</span><a href="https://www.securityweek.com/badbox-3-0-ad-fraud-operation-generating-40-billion-daily-bid-requests-disrupted/" target="_blank" rel="noopener">BadBox 3.0, an ad fraud botnet targeting low-cost Android devices, was disrupted by Human Security and Google; at its peak it generated 40 billion bid requests per day — more than 4% of all connected-TV ad traffic — and operated a residential proxy network through infected set-top boxes</a><span class="s">SecurityWeek</span></li>
       </ul>
     </main>
 
     <!-- SIDEBAR -->
     <aside>
       <div class="panel">
-        <h5><span>Source Health</span><span>scanned 7</span></h5>
+        <h5><span>Source Health</span><span>scanned 10</span></h5>
         <table>
-          <tr><td><span class="dot ok"></span>The Hacker News</td><td class="num">OK</td></tr>
           <tr><td><span class="dot ok"></span>SecurityWeek</td><td class="num">OK</td></tr>
+          <tr><td><span class="dot ok"></span>The Hacker News</td><td class="num">OK</td></tr>
           <tr><td><span class="dot ok"></span>The Record</td><td class="num">OK</td></tr>
-          <tr><td><span class="dot ok"></span>SANS ISC (RSS)</td><td class="num">OK · 3 entries</td></tr>
-          <tr><td><span class="dot ok"></span>SecureWorld (RSS)</td><td class="num">OK · 5 entries</td></tr>
+          <tr><td><span class="dot ok"></span>TechCrunch</td><td class="num">OK</td></tr>
+          <tr><td><span class="dot ok"></span>CNBC</td><td class="num">OK</td></tr>
+          <tr><td><span class="dot ok"></span>Krebs on Security</td><td class="num">OK · 1 article</td></tr>
+          <tr><td><span class="dot ok"></span>SANS ISC (RSS)</td><td class="num">OK · 2 entries</td></tr>
+          <tr><td><span class="dot ok"></span>SecureWorld (RSS)</td><td class="num">OK · 2 stories</td></tr>
           <tr><td><span class="dot ok"></span>CISA advisories</td><td class="num">OK</td></tr>
-          <tr><td><span class="dot ok"></span>Yahoo Finance</td><td class="num">prior close</td></tr>
+          <tr><td><span class="dot ok"></span>Yahoo Finance</td><td class="num">pre-mkt futures</td></tr>
           <tr><td><span class="dot warn"></span>BleepingComputer</td><td class="num">403 blocked</td></tr>
           <tr><td><span class="dot warn"></span>Dark Reading</td><td class="num">403 blocked</td></tr>
-          <tr><td><span class="dot warn"></span>Krebs on Security</td><td class="num">no new posts</td></tr>
           <tr><td><span class="dot warn"></span>Troy Hunt / Schneier</td><td class="num">not scanned</td></tr>
-          <tr><td><span class="dot warn"></span>Reuters / AP / CNBC / MarketWatch</td><td class="num">not scanned</td></tr>
+          <tr><td><span class="dot warn"></span>Reuters</td><td class="num">blocked</td></tr>
+          <tr><td><span class="dot warn"></span>AP / MarketWatch</td><td class="num">not scanned</td></tr>
           <tr><td><span class="dot warn"></span>WSJ / Bloomberg</td><td class="num">paywall · not scanned</td></tr>
           <tr><td><span class="dot warn"></span>SEC EDGAR 8-K</td><td class="num">not scanned</td></tr>
-          <tr><td><span class="dot warn"></span>Crunchbase / TechCrunch / PE Hub</td><td class="num">not fully scanned</td></tr>
+          <tr><td><span class="dot warn"></span>Crunchbase / PE Hub</td><td class="num">not scanned</td></tr>
+          <tr><td><span class="dot warn"></span>Renaissance Capital</td><td class="num">not scanned</td></tr>
         </table>
-        <div class="note">BleepingComputer and Dark Reading continue to return 403. Krebs on Security had no new posts in the coverage window (last post Nov 17). Market tape reflects Thursday Nov 19 close from Yahoo Finance; Friday intraday data not available at 6 AM PT.</div>
+        <div class="note">BleepingComputer and Dark Reading continue to return 403. Reuters was blocked. SANS ISC had two stormcast entries with no new actionable content. Market tape reflects Monday pre-market futures from Yahoo Finance; prior-day close data reflects a sharply down week. Crunchbase, PE Hub, and Renaissance Capital were not scanned; additional startup rounds may exist.</div>
       </div>
     </aside>
   </div>
@@ -401,33 +418,33 @@
     <div class="sechead"><h3>Startup radar</h3><span>Funding rounds, IPOs and private-equity deals · last 7 days</span></div>
     <div class="rstats">
       <div class="rstat"><div class="v">1</div><div class="l">Events tracked</div></div>
-      <div class="rstat"><div class="v">$20M</div><div class="l">Raised in rounds</div></div>
-      <div class="rstat"><div class="v">none</div><div class="l">IPO and PE deals</div></div>
-      <div class="rstat"><div class="v">1 of 1</div><div class="l">Supply chain / AI pipeline</div></div>
+      <div class="rstat"><div class="v">$0</div><div class="l">Raised in rounds</div></div>
+      <div class="rstat"><div class="v">$93.5B</div><div class="l">IPO value</div></div>
+      <div class="rstat"><div class="v">1 of 1</div><div class="l">AI safety / LLM</div></div>
     </div>
-    <p class="rtrend"><b>This edition:</b> One confirmed close: StepSecurity's $20M Series A, announced November 19, backed by lead investor Elephant alongside Runtime Ventures, Inner Loop Capital, and SaaS Ventures. The company protects software supply chains across developer machines, CI/CD runners, AI coding agents, and package registries — a category gaining urgency in the wake of the Microsoft agent-framework PyPI poisoning from Edition #003. Total raised is $23M. No IPOs or PE buyouts confirmed in the coverage window; Crunchbase News, TechCrunch funding pages, PE Hub, and Renaissance Capital were not scanned this run — additional rounds may exist.</p>
+    <p class="rtrend"><b>This edition:</b> The dominant event is Anthropic's historic Nasdaq IPO (Nov 21), which at $93.5 billion market cap is the largest AI company debut and among the largest technology IPOs ever. No confirmed cybersecurity-specific startup funding rounds were surfaced in the coverage window; Crunchbase News, PE Hub, and Renaissance Capital were not scanned this run and additional rounds likely exist. The CrowdStrike acquisition of Zscaler ($43.9B) is covered as the lead story; as a public-company transaction it falls outside the startup radar scope but dominates the broader sector M&amp;A picture this week.</p>
     <div class="controls" role="toolbar" aria-label="Filter startup events" style="border-bottom:0;padding-top:0">
       <button class="fbtn rf" data-r="all" aria-pressed="true">All<span class="n">1</span></button>
       <button class="fbtn rf" data-r="seed" aria-pressed="false">Seed<span class="n">0</span></button>
-      <button class="fbtn rf" data-r="a" aria-pressed="false">Series A<span class="n">1</span></button>
+      <button class="fbtn rf" data-r="a" aria-pressed="false">Series A<span class="n">0</span></button>
       <button class="fbtn rf" data-r="b" aria-pressed="false">Series B<span class="n">0</span></button>
       <button class="fbtn rf" data-r="c" aria-pressed="false">Series C+<span class="n">0</span></button>
-      <button class="fbtn rf" data-r="ipo" aria-pressed="false">IPO<span class="n">0</span></button>
+      <button class="fbtn rf" data-r="ipo" aria-pressed="false">IPO<span class="n">1</span></button>
       <button class="fbtn rf" data-r="pe" aria-pressed="false">PE buyout<span class="n">0</span></button>
     </div>
     <div class="rlist">
-      <div class="ritem" data-sf="a">
-        <div><span class="st a">Series A</span><span class="dt">Nov 19</span></div>
-        <div><h5>StepSecurity</h5><p>Protects software supply chains across developer machines, CI/CD runners, AI coding agents, and package registries; recently expanded to agentic pipeline security controls.</p></div>
-        <div class="amt">$20M<small>$23M total raised</small></div>
-        <div class="inv">Lead: <b>Elephant</b> · Runtime Ventures · Inner Loop Capital · SaaS Ventures</div>
-        <div class="rs"><a href="https://www.securityweek.com/stepsecurity-secures-20-million-to-expand-supply-chain-protection/" target="_blank" rel="noopener">SecurityWeek</a></div>
+      <div class="ritem" data-sf="ipo">
+        <div><span class="st ipo">IPO</span><span class="dt">Nov 21</span></div>
+        <div><h5>Anthropic (ANTH)</h5><p>AI safety company and maker of the Claude model family. Priced at record valuation in Nasdaq debut; shares opened at $111.50, up 17% on day one, before pulling back below the offering price on day two amid broader tech selloff.</p></div>
+        <div class="amt">$93.5B<small>market cap at open</small></div>
+        <div class="inv">Major holders: <b>Google</b> · <b>Amazon</b> · <b>Spark Capital</b> · Menlo Ventures · Lightspeed</div>
+        <div class="rs"><a href="https://www.cnbc.com/2026/11/21/anthropic-ipo-tech-selloff.html" target="_blank" rel="noopener">CNBC</a></div>
       </div>
     </div>
   </section>
 
   <footer>
-    The Asena Brief · curated for Asena Security · Edition #004, Friday November 20, 2026 · Coverage window: Wednesday Nov 18 morning through Friday Nov 20 morning. Stories reported by more than one outlet are merged into one entry with every source listed. Market tape reflects Thursday Nov 19 close from Yahoo Finance; Friday market data not available at publication time (6 AM PT). BleepingComputer and Dark Reading continue to return 403; stories broken exclusively there may be missed. Krebs on Security had no new posts in the coverage window. Startup radar sources Crunchbase News, TechCrunch, PE Hub, and Renaissance Capital were not fully scanned; additional rounds may exist. <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a>
+    The Asena Brief · curated for Asena Security · Edition #005, Monday November 24, 2026 · Coverage window: Friday Nov 20 morning through Monday Nov 24 morning. Stories reported by more than one outlet are merged into one entry with every source listed. Market tape reflects Monday pre-market futures from Yahoo Finance (~06:00 PT); prior week saw the Nasdaq's worst weekly loss since 2020. BleepingComputer and Dark Reading continue to return 403; stories broken exclusively there may be missed. Reuters was blocked this run. Crunchbase News, PE Hub, and Renaissance Capital were not scanned; additional startup funding rounds may exist. <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a>
   </footer>
 </div>
 
@@ -451,7 +468,7 @@
   });
 
   /* ---- collapse / read state, saved per edition ---- */
-  const EDITION = '2026-11-20';
+  const EDITION = '2026-11-24';
   const KEY = 'asenaRead:' + EDITION;
   const hash = t => { let h=0; for (const c of t) h=(h*31 + c.charCodeAt(0))|0; return 'h'+(h>>>0).toString(36); };
   let read = new Set();
