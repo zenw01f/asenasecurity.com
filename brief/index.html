@@ -36,6 +36,8 @@
   .tape .up{color:#38d27f} .tape .down{color:#ff6b62}
   .tape .stamp{margin-left:auto;color:#7d8794}
 
+  .sample{background:#2a2410;color:#e8c96a;font-size:14px;text-align:center;padding:6px 12px;border-bottom:1px solid #4a3d16}
+
   /* ---------- masthead (editorial) ---------- */
   header.mast{border-bottom:3px double var(--ink);padding:26px 0 14px;text-align:center}
   .kicker{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
@@ -179,13 +181,13 @@
 
 <!-- MARKET TAPE -->
 <div class="tape"><div class="wrap">
-  <span><b>S&amp;P 500</b>7,201.09 <span class="down">▼0.50%</span></span>
-  <span><b>NASDAQ</b>23,733.54 <span class="down">▼1.48%</span></span>
-  <span><b>DOW</b>50,018.70 <span class="up">▲0.85%</span></span>
-  <span><b>VIX</b>30.87 <span class="up">▲17.1%</span></span>
-  <span><b>US10Y</b>4.85% <span class="down">▼6bp</span></span>
-  <span><b>CRWD</b>201.76 <span class="down">▼4.31%</span></span>
-  <span><b>PANW</b>338.31 <span class="down">▼4.16%</span></span>
+  <span><b>S&amp;P 500</b>7,182.78 <span class="down">▼0.25%</span></span>
+  <span><b>NASDAQ</b>23,585.80 <span class="down">▼0.62%</span></span>
+  <span><b>DOW</b>50,182.95 <span class="up">▲0.33%</span></span>
+  <span><b>VIX</b>25.37 <span class="down">▼5.3%</span></span>
+  <span><b>US10Y</b>4.90%</span>
+  <span><b>CRWD</b>211.88 <span class="up">▲1.23%</span></span>
+  <span><b>BTC</b>61,365 <span class="up">▲0.93%</span></span>
   <span class="stamp">pre-mkt · ~06:00 PT</span>
 </div></div>
 
@@ -196,16 +198,16 @@
     <h1 class="title">The Asena Brief</h1>
     <div class="kicker">Cyber &nbsp;·&nbsp; Markets &nbsp;·&nbsp; Where they collide</div>
     <div class="mastmeta">
-      <span><strong>Wednesday, November 25, 2026</strong> · Edition #006</span>
-      <span><strong>21</strong> articles from <strong>8</strong> sources, merged into <strong>14</strong> stories</span>
-      <span>Next edition: Fri, Nov 27 · 6:00 AM PT</span>
+      <span><strong>Friday, November 27, 2026</strong> · Edition #007</span>
+      <span><strong>26</strong> articles from <strong>6</strong> sources, merged into <strong>13</strong> stories</span>
+      <span>Next edition: Mon, Nov 30 · 6:00 AM PT</span>
     </div>
   </header>
 
   <!-- CONTROLS -->
   <div class="controls" role="toolbar" aria-label="Filter stories">
-    <button class="fbtn" data-f="all" aria-pressed="true">All<span class="n">14</span></button>
-    <button class="fbtn" data-f="cyber" aria-pressed="false">Cyber<span class="n">12</span></button>
+    <button class="fbtn" data-f="all" aria-pressed="true">All<span class="n">13</span></button>
+    <button class="fbtn" data-f="cyber" aria-pressed="false">Cyber<span class="n">11</span></button>
     <button class="fbtn" data-f="mkt" aria-pressed="false">Markets<span class="n">2</span></button>
     <span class="spacer"></span>
     <span class="readcount" id="readcount">0 read</span>
@@ -220,22 +222,24 @@
 
       <!-- LEAD STORY -->
       <article class="lead story" data-cat="cyber">
-        <div class="tags"><span class="sev xb">Lead story</span><span class="sev high">High</span><span class="tag">Government · Financial sector · Cyber incident</span></div>
-        <h2>US Treasury's FinCEN takes systems offline after unauthorized access discovered Tuesday evening, extending Bank Secrecy Act filing deadlines for affected institutions</h2>
-        <p class="dek">The financial crimes enforcement agency at the center of US anti-money-laundering compliance discovered an intrusion in a limited subset of its systems — raising immediate questions about the security of Suspicious Activity Report data and financial intelligence used in active law enforcement investigations.</p>
+        <div class="tags"><span class="sev xb">Lead story</span><span class="sev high">High</span><span class="tag">Password management · Supply chain · GitHub</span></div>
+        <h2>1Password discloses breach via compromised employee GitHub account; customer names, cryptographic tokens, and internal source code stolen — password vaults remain secure</h2>
+        <p class="dek">An attacker accessed 1Password's backend services by injecting malicious code through a corporate GitHub account, exposing account metadata and infrastructure credentials in a targeted compromise of a trusted security tool.</p>
         <div class="body">
-          <p>The Financial Crimes Enforcement Network (FinCEN), the Treasury Department unit that administers Bank Secrecy Act compliance for every regulated financial institution in the United States, confirmed Tuesday evening that it had discovered unauthorized access to a limited subset of its systems and proactively disconnected them while investigating. FinCEN's BSA E-Filing System remains operational, though some services became temporarily unavailable. The agency issued an order extending reporting deadlines for institutions affected by the disruptions, directing them to use alternative channels such as phone hotlines for Suspicious Activity Reports during the outage. No attribution has been established, and FinCEN made no mention of a potential data breach in its initial disclosure.</p>
-          <p>The incident arrives amid a broader wave of US government system compromises: an unclassified CIA system handling open-source intelligence was confirmed breached by an AP source on Monday, and the FBI's National Crime Information Center breach reported last week remains under investigation. Director of National Intelligence Jay Clayton appeared on news programs this week attributing recent government outages broadly to the rush to patch and upgrade systems in response to AI-powered attacks, characterizing the incidents as uncoordinated rather than part of a unified campaign — though that assessment has not been independently confirmed. The pattern underscores the pressure on federal cybersecurity infrastructure at a moment when AI-accelerated offensive tools are compressing attackers' timelines.</p>
-          <p>FinCEN's data holdings are operationally sensitive in ways that go beyond personal information. The network collects and analyzes financial transaction intelligence from banks, money services businesses, broker-dealers, insurance companies, and other regulated entities. Suspicious Activity Reports filed through FinCEN's systems describe potentially illicit transactions including drug trafficking proceeds, terrorism financing, and sanctions evasion — data that intelligence and law enforcement agencies rely on for active investigations. The agency stated it is "working diligently to return all systems to normal operations as soon as possible" and that it will provide further guidance to affected filers.</p>
+          <p>On November 25, 1Password disclosed that an unauthorized party compromised an employee's GitHub account on November 19 and used it to inject malicious code into the company's backend services. The company confirmed that stolen tokens allowed the attacker to extract customer account metadata including names, email addresses, account IDs, public cryptographic keys, Secure Remote Password parameters, and account provisioning and recovery tokens. The company's CI/CD environment was also accessed, and internal source code was stolen. 1Password moved quickly to disable the compromised account, revoke the stolen tokens, restore clean service versions, and rotate or revoke exposed infrastructure credentials. It strengthened account verification codes from six numeric digits to ten alphanumeric characters as part of its remediation.</p>
+          <p class="sum extra">Customer password vaults and the master passwords that protect them were not compromised — 1Password's end-to-end encryption architecture ensures vaults are encrypted on-device before being stored, and the stolen tokens cannot independently unlock them. However, the exposed provisioning and recovery tokens are valuable to attackers as phishing material: they can be used to craft convincing password-reset requests targeting 1Password users, and the full roster of confirmed customer accounts is a targeting list for credential-stuffing campaigns at every organization using the product. 1Password individually notified affected users and hired independent forensic investigators to validate the response.</p>
+          <p>The incident fits a pattern of attackers targeting developer identity and CI/CD pipelines as a supply-chain pivot point. A compromised employee GitHub account provides access not just to source code but to secrets embedded in workflows, deployment configurations, and integration tokens — which is why the CI/CD environment access is the operationally significant detail here, even more than the customer metadata. The stolen signing and infrastructure credentials have been rotated, but any customer using 1Password's APIs or deeply integrating with the product's provisioning layer should audit their own access logs for the November 19 window.</p>
         </div>
-        <p class="why" style="margin-top:12px"><b>Why it matters:</b> Every financial institution with BSA compliance obligations has an operational dependency on FinCEN filing systems. For clients in banking, fintech, credit unions, or any regulated financial services, the right action now is to monitor FinCEN communications for restoration updates and confirm that your alternative BSA filing procedures are documented and operational. The nature of FinCEN's data — financial intelligence used in live criminal and national security investigations — means the downstream consequences of this breach, if any data was accessed, may not be fully visible for months.</p>
+        <p class="why" style="margin-top:12px"><b>Why it matters:</b> Enable phishing-resistant MFA on all 1Password accounts and brief end users to be alert for password-reset phishing over the next 90 days — the confirmed customer email list makes this population a known target. For organizations integrating 1Password via API or provisioning tokens, review access logs for the November 19–25 window and re-verify that rotated credentials are propagated across all dependent pipelines.</p>
         <div class="srcs"><span class="lbl">Reported by</span>
-          <a href="https://www.securityweek.com/us-treasurys-fincen-disconnects-systems-following-cyber-incident/" target="_blank" rel="noopener">SecurityWeek</a>
-          <a href="https://therecord.media/treasury-fincen-takes-systems-offline-after-cyber-incident" target="_blank" rel="noopener">The Record</a>
-          <details class="arts"><summary><span class="count">2 sources · 2 articles</span></summary>
+          <a href="https://www.bleepingcomputer.com/news/security/1password-customer-data-stolen-after-employee-github-account-breach/" target="_blank" rel="noopener">BleepingComputer</a>
+          <a href="https://thehackernews.com/2026/11/1password-hacked-customer-data-and.html" target="_blank" rel="noopener">The Hacker News</a>
+          <a href="https://www.securityweek.com/1password-breach-exposes-customer-data-internal-source-code/" target="_blank" rel="noopener">SecurityWeek</a>
+          <details class="arts"><summary><span class="count">3 sources · 3 articles</span></summary>
             <ol>
-              <li><a href="https://www.securityweek.com/us-treasurys-fincen-disconnects-systems-following-cyber-incident/" target="_blank" rel="noopener">US Treasury's FinCEN Disconnects Systems Following Cyber Incident</a><span class="o">SecurityWeek · Nov 25</span></li>
-              <li><a href="https://therecord.media/treasury-fincen-takes-systems-offline-after-cyber-incident" target="_blank" rel="noopener">Treasury's FinCEN Takes Systems Offline After Cybersecurity Incident</a><span class="o">The Record · Nov 25</span></li>
+              <li><a href="https://www.bleepingcomputer.com/news/security/1password-customer-data-stolen-after-employee-github-account-breach/" target="_blank" rel="noopener">1Password Customer Data Stolen After Employee GitHub Account Breach</a><span class="o">BleepingComputer · Nov 25</span></li>
+              <li><a href="https://thehackernews.com/2026/11/1password-hacked-customer-data-and.html" target="_blank" rel="noopener">1Password Hacked, Customer Data and Source Code Stolen in GitHub Account Breach</a><span class="o">The Hacker News · Nov 26</span></li>
+              <li><a href="https://www.securityweek.com/1password-breach-exposes-customer-data-internal-source-code/" target="_blank" rel="noopener">1Password Breach Exposes Customer Data, Internal Source Code</a><span class="o">SecurityWeek · Nov 26</span></li>
             </ol></details>
         </div>
       </article>
@@ -245,83 +249,90 @@
       <div class="cards">
 
         <article class="card story" data-cat="cyber">
-          <div class="tags"><span class="sev crit">Critical</span><span class="tag">APT · Firewall · AI-assisted · Government</span></div>
-          <h4>China-linked threat actors root 25 PAN-OS firewalls on US government-affiliated organization by chaining PHP2Shell with Fragnesia kernel exploit in AI-assisted campaign</h4>
-          <p class="sum">A China-linked hacking group compromised 24 Palo Alto Networks firewalls and one management server belonging to a US government-affiliated organization by chaining PHP2Shell — critical remote code execution flaws in PAN-OS — with Fragnesia (CVE-2026-46300), a Linux kernel privilege-escalation vulnerability. The exploit chain allowed attackers to escalate from initial RCE on internet-exposed management interfaces to full root access on the underlying firewall appliance. The campaign used AI-assisted attack techniques throughout. Affected PAN-OS versions span 10.2.x through 12.2.x.</p>
-          <p class="sum extra">Palo Alto Networks released patches on November 25 (versions 12.2.4-h3, 12.1.10-h6, and others across supported product lines). The company recommends restricting management interface access via VPN rather than allowing direct internet exposure — the attack surface that enabled this campaign. Any organization running affected PAN-OS versions with management interfaces reachable from the internet should assume attacker access and begin hunting for persistence before applying the patch, as patching an already-compromised device does not remove an installed implant.</p>
-          <p class="why"><b>Why it matters:</b> Internet-exposed firewall management interfaces are a preventable attack surface. Any client running PAN-OS 10.2 through 12.2 with management interfaces accessible from the internet should treat those devices as potentially compromised and prioritize both hunting for indicators of compromise and restricting management interface exposure. Patching alone is not sufficient if the attackers are already inside.</p>
+          <div class="tags"><span class="sev high">High</span><span class="tag">Enterprise software · Supply chain · GitHub</span></div>
+          <h4>SAP confirms security incident after attackers steal employee GitHub tokens and copy source code; signing keys rotated and automated development pipelines suspended across the company</h4>
+          <p class="sum">SAP confirmed it detected suspicious activity in its GitHub environment after threat actors obtained authentication tokens belonging to SAP employees and used them to access and copy source code from the company's repositories. SAP responded by replacing its code-signing keys, restricting GitHub access, and suspending automated development pipelines across numerous teams — disrupting developer workflows company-wide while the investigation continues.</p>
+          <p class="sum extra">SAP stated it found no evidence of unauthorized access to customer business data and no indication that any compromised code was incorporated into software delivered to customers. The specifics of which repositories were accessed — whether proprietary SAP application code or the developer tools and sample applications SAP publishes publicly on GitHub — have not been disclosed. The signing-key rotation is the operationally significant response: SAP's code-signing infrastructure protects the integrity of software updates and SDK releases delivered to enterprise customers, and rotating those keys is a precautionary step to ensure that any attacker who accessed repositories cannot leverage stolen keys to sign malicious software presented as a legitimate SAP update.</p>
+          <p class="why"><b>Why it matters:</b> IT teams managing SAP update pipelines should confirm that automated deployment tools accept SAP's new signing keys without error. Organizations using SAP's developer tools, GitHub-hosted SDKs, or the SAP BTP platform should validate the integrity of any packages fetched from SAP's GitHub during and immediately following the November 19–27 window.</p>
+          <div class="tickers"><span class="tk">SAP</span></div>
           <div class="srcs"><span class="lbl">Reported by</span>
-            <a href="https://www.securityweek.com/palo-alto-networks-patches-fragnesia-flaw-used-to-root-firewalls/" target="_blank" rel="noopener">SecurityWeek</a>
-            <span class="count">1 source · 1 article</span>
-          </div>
-        </article>
-
-        <article class="card story" data-cat="cyber">
-          <div class="tags"><span class="sev high">High</span><span class="tag">Extortion · Vishing · Enterprise · Identity</span></div>
-          <h4>Okta links INCEPTION data leak site to ShinyHunters successors via identical vishing methodology; PepsiCo, Paychex, Duolingo, and Western Union among listed victims</h4>
-          <p class="sum">Okta's threat intelligence team linked the newly emerged INCEPTION data leak site to a threat cluster tracked as O-UNC-053, which the company assesses was previously affiliated with the ShinyHunters extortion crew. After ShinyHunters went offline in September 2026, the same victims' data began appearing on INCEPTION in mid-November 2026 — along with new victims from technology, healthcare, financial services, and retail sectors, including PepsiCo, Paychex, Duolingo, and Western Union. INCEPTION has publicly denied any affiliation with ShinyHunters, but Okta noted the operations use identical vishing attack methodologies that target MFA reset procedures at help desks to bypass authentication.</p>
-          <p class="sum extra">The vishing technique exploits a gap that strong MFA does not close: attackers phone help desks — including outsourced third-party support centers — posing as locked-out executives and convince agents to reset MFA using verification steps that rely on information easily found online such as job titles, manager names, and employee IDs. Once MFA is reset, the attacker controls the account and can access cloud and SaaS tenants to exfiltrate data in bulk. The campaign represents a continuation of the Com-affiliated threat cluster's social engineering operations that law enforcement has not been able to fully disrupt despite multiple arrests.</p>
-          <p class="why"><b>Why it matters:</b> This attack chain is preventable. Identity-verification requirements for MFA resets must exceed what an attacker can find on LinkedIn — secret phrases, out-of-band verification codes, or manager confirmation rather than knowledge-based authentication. Ensure third-party help desks and outsourced IT support providers follow the same procedure, since attackers specifically target the weakest link in the help-desk chain.</p>
-          <div class="srcs"><span class="lbl">Reported by</span>
-            <a href="https://thehackernews.com/2026/11/okta-links-shinyhunters-associated.html" target="_blank" rel="noopener">The Hacker News</a>
-            <span class="count">1 source · 1 article</span>
-          </div>
-        </article>
-
-        <article class="card story" data-cat="cyber">
-          <div class="tags"><span class="sev high">High</span><span class="tag">AI-assisted attacks · Critical infrastructure · Multi-sector · Advisory</span></div>
-          <h4>UK NCSC documents six AI offensive frameworks in circulation as GT13 campaign compromises 24 Check Point management servers across 22 organizations in 16 countries using AI-enabled exploit chains</h4>
-          <p class="sum">The UK National Cyber Security Centre published guidance this week documenting a "marked rise" in AI-assisted cyberattacks since September 2026, naming six offensive agentic frameworks in circulation — Artex, Cairn, PentAGI, RedAmon, Xalgorix, and Darkmoon — that automate vulnerability scanning, exploit development, and lateral movement at speed no human attacker can match. Concurrently, threat intelligence firm GreyNoise published details on GT13 (GreyNoise Threat 13), a threat actor that compromised 24 Check Point Security Management servers at 22 distinct organizations across energy, financial services, government, transportation, mining, engineering, and manufacturing sectors in 16 countries between October 17 and November 2.</p>
-          <p class="sum extra">The GT13 campaign chained CVE-2026-61500 (Rejetto HFS), previously patched Check Point and Citrix NetScaler flaws, Ivanti Connect Secure vulnerabilities, and older VMware vCenter and Microsoft Exchange bugs to establish footholds, then used an "agentic harness" to automate lateral movement across compromised environments. The NCSC's key finding is that AI-driven attacks overwhelmingly exploit existing, well-known vulnerabilities rather than novel zero-days — the frameworks are automating what human attackers would otherwise do slowly. "Building strong foundations has never mattered more," the agency stated.</p>
-          <p class="why"><b>Why it matters:</b> The case for patching known CVEs in internet-facing infrastructure is now more urgent: AI-enhanced attackers are scanning for and exploiting unpatched devices faster than ever, compressing the window between vulnerability disclosure and mass exploitation. Organizations that deprioritize patching Citrix, Ivanti, Fortinet, and legacy Microsoft Exchange in favor of newer initiatives are exposed to exactly this class of campaign.</p>
-          <div class="srcs"><span class="lbl">Reported by</span>
-            <a href="https://www.securityweek.com/check-point-security-management-servers-hacked-in-ai-assisted-campaign/" target="_blank" rel="noopener">SecurityWeek</a>
-            <a href="https://thehackernews.com/2026/11/hackers-compromise-24-check-point.html" target="_blank" rel="noopener">The Hacker News</a>
-            <a href="https://techcrunch.com/2026/11/24/uk-warns-ai-driven-cyberattacks-are-exposing-years-of-weak-security/" target="_blank" rel="noopener">TechCrunch</a>
-            <a href="https://therecord.media/cyberattacks-uk-artificial-intelligence" target="_blank" rel="noopener">The Record</a>
-            <details class="arts"><summary><span class="count">4 sources · 4 articles</span></summary>
+            <a href="https://www.bleepingcomputer.com/news/security/sap-confirms-security-incident-after-suspicious-github-activity/" target="_blank" rel="noopener">BleepingComputer</a>
+            <a href="https://www.securityweek.com/sap-confirms-cyberattack-source-code-reportedly-compromised/" target="_blank" rel="noopener">SecurityWeek</a>
+            <details class="arts"><summary><span class="count">2 sources · 2 articles</span></summary>
               <ol>
-                <li><a href="https://www.securityweek.com/check-point-security-management-servers-hacked-in-ai-assisted-campaign/" target="_blank" rel="noopener">Check Point Security Management Servers Hacked in AI-Assisted Campaign</a><span class="o">SecurityWeek · Nov 24</span></li>
-                <li><a href="https://thehackernews.com/2026/11/hackers-compromise-24-check-point.html" target="_blank" rel="noopener">Hackers Compromise 24 Check Point Management Servers in Suspected AI-Driven Attack Campaign</a><span class="o">The Hacker News · Nov 25</span></li>
-                <li><a href="https://techcrunch.com/2026/11/24/uk-warns-ai-driven-cyberattacks-are-exposing-years-of-weak-security/" target="_blank" rel="noopener">UK Warns AI-Driven Cyberattacks Are Exposing Years of Weak Security</a><span class="o">TechCrunch · Nov 24</span></li>
-                <li><a href="https://therecord.media/cyberattacks-uk-artificial-intelligence" target="_blank" rel="noopener">UK Cyber Agency Seeing 'Marked Rise' in AI-Driven Attacks</a><span class="o">The Record · Nov 24</span></li>
+                <li><a href="https://www.bleepingcomputer.com/news/security/sap-confirms-security-incident-after-suspicious-github-activity/" target="_blank" rel="noopener">SAP Confirms Security Incident After Suspicious GitHub Activity</a><span class="o">BleepingComputer · Nov 27</span></li>
+                <li><a href="https://www.securityweek.com/sap-confirms-cyberattack-source-code-reportedly-compromised/" target="_blank" rel="noopener">SAP Confirms Cyberattack, Source Code Reportedly Compromised</a><span class="o">SecurityWeek · Nov 27</span></li>
               </ol></details>
           </div>
         </article>
 
         <article class="card story" data-cat="cyber">
-          <div class="tags"><span class="sev high">High</span><span class="tag">Virtualization · Critical patches · ESX · vCenter</span></div>
-          <h4>Broadcom patches 23 vulnerabilities across VMware products including two CVSS 9.8 authentication bypasses in vCenter and ESX heap corruption flaws capable of guest-to-host code execution</h4>
-          <p class="sum">Broadcom released patches for 23 vulnerabilities across VMware vCenter, ESX, Cloud Foundation, Avi Load Balancer, and VMware Tools on November 24. The most critical is CVE-2026-123903 (CVSS 9.8), an authentication bypass in VMware Directory Service ("vmdir") allowing attackers with network access to bypass authentication and gain unauthorized access to vCenter. Two ESX flaws — CVE-2026-123910 and CVE-2026-123911 (both CVSS 9.8) — are heap corruption and use-after-free vulnerabilities in the I/O filter service that enable code execution on ESX hosts, a path that can enable virtual machine guest-to-host escapes.</p>
-          <p class="sum extra">None of these vulnerabilities are yet confirmed as exploited in the wild, though Broadcom notes that CVE-2026-123890, a separate 9.8-rated authentication bypass disclosed earlier this year, was exploited as a zero-day by suspected Chinese threat actors. The pattern of VMware vulnerabilities being targeted by nation-state actors reinforces the urgency of applying patches for critical VMware infrastructure. Affected products include vCenter 7.0 and 8.0, Cloud Foundation 5.x/9.x, ESX, Workstation, Fusion, Avi Load Balancer, and Telco Cloud Platform. Patches include vCenter 8.0 U3m and Cloud Foundation 5.2.5.</p>
-          <p class="why"><b>Why it matters:</b> VMware vCenter is the management plane for virtualized infrastructure at the majority of enterprise clients. A CVSS 9.8 authentication bypass in vCenter effectively gives an unauthenticated attacker administrative control over every virtual machine in that environment. Treat this patch cycle as urgent, particularly for clients still on vCenter 7.0 — that version has a history of being targeted before patches are applied.</p>
-          <div class="tickers">
-            <span class="tk">AVGO</span>
-          </div>
+          <div class="tags"><span class="sev crit">Critical</span><span class="tag">Web CMS · RCE · KEV · Active exploitation</span></div>
+          <h4>Two distinct critical Drupal vulnerabilities — CVSS 9.8 Fail2Install (federal deadline today) and new access-bypass CVE-2026-136716 — are both under active exploitation simultaneously</h4>
+          <p class="sum">CISA added the Drupal Fail2Install flaw (CVE-2026-132165, CVSS 9.8) to its Known Exploited Vulnerabilities catalog on November 24 with a 72-hour federal remediation deadline of November 27. The vulnerability exploits resource exhaustion to trick Drupal's installation checks into believing a live site is uninstalled, reopening install.php — once accessible, attackers can redirect the database to an attacker-controlled server, create administrator accounts, and execute arbitrary PHP code. Active exploitation has been confirmed since November 19; patches exist in Drupal 10.6.22+, 11.3.22+, and 11.4.13+.</p>
+          <p class="sum extra">On November 27, Drupal's security team disclosed a second critical vulnerability — CVE-2026-136716, a separate access-bypass flaw — with an emergency advisory confirming active exploitation on the same day it was published. The two flaws are distinct vulnerabilities that require separate patches and are being exploited simultaneously in the wild. Organizations running any version of Drupal 8, 9, 10, or 11 face a double-patching emergency: a SecurityWeek analysis notes the second flaw was introduced as a byproduct of an earlier incomplete installer patch, meaning some sites that thought they were secured remain exposed.</p>
+          <p class="why"><b>Why it matters:</b> Drupal powers a significant share of government, university, and enterprise web properties. If clients or their vendors manage Drupal deployments, emergency patching is required now — the federal CISA deadline for Fail2Install was today (Nov 27). Extend the check to third-party web development firms managing CMS deployments on a client's behalf; they may not have patching on the same cadence as internal IT.</p>
           <div class="srcs"><span class="lbl">Reported by</span>
-            <a href="https://www.securityweek.com/vmware-updates-patch-critical-esx-vcenter-vulnerabilities/" target="_blank" rel="noopener">SecurityWeek</a>
-            <a href="https://thehackernews.com/2026/11/vmware-vcenter-hit-by-another-critical.html" target="_blank" rel="noopener">The Hacker News</a>
-            <details class="arts"><summary><span class="count">2 sources · 2 articles</span></summary>
+            <a href="https://thehackernews.com/2026/11/drupal-fail2install-exploit-details.html" target="_blank" rel="noopener">The Hacker News</a>
+            <a href="https://www.securityweek.com/drupal-installer-patch-left-a-gap-attackers-are-already-exploiting/" target="_blank" rel="noopener">SecurityWeek</a>
+            <a href="https://www.bleepingcomputer.com/news/security/hackers-now-exploit-critical-drupal-rce-flaw-to-hijack-sites/" target="_blank" rel="noopener">BleepingComputer</a>
+            <a href="https://www.cisa.gov/news-events/alerts/2026/11/25/cisa-adds-10-known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">CISA</a>
+            <details class="arts"><summary><span class="count">4 sources · 5 articles</span></summary>
               <ol>
-                <li><a href="https://www.securityweek.com/vmware-updates-patch-critical-esx-vcenter-vulnerabilities/" target="_blank" rel="noopener">VMware Updates Patch Critical ESX, vCenter Vulnerabilities</a><span class="o">SecurityWeek · Nov 24</span></li>
-                <li><a href="https://thehackernews.com/2026/11/vmware-vcenter-hit-by-another-critical.html" target="_blank" rel="noopener">VMware vCenter Hit by Another Critical 9.8-Rated Auth Bypass Flaw After Zero-Day Exploitation</a><span class="o">The Hacker News · Nov 24</span></li>
+                <li><a href="https://thehackernews.com/2026/11/drupal-fail2install-exploit-details.html" target="_blank" rel="noopener">Drupal Fail2Install Exploit Details Emerge as Critical RCE Flaw Faces Active Exploitation</a><span class="o">The Hacker News · Nov 25</span></li>
+                <li><a href="https://thehackernews.com/2026/11/drupal-warns-of-new-highly-critical.html" target="_blank" rel="noopener">Drupal Warns of New Highly Critical Site Takeover Vulnerability Under Active Exploitation</a><span class="o">The Hacker News · Nov 26</span></li>
+                <li><a href="https://www.securityweek.com/drupal-installer-patch-left-a-gap-attackers-are-already-exploiting/" target="_blank" rel="noopener">Drupal Installer Patch Left a Gap Attackers Are Already Exploiting</a><span class="o">SecurityWeek · Nov 26</span></li>
+                <li><a href="https://www.bleepingcomputer.com/news/security/hackers-now-exploit-critical-drupal-rce-flaw-to-hijack-sites/" target="_blank" rel="noopener">Hackers Now Exploit Critical Drupal RCE Flaw to Hijack Sites</a><span class="o">BleepingComputer · Nov 25</span></li>
+                <li><a href="https://www.bleepingcomputer.com/news/security/drupal-warns-of-new-access-bypass-flaw-exploited-in-attacks/" target="_blank" rel="noopener">Drupal Warns of New Site Takeover Flaw Exploited in Attacks</a><span class="o">BleepingComputer · Nov 27</span></li>
               </ol></details>
           </div>
         </article>
 
         <article class="card story" data-cat="cyber">
-          <div class="tags"><span class="sev high">High</span><span class="tag">Critical infrastructure · OT · Iran · Maritime</span></div>
-          <h4>US officials suspect Iran behind cyberattacks on roughly 50 oil and shipping tankers exploiting FortiBleed vulnerabilities in maritime Fortinet routers, coinciding with broader Iranian retaliation campaign</h4>
-          <p class="sum">US officials suspect Iranian hackers are behind cyberattacks targeting approximately 50 shipping vessels carrying oil, liquefied gas, and chemical cargo across Asian and European routes — including vessels headed toward US coasts — exploiting "FortiBleed," a vulnerability in Fortinet routers commonly used aboard commercial ships for navigation and operational systems. The attacks were initially reported by The Wall Street Journal and corroborated by a joint FBI-Coast Guard security alert issued in September 2026. Officials are investigating whether the campaign aims to sow fear among shippers, disrupt routes, or cause physical harm at a port.</p>
-          <p class="sum extra">The incidents represent an escalation of Iranian cyber operations into maritime critical infrastructure, following previous Iranian campaigns against water systems and medical technology companies. Navigation systems were among the compromised components, though no vessel casualties or confirmed physical incidents have been reported. The FortiBleed vulnerability underscores a persistent challenge in maritime OT security: network devices aboard vessels often run firmware versions that are years behind current patches, with upgrade cycles constrained by port call schedules and connectivity limitations.</p>
-          <p class="why"><b>Why it matters:</b> For clients with any exposure to maritime, logistics, energy, or port operations — or clients in sectors Iran has previously targeted — this is a signal to audit Fortinet devices across OT and industrial environments for the FortiBleed vulnerability and ensure firmware patching is current. The pattern of Iranian escalation into physical-consequence-capable sectors is consistent and expanding.</p>
+          <div class="tags"><span class="sev high">High</span><span class="tag">KEV · Mitel · Juniper · Multi-vendor</span></div>
+          <h4>CISA adds 10 exploited vulnerabilities in a single alert, including five Mitel MiCollab zero-days exploited in AI-assisted attacks before disclosure and a critical root-RCE flaw in Juniper Session Smart</h4>
+          <p class="sum">CISA issued an alert on November 25 adding 10 newly catalogued exploited vulnerabilities to its Known Exploited Vulnerabilities database — one of the larger single-day additions in recent months. The batch includes five zero-day flaws in Mitel MiCollab unified communications systems, which Accenture researchers discovered had been exploited before vendor disclosure in what SecurityWeek describes as a suspected AI-assisted extortion campaign, with attack types including arbitrary file upload and XML injection. Juniper's Session Smart Conductor also received a KEV entry for CVE-2026-103406, allowing remote attackers to execute arbitrary commands as root on affected systems.</p>
+          <p class="sum extra">Two GeoServer vulnerabilities (CVE-2026-120705 and CVE-2026-129243) are also included, enabling chained unauthenticated remote code execution against the geospatial data server used in government and utilities environments. The Mitel and Juniper exploitations are particularly notable: Mitel MiCollab is a widely deployed unified communications platform, and AI-assisted threat actors leveraging zero-days before vendor disclosure signals automated reconnaissance of enterprise UC infrastructure at scale. For Juniper Session Smart Conductor, the root-RCE designation means a successful attack yields complete control of the routing and SD-WAN management plane.</p>
+          <p class="why"><b>Why it matters:</b> UC systems and SD-WAN routers rarely get the same patching urgency as endpoints and cloud workloads, but this batch shows they are actively targeted. Run an asset inventory check for Mitel MiCollab, Juniper Session Smart, and GeoServer in client environments, and prioritize patching for any internet-facing instances.</p>
           <div class="srcs"><span class="lbl">Reported by</span>
-            <a href="https://techcrunch.com/2026/11/24/dozens-of-oil-and-shipping-tankers-hacked-in-recent-weeks-per-report/" target="_blank" rel="noopener">TechCrunch</a>
-            <a href="https://www.wsj.com" target="_blank" rel="noopener">WSJ</a>
+            <a href="https://www.cisa.gov/news-events/alerts/2026/11/25/cisa-adds-10-known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">CISA</a>
+            <a href="https://thehackernews.com/2026/11/hackers-exploit-10-vulnerabilities.html" target="_blank" rel="noopener">The Hacker News</a>
+            <a href="https://www.securityweek.com/critical-juniper-session-smart-conductor-flaw-exploited-in-attacks/" target="_blank" rel="noopener">SecurityWeek</a>
+            <details class="arts"><summary><span class="count">3 sources · 4 articles</span></summary>
+              <ol>
+                <li><a href="https://www.cisa.gov/news-events/alerts/2026/11/25/cisa-adds-10-known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">CISA Adds 10 Known Exploited Vulnerabilities to Catalog</a><span class="o">CISA · Nov 25</span></li>
+                <li><a href="https://thehackernews.com/2026/11/hackers-exploit-10-vulnerabilities.html" target="_blank" rel="noopener">Hackers Exploit 10 Vulnerabilities Across Mitel, Juniper, Vates, and Danfoss Products</a><span class="o">The Hacker News · Nov 26</span></li>
+                <li><a href="https://www.securityweek.com/critical-juniper-session-smart-conductor-flaw-exploited-in-attacks/" target="_blank" rel="noopener">Critical Juniper Session Smart Conductor Flaw Exploited in Attacks</a><span class="o">SecurityWeek · Nov 26</span></li>
+                <li><a href="https://www.securityweek.com/mitel-micollab-zero-days-exploited-in-suspected-ai-assisted-attacks/" target="_blank" rel="noopener">Mitel MiCollab Zero-Days Exploited in Suspected AI-Assisted Attacks</a><span class="o">SecurityWeek · Nov 26</span></li>
+              </ol></details>
+          </div>
+        </article>
+
+        <article class="card story" data-cat="cyber">
+          <div class="tags"><span class="sev high">High</span><span class="tag">Supply chain · North Korea · Developer targeting · Blockchain C2</span></div>
+          <h4>North Korea-linked PolinRider poisons 7,600 GitHub repositories with a Python loader hidden in build configs, using Ethereum blockchain transactions as command-and-control to evade blocking</h4>
+          <p class="sum">Apiiro researchers published an analysis of PolinRider, a North Korean malware distribution campaign assessed as a sub-cluster of the broader Contagious Interview operation. Attackers stole GitHub authentication tokens from compromised developer machines and used them to force-push malicious commits into more than 7,600 repositories across 2,330 accounts between October 27 and November 6. The poisoning technique is unusually stealthy: attackers rewrote existing developer commits — keeping the original author, message, and timestamp intact — and appended a 58-line Python loader hidden after hundreds of spaces in build configuration files. Some 86% of affected repos belong to personal accounts more than a year old with genuine commit histories.</p>
+          <p class="sum extra">The Python loader retrieves its second-stage payload from Ethereum blockchain transactions — a command-and-control technique that makes the C2 infrastructure exceptionally difficult to block since it operates over the public Ethereum network. The loader scans for developer tools including GitHub Desktop, VS Code, and Cursor, then delivers an infostealer targeting environment secrets, passwords, and cryptocurrency wallets. Projects confirmed to have been compromised include Neutralinojs, InstaWP Connect, and fxhash. Blockchain analysis traces related activity as far back as February 2025, suggesting this infrastructure has been operational for well over a year.</p>
+          <p class="why"><b>Why it matters:</b> Developer environments are targeted specifically because they hold production secrets, cloud credentials, and code-signing keys. Audit internal developer toolchains for any GitHub repository that received an unexpected push during October 27–November 6, verify that no modified build configurations entered CI/CD pipelines, and check whether any developer machines show signs of the PolinRider infostealer. The blockchain C2 means network-layer blocking is not sufficient — detection must come from endpoint and pipeline integrity checks.</p>
+          <div class="srcs"><span class="lbl">Reported by</span>
+            <a href="https://thehackernews.com/2026/11/north-korea-linked-polinrider-poisons.html" target="_blank" rel="noopener">The Hacker News</a>
+            <span class="count">1 source · 1 article</span>
+          </div>
+        </article>
+
+        <article class="card story" data-cat="cyber">
+          <div class="tags"><span class="sev high">High</span><span class="tag">Critical infrastructure · AI-assisted · Switzerland · Multi-sector</span></div>
+          <h4>Switzerland confirms four of five AI-assisted attacks achieved breaches, with three hitting critical infrastructure operators; autonomous frameworks switched tactics in real time to defeat defenses</h4>
+          <p class="sum">Switzerland's National Cyber Security Centre confirmed five AI-assisted cyberattacks in a security advisory this week, reporting that four of the five penetrated targeted systems and three successfully breached critical infrastructure operators — including electricity suppliers, drinking water utilities, and telecommunications providers. Victim identities were not disclosed. Swiss authorities described the attacks as using "agentic offensive frameworks": autonomous AI agents that scan for unpatched vulnerabilities, execute attacks across multiple targets in parallel, and adapt their approach in real time when defenses respond. Italy's CSIRT documented similar mass-compromise campaigns in the same advisory period.</p>
+          <p class="sum extra">Swiss authorities named ARTEX and CyberStrikeAI as examples of publicly available agentic attack tools, though officials did not confirm these specific tools were used in the five incidents. The UK NCSC had previously documented the broader rise of AI-assisted attacks (covered in Edition #006); the Swiss confirmation of real successful infrastructure breaches — not theoretical risk — represents an escalation of that reporting from advisory to confirmed incident with named sectors. Key defensive recommendations from the Swiss advisory: patch critical internet-facing systems within 24 hours of disclosure, reduce direct internet exposure via authentication and geo-blocking, and enforce MFA across all remote access.</p>
+          <p class="why"><b>Why it matters:</b> This is the first official multi-country confirmation of AI-assisted attacks achieving documented breaches of critical infrastructure systems, extending the threat from cautionary warning to recorded reality. For clients in energy, utilities, water, and telecom, the 24-hour patching cadence recommendation from Swiss authorities is now operationally grounded — and the compressed window between vulnerability disclosure and AI-driven exploitation means slow-patching environments face a materially higher risk than they did 12 months ago.</p>
+          <div class="srcs"><span class="lbl">Reported by</span>
+            <a href="https://thehackernews.com/2026/11/switzerland-confirms-ai-assisted.html" target="_blank" rel="noopener">The Hacker News</a>
+            <a href="https://www.bleepingcomputer.com/news/security/italy-and-switzerland-warn-of-autonomous-ai-driven-cyberattacks/" target="_blank" rel="noopener">BleepingComputer</a>
             <details class="arts"><summary><span class="count">2 sources · 2 articles</span></summary>
               <ol>
-                <li><a href="https://techcrunch.com/2026/11/24/dozens-of-oil-and-shipping-tankers-hacked-in-recent-weeks-per-report/" target="_blank" rel="noopener">Dozens of Oil and Shipping Tankers Hacked in Recent Weeks, Per Report</a><span class="o">TechCrunch · Nov 24</span></li>
-                <li><a href="https://www.wsj.com" target="_blank" rel="noopener">Iran Suspected in Cyberattacks on US-Bound Oil Tankers</a><span class="o">WSJ · Nov 24 · paywall</span></li>
+                <li><a href="https://thehackernews.com/2026/11/switzerland-confirms-ai-assisted.html" target="_blank" rel="noopener">Switzerland Confirms AI-Assisted Cyberattacks Breached Critical Infrastructure Operators</a><span class="o">The Hacker News · Nov 26</span></li>
+                <li><a href="https://www.bleepingcomputer.com/news/security/italy-and-switzerland-warn-of-autonomous-ai-driven-cyberattacks/" target="_blank" rel="noopener">Italy and Switzerland Warn of Autonomous AI-Driven Cyberattacks</a><span class="o">BleepingComputer · Nov 25</span></li>
               </ol></details>
           </div>
         </article>
@@ -333,38 +344,31 @@
       <div class="cards">
 
         <article class="card story" data-cat="mkt">
-          <div class="tags"><span class="sev med">Earnings</span><span class="tag">Cyber × Markets · Cyber platform · Acquisition integration</span></div>
-          <h4>CrowdStrike reports strong Q3 FY2027 — 28% revenue growth, $419M in net new ARR — but shares slide 4% pre-market as investors weigh CRWD/ZS integration risk against a volatile market backdrop</h4>
-          <p class="sum">CrowdStrike reported Q3 fiscal 2027 results that beat analyst expectations across the board: revenue grew 28.3% versus the 23.9% anticipated, earnings per share came in at $0.34 against a $0.31 estimate, and the company raised full-year guidance. Net new annual recurring revenue of $419 million sets a record for the company. Despite the beat, shares fell approximately 4% in pre-market trading on Wednesday, as investor attention remains fixed on integration complexity and dilution risk from the pending $43.9 billion all-stock acquisition of Zscaler.</p>
-          <p class="sum extra">CEO George Kurtz defended the Zscaler deal publicly on Monday, calling it a "winning combination" of endpoint detection and zero-trust network access that creates a platform capable of competing with Palo Alto Networks across the full security stack. The stock has declined sharply since the deal's announcement, with analyst price targets ranging from $174 to $320. The broader tech selloff — Nasdaq down 1.48% Wednesday morning and VIX above 30 — adds pressure to a stock that was already down on deal concerns. For enterprise clients, the fundamental point remains: CrowdStrike's underlying business is healthy and growing at scale despite the market noise.</p>
-          <div class="tickers">
-            <span class="tk">CRWD <span class="down">▼4.31%</span></span>
-            <span class="tk">ZS</span>
-            <span class="tk">PANW <span class="down">▼4.16%</span></span>
-          </div>
-          <p class="why"><b>Why it matters:</b> Strong earnings confirm CrowdStrike's financial stability heading into a multi-year integration period. Clients evaluating platform consolidation decisions over the next 12 months should separate business health from market sentiment: the Q3 results support confidence in CrowdStrike's near-term roadmap, while the stock reaction is a signal to watch for how the integration narrative develops over the coming quarters.</p>
+          <div class="tags"><span class="sev med">Market update</span><span class="tag">Cyber platform · M&amp;A · Volatility</span></div>
+          <h4>CrowdStrike closes holiday week at $209 as the market absorbs the Zscaler deal; VIX falls sharply from 30.87 to 25.37 and Friday pre-market futures point higher across the board</h4>
+          <p class="sum">After CrowdStrike's strong Q3 earnings triggered a 4.3% pre-market drop in the previous edition — as investors weighed integration risk from the $43.9 billion all-stock Zscaler acquisition against a volatile tape — the company closed Wednesday at $209.30 (a -0.74% daily change) as selling pressure faded through the session. With markets closed Thursday for Thanksgiving, Friday pre-market data shows CRWD recovering to $211.88 (+1.23%) and broader market futures pointing higher: S&P +1.54%, Nasdaq +2.18%, Dow +1.31%. The VIX, which spiked to 30.87 on Wednesday, fell to 25.37, suggesting the volatility overreaction to the week's earnings is easing.</p>
+          <p class="sum extra">The CrowdStrike/Zscaler deal is expected to close in the second half of CrowdStrike's fiscal year 2028, leaving 18+ months for integration planning. CEO George Kurtz characterized the combination as building "cybersecurity's operating system: a single control plane to deploy AI, control AI, and enable any agentic application to run safely." Analyst targets on CRWD range from $174 (bear case) to $320 (bull case), with the ongoing debate centering on whether the platform thesis can outcompete Palo Alto Networks' established multi-product consolidation strategy. The VIX normalization and CRWD pre-market recovery both suggest the institutional market is settling into a more analytical read of the deal.</p>
+          <div class="tickers"><span class="tk">CRWD <span class="up">▲1.23%</span></span><span class="tk">ZS</span><span class="tk">PANW</span></div>
+          <p class="why"><b>Why it matters:</b> Enterprise clients evaluating CrowdStrike or Zscaler products now have an 18-month window before the integration changes either product's roadmap materially. The stock recovery and VIX normalization are worth noting when clients ask whether CrowdStrike's financial stability or product trajectory is at risk — the market's initial reaction was an overreaction, and the underlying Q3 fundamentals remain strong.</p>
           <div class="srcs"><span class="lbl">Reported by</span>
-            <a href="https://www.cnbc.com/2026/11/23/crowdstrike-zscaler-deal-ceo-george-kurtz.html" target="_blank" rel="noopener">CNBC</a>
             <a href="https://finance.yahoo.com/quote/CRWD/" target="_blank" rel="noopener">Yahoo Finance</a>
+            <a href="https://www.cnbc.com/2026/11/23/crowdstrike-zscaler-deal-ceo-george-kurtz.html" target="_blank" rel="noopener">CNBC</a>
             <details class="arts"><summary><span class="count">2 sources · 2 articles</span></summary>
               <ol>
+                <li><a href="https://finance.yahoo.com/quote/CRWD/" target="_blank" rel="noopener">CrowdStrike (CRWD) Market Data and Pre-Market Trading</a><span class="o">Yahoo Finance · Nov 27</span></li>
                 <li><a href="https://www.cnbc.com/2026/11/23/crowdstrike-zscaler-deal-ceo-george-kurtz.html" target="_blank" rel="noopener">CrowdStrike CEO Defends Zscaler Acquisition, Calls It a 'Winning Combination'</a><span class="o">CNBC · Nov 23</span></li>
-                <li><a href="https://finance.yahoo.com/quote/CRWD/" target="_blank" rel="noopener">CrowdStrike (CRWD) Earnings and Market Data</a><span class="o">Yahoo Finance · Nov 25</span></li>
               </ol></details>
           </div>
         </article>
 
         <article class="card story" data-cat="mkt">
-          <div class="tags"><span class="sev med">Earnings · M&amp;A</span><span class="tag">Cyber platform · AI infrastructure · Acquisition</span></div>
-          <h4>Palo Alto Networks reports 39% revenue growth and 66% next-gen security ARR growth in Q1 FY2027, announces $4.5 billion Applied Compute acquisition as shares retreat in tech selloff</h4>
-          <p class="sum">Palo Alto Networks reported Q1 fiscal 2027 results showing 39% revenue growth and 66% next-generation security ARR growth, alongside raised full-year guidance. The company simultaneously announced a planned $4.5 billion acquisition of Applied Compute, signaling continued expansion into AI infrastructure security. PANW has been the standout performer in the cybersecurity sector year-to-date, up 91.63% versus the S&amp;P 500's 5.19%. Despite the strong fundamentals, shares fell 4.16% pre-market Wednesday alongside a broad tech pullback as the Nasdaq extended its November weakness and the VIX climbed above 30.</p>
-          <p class="sum extra">The Applied Compute acquisition extends Palo Alto's platform strategy further into the AI infrastructure layer — GPU clusters, model-serving endpoints, and the identity and access management challenges that come with AI agent deployment. CEO Nikesh Arora has consistently framed the company's consolidation strategy as creating a single-platform model that eliminates the complexity of running dozens of point security tools. Analyst concerns center on whether valuation — P/E above 600 — can be sustained as the consolidation strategy requires deep discounting to win platform deals. The stock's pre-market retreat reflects the broader tech selloff rather than a company-specific catalyst.</p>
-          <div class="tickers">
-            <span class="tk">PANW <span class="down">▼4.16%</span></span>
-          </div>
-          <p class="why"><b>Why it matters:</b> Palo Alto's strong execution and the Applied Compute acquisition confirm the company is investing aggressively in AI infrastructure security — an area where many enterprise clients are still assessing their exposure. For clients on PANW products, the financial health and investment trajectory support roadmap confidence. For clients evaluating platform consolidation, Palo Alto's discounting model is worth benchmarking against the CrowdStrike/Zscaler combined platform as an alternative.</p>
+          <div class="tags"><span class="sev info">Macro</span><span class="tag">Markets · Thanksgiving week · Semiconductors</span></div>
+          <h4>Black Friday: abbreviated session closes at 1 PM ET with futures up 1.5–2.2%; semiconductors lead pre-market as holiday-week thin trading amplifies moves</h4>
+          <p class="sum">US equity markets reopened Friday for a holiday-shortened session closing at 1 PM Eastern time after Thanksgiving kept traders out Thursday. Pre-market futures pointed sharply higher — S&P 500 futures +1.54%, Nasdaq 100 futures +2.18%, Dow futures +1.31% — after Wednesday's indices ended slightly negative (S&P 500 -0.25% at 7,182.78; Nasdaq -0.62% at 23,585.80). Semiconductors led pre-market gains: SanDisk +10.87%, Micron +6.1%, AMD +4.4%. Holiday-week trading volume tends to be thin, amplifying percentage moves in both directions.</p>
+          <p class="sum extra">Treasury yields were flat at 4.90% on the 10-year after the week's volatility, and Bitcoin recovered to $61,365 (+0.93%). No major economic data releases were scheduled for Black Friday. The next significant market catalysts will be the November jobs report (December 5) and the Federal Reserve meeting (December 10–11). Thin holiday markets can amplify the equity impact of any cyber-incident news surfacing over the weekend — a pattern that has contributed to some of the larger post-breach stock moves in recent years, particularly in retail and financial services.</p>
+          <div class="tickers"><span class="tk">S&amp;P futures <span class="up">▲1.54%</span></span><span class="tk">NDX futures <span class="up">▲2.18%</span></span></div>
           <div class="srcs"><span class="lbl">Reported by</span>
-            <a href="https://finance.yahoo.com/quote/PANW/" target="_blank" rel="noopener">Yahoo Finance</a>
+            <a href="https://finance.yahoo.com/markets/" target="_blank" rel="noopener">Yahoo Finance</a>
             <span class="count">1 source · 1 article</span>
           </div>
         </article>
@@ -374,39 +378,37 @@
       <!-- QUICK HITS -->
       <div class="sechead story-sec" data-sec="hits"><h3>Quick Hits</h3><span>One-liners worth knowing</span></div>
       <ul class="hits">
-        <li class="story" data-cat="cyber"><span class="k">Cyber</span><a href="https://www.securityweek.com/an-unclassified-cia-system-was-breached-in-a-cyberattack-ap-source-says/" target="_blank" rel="noopener">An unclassified CIA system collecting open-source intelligence from public internet sources, commercial satellites, and private data brokers was breached in a cyberattack, AP confirmed from an anonymous official; no classified information was involved and the agency says the issue has been resolved</a><span class="s">SecurityWeek · AP</span></li>
-        <li class="story" data-cat="cyber"><span class="k">Cyber</span><a href="https://therecord.media/mycolorado-app-down-data-breach" target="_blank" rel="noopener">Colorado shut down the myColorado digital-ID app after a cyberattack exposed data for approximately 150,000 of its 2.1 million users; the app remains offline ahead of Thanksgiving travel and the state is urging residents to carry physical IDs — specific data types stolen have not been disclosed</a><span class="s">The Record</span></li>
-        <li class="story" data-cat="cyber"><span class="k">Cyber</span><a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">CISA added three vulnerabilities to KEV on November 24 with a 72-hour federal remediation deadline (Nov 27): CVE-2026-132165 (Drupal Core RCE via install.php, being actively exploited since Nov 19), CVE-2026-131914 (Idunno AntiCsrf deserialization RCE), and CVE-2026-132224 (Optimizely Web Experimentation critical state data manipulation)</a><span class="s">CISA KEV · SecurityWeek</span></li>
-        <li class="story" data-cat="cyber"><span class="k">Cyber</span><a href="https://www.securityweek.com/1-5-million-impacted-by-data-breach-at-south-korean-electric-company-kepco/" target="_blank" rel="noopener">South Korea's state-owned electric utility KEPCO confirmed a breach exposing personal and financial data for 1.5 million people — 650,000 customers from its portal (names, addresses, ID numbers, card and bank account details) and 870,000 supplier contacts — after a dark-web posting by a threat actor named Noiem was verified against sample data</a><span class="s">SecurityWeek</span></li>
-        <li class="story" data-cat="cyber"><span class="k">Cyber</span><a href="https://thehackernews.com/2026/11/hackers-exploited-cvss-100-hexpm-rce.html" target="_blank" rel="noopener">Attackers exploited a CVSS 10.0 deserialization flaw (CVE-2026-129514) to compromise six Hex.pm production servers — the official package registry for Elixir and Erlang — in 13 minutes via 69 exploit requests; no package modifications were detected but the team cannot rule out database access including email addresses, password hashes, API key hashes, and 2FA secrets</a><span class="s">The Hacker News</span></li>
-        <li class="story" data-cat="cyber"><span class="k">Gov / Cyber</span><a href="https://www.cnbc.com/2026/11/23/jay-clayton-cyber-director-kirsten-davies-trump.html" target="_blank" rel="noopener">DNI Jay Clayton was named acting National Cyber Director following Sean Cairncross's departure, bridging the leadership gap until Kirsten Davies — Trump's nominee described as a "battle-tested" cyber leader — completes the Senate confirmation process</a><span class="s">CNBC · SecurityWeek</span></li>
+        <li class="story" data-cat="cyber"><span class="k">Breach</span><a href="https://www.securityweek.com/fifa-says-it-has-been-victim-of-a-cyberattack-accessing-personal-and-business-information/" target="_blank" rel="noopener">FIFA disclosed it was the victim of a cyberattack that accessed "personal and business information" — timing, attribution, and scope remain undisclosed; the governing body said it is investigating and has notified relevant parties</a><span class="s">SecurityWeek</span></li>
+        <li class="story" data-cat="cyber"><span class="k">Malware</span><a href="https://www.bleepingcomputer.com/news/security/sys010-malware-abuses-browser-management-to-spy-on-gmail-outlook/" target="_blank" rel="noopener">SYS010, an updated infostealer distributed through Meta advertisements, force-enrolls victims' browsers into enterprise management to install malicious extensions that intercept Gmail and Outlook communications; variant of SYS01 using legitimate-looking Facebook and LinkedIn ad campaigns as delivery</a><span class="s">BleepingComputer</span></li>
+        <li class="story" data-cat="cyber"><span class="k">Gov update</span><a href="https://thehackernews.com/2026/11/us-treasurys-fincen-takes-some-systems.html" target="_blank" rel="noopener">FinCEN extended Bank Secrecy Act filing deadlines to December 30 for institutions affected by its ongoing system outage (covered as lead in Edition #006); the BSA E-Filing portal remains operational but some batch submission services are unavailable as the agency investigates the November 19 intrusion — no attribution confirmed</a><span class="s">The Hacker News · SecurityWeek</span></li>
+        <li class="story" data-cat="cyber"><span class="k">Patch now</span><a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-confirms-authentication-issues-after-november-updates/" target="_blank" rel="noopener">Microsoft confirmed post-update Kerberos and authentication failures affecting some Windows Server and domain-joined devices following November security updates; organizations experiencing sign-in errors should review Microsoft's known-issue guidance before deploying to remaining systems</a><span class="s">BleepingComputer</span></li>
+        <li class="story" data-cat="cyber"><span class="k">Vuln</span><a href="https://www.bleepingcomputer.com/news/security/new-nfs2root-linux-flaw-can-let-attackers-gain-root-privileges/" target="_blank" rel="noopener">NFS2ROOT (CVE-2026-99362): a 12-year-old critical flaw in the Linux kernel's NFS server subsystem enables remote attackers to gain root privileges on exposed NFS servers — a patch is available and Shodan shows tens of thousands of NFS servers reachable from the public internet</a><span class="s">BleepingComputer</span></li>
       </ul>
     </main>
 
     <!-- SIDEBAR -->
     <aside>
       <div class="panel">
-        <h5><span>Source Health</span><span>scanned 9</span></h5>
+        <h5><span>Source Health</span><span>scanned 16</span></h5>
         <table>
-          <tr><td><span class="dot ok"></span>SecurityWeek</td><td class="num">OK</td></tr>
+          <tr><td><span class="dot ok"></span>BleepingComputer</td><td class="num">OK (was 403 in #006)</td></tr>
           <tr><td><span class="dot ok"></span>The Hacker News</td><td class="num">OK</td></tr>
-          <tr><td><span class="dot ok"></span>The Record</td><td class="num">OK</td></tr>
-          <tr><td><span class="dot ok"></span>TechCrunch</td><td class="num">OK</td></tr>
-          <tr><td><span class="dot ok"></span>CNBC</td><td class="num">OK</td></tr>
+          <tr><td><span class="dot ok"></span>SecurityWeek</td><td class="num">OK</td></tr>
           <tr><td><span class="dot ok"></span>CISA KEV</td><td class="num">OK</td></tr>
           <tr><td><span class="dot ok"></span>Yahoo Finance</td><td class="num">OK · market data</td></tr>
-          <tr><td><span class="dot ok"></span>SANS ISC (RSS)</td><td class="num">OK · 2 entries</td></tr>
-          <tr><td><span class="dot ok"></span>SecureWorld (RSS)</td><td class="num">OK · 2 stories</td></tr>
-          <tr><td><span class="dot warn"></span>WSJ / Bloomberg</td><td class="num">paywall · headline only</td></tr>
-          <tr><td><span class="dot warn"></span>BleepingComputer</td><td class="num">403 blocked</td></tr>
-          <tr><td><span class="dot warn"></span>Dark Reading</td><td class="num">not fetched</td></tr>
+          <tr><td><span class="dot ok"></span>CNBC</td><td class="num">OK · cyber section</td></tr>
+          <tr><td><span class="dot ok"></span>SANS ISC (RSS)</td><td class="num">stormcast only</td></tr>
+          <tr><td><span class="dot ok"></span>SecureWorld (RSS)</td><td class="num">editorial · no hard news</td></tr>
+          <tr><td><span class="dot ok"></span>TechCrunch</td><td class="num">OK · no startup rounds found</td></tr>
+          <tr><td><span class="dot warn"></span>Dark Reading</td><td class="num">403 blocked</td></tr>
           <tr><td><span class="dot warn"></span>AP / Reuters</td><td class="num">blocked</td></tr>
+          <tr><td><span class="dot warn"></span>WSJ / Bloomberg</td><td class="num">paywall · no headlines</td></tr>
           <tr><td><span class="dot warn"></span>Krebs on Security</td><td class="num">no new articles</td></tr>
           <tr><td><span class="dot warn"></span>Troy Hunt</td><td class="num">no new articles</td></tr>
-          <tr><td><span class="dot warn"></span>SEC EDGAR 8-K</td><td class="num">not scanned</td></tr>
+          <tr><td><span class="dot warn"></span>SEC EDGAR 8-K</td><td class="num">no Item 1.05 filings</td></tr>
           <tr><td><span class="dot warn"></span>Crunchbase / PE Hub</td><td class="num">not scanned</td></tr>
         </table>
-        <div class="note">BleepingComputer continues to return 403. AP and Reuters were blocked. SANS ISC had two stormcast entries with no new actionable content. Crunchbase, PE Hub, and Renaissance Capital were not scanned; additional startup funding rounds may exist. Bruce Schneier had no new posts this window.</div>
+        <div class="note">BleepingComputer returned successfully this run after blocking edition #006. Dark Reading continues 403. AP and Reuters remain blocked. SANS ISC had a stormcast entry with no actionable security news. SecureWorld had editorial content only. Crunchbase News, PE Hub, and Renaissance Capital were not scanned; additional startup rounds likely exist. WSJ and Bloomberg paywall pages returned no headlines in the coverage window.</div>
       </div>
     </aside>
   </div>
@@ -414,15 +416,15 @@
   <section class="radar" id="radar" aria-label="Cybersecurity startup radar">
     <div class="sechead"><h3>Startup radar</h3><span>Funding rounds, IPOs and private-equity deals · last 7 days</span></div>
     <div class="rstats">
-      <div class="rstat"><div class="v">1</div><div class="l">Events tracked</div></div>
-      <div class="rstat"><div class="v">$5.3M</div><div class="l">Raised in rounds</div></div>
-      <div class="rstat"><div class="v">$0</div><div class="l">IPO / PE deals</div></div>
-      <div class="rstat"><div class="v">1 of 1</div><div class="l">AI security / privacy</div></div>
+      <div class="rstat"><div class="v">0</div><div class="l">Events tracked</div></div>
+      <div class="rstat"><div class="v">$0</div><div class="l">Raised in rounds</div></div>
+      <div class="rstat"><div class="v">0</div><div class="l">IPO / PE deals</div></div>
+      <div class="rstat"><div class="v">Holiday week</div><div class="l">Low deal activity expected</div></div>
     </div>
-    <p class="rtrend"><b>This edition:</b> One confirmed cybersecurity-adjacent funding round surfaced in the coverage window — Maple's $5.3M seed for encrypted AI products. No cybersecurity IPOs or PE buyouts were confirmed. Crunchbase, PE Hub, and Renaissance Capital were not scanned this run; additional rounds very likely exist and are not reflected here. The CrowdStrike/Zscaler acquisition ($43.9B) and Palo Alto's Applied Compute deal ($4.5B) are covered in the Markets section; as public-company and acquirer-driven transactions, they fall outside the startup radar scope.</p>
+    <p class="rtrend"><b>This edition:</b> No confirmed cybersecurity startup funding rounds, IPOs, or private-equity buyouts were found in the coverage window. Thanksgiving week historically sees reduced deal announcement activity. Crunchbase News, PE Hub, and Renaissance Capital were not scanned this run; additional rounds likely exist and are not reflected here. The CrowdStrike/Zscaler acquisition ($43.9B) and Palo Alto Networks' Applied Compute deal ($4.5B) are covered in the Markets section; as public-company and acquirer-driven transactions, they fall outside the startup radar scope. The PolinRider campaign (Cyber section) is a reminder that developer-tool supply chains remain an active North Korean targeting priority — relevant context for any startup building on GitHub-hosted CI/CD pipelines.</p>
     <div class="controls" role="toolbar" aria-label="Filter startup events" style="border-bottom:0;padding-top:0">
-      <button class="fbtn rf" data-r="all" aria-pressed="true">All<span class="n">1</span></button>
-      <button class="fbtn rf" data-r="seed" aria-pressed="false">Seed<span class="n">1</span></button>
+      <button class="fbtn rf" data-r="all" aria-pressed="true">All<span class="n">0</span></button>
+      <button class="fbtn rf" data-r="seed" aria-pressed="false">Seed<span class="n">0</span></button>
       <button class="fbtn rf" data-r="a" aria-pressed="false">Series A<span class="n">0</span></button>
       <button class="fbtn rf" data-r="b" aria-pressed="false">Series B<span class="n">0</span></button>
       <button class="fbtn rf" data-r="c" aria-pressed="false">Series C+<span class="n">0</span></button>
@@ -430,18 +432,12 @@
       <button class="fbtn rf" data-r="pe" aria-pressed="false">PE buyout<span class="n">0</span></button>
     </div>
     <div class="rlist">
-      <div class="ritem" data-sf="seed">
-        <div><span class="st seed">Seed</span><span class="dt">Nov 24</span></div>
-        <div><h5>Maple</h5><p>Encrypted AI products — mobile chat and desktop agent — where user data is processed in trusted execution environments and remains encrypted from the company itself; targeting small business and enterprise with SOC 2 compliance roadmap.</p></div>
-        <div class="amt">$5.3M<small>seed · oversubscribed</small></div>
-        <div class="inv">Lead: <b>Epic Ventures</b> · Draper Associates · Planetary VC · Epoch VC</div>
-        <div class="rs"><a href="https://techcrunch.com/2026/11/24/maple-raises-5-3m-to-build-ai-products-that-protect-your-data-even-from-itself/" target="_blank" rel="noopener">TechCrunch</a></div>
-      </div>
+      <div style="padding:16px 18px;font-size:13.5px;color:var(--muted)">No confirmed funding rounds, IPOs, or PE buyouts in the coverage window. Crunchbase, PE Hub, and Renaissance Capital were not scanned; additional rounds may exist.</div>
     </div>
   </section>
 
   <footer>
-    The Asena Brief · curated for Asena Security · Edition #006, Wednesday November 25, 2026 · Coverage window: Monday Nov 24 morning through Wednesday Nov 25 morning. Stories reported by more than one outlet are merged into one entry with every source listed. Market tape reflects Wednesday pre-market data from Yahoo Finance (~06:00 PT); Nasdaq extended its weekly decline to -1.48% with VIX spiking to 30.87. BleepingComputer continues to return 403; stories broken exclusively there may be missed. AP and Reuters were blocked this run. Crunchbase News, PE Hub, and Renaissance Capital were not scanned; additional startup funding rounds likely exist. WSJ and Bloomberg used for headlines and abstracts only (paywall). <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a>
+    The Asena Brief · curated for Asena Security · Edition #007, Friday November 27, 2026 · Coverage window: Wednesday Nov 25 morning through Friday Nov 27 morning. Stories reported by more than one outlet are merged into one entry with every source listed. Market tape reflects Wednesday Nov 25 close (US markets were closed Thursday for Thanksgiving); CRWD pre-market data and index futures are from Yahoo Finance (~06:00 PT Friday). BleepingComputer returned successfully this run after blocking in edition #006. AP and Reuters remain blocked. Dark Reading returned 403. Crunchbase News, PE Hub, and Renaissance Capital were not scanned; cybersecurity startup funding data for the coverage window is incomplete. WSJ and Bloomberg paywalled; no headlines captured in this window. SANS ISC had stormcast only — no actionable security news. <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a>
   </footer>
 </div>
 
@@ -465,7 +461,7 @@
   });
 
   /* ---- collapse / read state, saved per edition ---- */
-  const EDITION = '2026-11-25';
+  const EDITION = '2026-11-27';
   const KEY = 'asenaRead:' + EDITION;
   const hash = t => { let h=0; for (const c of t) h=(h*31 + c.charCodeAt(0))|0; return 'h'+(h>>>0).toString(36); };
   let read = new Set();
